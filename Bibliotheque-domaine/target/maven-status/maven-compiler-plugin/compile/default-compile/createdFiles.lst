@@ -1,0 +1,12 @@
+com\infotel\formation\entity\Book.class
+com\infotel\formation\entity\Borrow.class
+com\infotel\formation\entity\BookBasket.class
+com\infotel\formation\entity\Registration.class
+com\infotel\formation\entity\Category.class
+com\infotel\formation\entity\Bookshelf.class
+com\infotel\formation\entity\BookCopy.class
+com\infotel\formation\entity\Catalog.class
+com\infotel\formation\entity\Author.class
+com\infotel\formation\entity\Member.class
+com\infotel\formation\entity\Editor.class
+com\infotel\formation\entity\Library.class
