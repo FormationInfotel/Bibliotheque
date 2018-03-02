@@ -13,7 +13,7 @@ public class Author implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue
-	private long author_id;
+	private int author_id;
 	private String author_lastname;
 	private String author_firstname;
 

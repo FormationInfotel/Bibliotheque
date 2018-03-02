@@ -5,12 +5,12 @@ import java.util.List;
 import com.infotel.formation.entity.Author;
 
 public interface AuthorDAO {
-	void insertCustomer(Author author);
+	void insertAuthor(Author author);
 
-	public Author getCustomerById(String authorId);
+	public Author getAuthorById(int authorId);
 
-	Author getCustomer(String authorName);
+	Author getAuthor(String authorName);
 
-	List<Author> getCustomers();
+	List<Author> getAuthors();
 
 }
