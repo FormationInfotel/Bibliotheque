@@ -32,7 +32,7 @@
 
 	<modules>
 		<module>Bibliotheque-domaine</module>
-		<module>Biobliotheque-dao</module>
+		<module>Bibliotheque-dao</module>
 		<module>Bibliotheque-service</module>
 	</modules>
 
