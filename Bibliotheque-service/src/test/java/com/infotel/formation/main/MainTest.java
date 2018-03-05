@@ -127,6 +127,32 @@ public class MainTest {
 				new Float(30), d1, true);
 		Book b5 = new Book(00001140L, "Freud pour les Nuls", "La philosophie pour les débutants", new Float(18), d1,
 				false);
+
+		b1.setBook_author(auteur3);
+		b1.setBook_category(c3);
+		b1.setBook_catalog(cat1);
+		b1.setBook_editor(e4);
+
+		b2.setBook_author(auteur1);
+		b2.setBook_category(c4);
+		b2.setBook_catalog(cat4);
+		b2.setBook_editor(e1);
+
+		b3.setBook_author(auteur2);
+		b3.setBook_category(c5);
+		b3.setBook_catalog(cat5);
+		b3.setBook_editor(e4);
+
+		b4.setBook_author(auteur4);
+		b4.setBook_category(c5);
+		b4.setBook_catalog(cat1);
+		b4.setBook_editor(e2);
+
+		b5.setBook_author(auteur5);
+		b5.setBook_category(c1);
+		b5.setBook_catalog(cat1);
+		b5.setBook_editor(e3);
+
 		userManagerBook.insertBook(b1);
 		userManagerBook.insertBook(b2);
 		userManagerBook.insertBook(b3);
@@ -147,6 +173,45 @@ public class MainTest {
 		BookCopy bc7 = new BookCopy(00001141L, "Game of Thrones - Intégrale 1", b4);
 		BookCopy bc8 = new BookCopy(00001142L, "Game of Thrones - Intégrale 1", b4);
 		BookCopy bc9 = new BookCopy(00001143L, "Game of Thrones - Intégrale 1", b4);
+
+		// ajout des copy dans la liste dans le livre
+		b1.getBook_ListCopy().add(bc1);
+		b1.getBook_ListCopy().add(bc2);
+		b1.getBook_ListCopy().add(bc3);
+		b2.getBook_ListCopy().add(bc4);
+		b2.getBook_ListCopy().add(bc5);
+		b2.getBook_ListCopy().add(bc6);
+		b4.getBook_ListCopy().add(bc7);
+		b4.getBook_ListCopy().add(bc8);
+		b4.getBook_ListCopy().add(bc9);
+		System.out.println("Copy de Book insérés");
+
+		///////////////////////////////////////////////////////////////////////
+		///////////////////// CREATION DES BOOKSHELF //////////////////////////
+		///////////////////////////////////////////////////////////////////////
+		BookshelfDAO userManagerBookShelf = (BookshelfDAO) context.getBean("bookshelfDAOImpl");
+		Bookshelf bk1 = new Bookshelf("Rayon 1 - Fantasy", "Les livres de Fantasy", 10);
+		Bookshelf bk2 = new Bookshelf("Rayon 2 - Cuisine", "Les livres de Cuisine", 10);
+		Bookshelf bk3 = new Bookshelf("Rayon 3 - Histoire", "Les livres de Histoire", 10);
+		Bookshelf bk4 = new Bookshelf("Rayon 4 - Philosophie", "Les livres de Philosophie", 10);
+		Bookshelf bk5 = new Bookshelf("Rayon 5 - Fantastique", "Les livres de Fantastique", 10);
+		userManagerBookShelf.insertBookShelf(bk1);
+		userManagerBookShelf.insertBookShelf(bk2);
+		userManagerBookShelf.insertBookShelf(bk3);
+		userManagerBookShelf.insertBookShelf(bk4);
+		userManagerBookShelf.insertBookShelf(bk5);
+
+		// mise en rayon des copies
+		bc1.setBookcopy_bookshelf(bk2);
+		bc2.setBookcopy_bookshelf(bk2);
+		bc3.setBookcopy_bookshelf(bk2);
+		bc4.setBookcopy_bookshelf(bk5);
+		bc5.setBookcopy_bookshelf(bk5);
+		bc6.setBookcopy_bookshelf(bk5);
+		bc7.setBookcopy_bookshelf(bk1);
+		bc8.setBookcopy_bookshelf(bk1);
+		bc9.setBookcopy_bookshelf(bk1);
+
 		userManagerBookCopy.insertBookCopy(bc1);
 		userManagerBookCopy.insertBookCopy(bc2);
 		userManagerBookCopy.insertBookCopy(bc3);
@@ -156,32 +221,7 @@ public class MainTest {
 		userManagerBookCopy.insertBookCopy(bc7);
 		userManagerBookCopy.insertBookCopy(bc8);
 		userManagerBookCopy.insertBookCopy(bc9);
-		System.out.println("Copy de Book insérés");
 
-		///////////////////////////////////////////////////////////////////////
-		///////////////////// CREATION DES BOOKSHELF //////////////////////////
-		///////////////////////////////////////////////////////////////////////
-		BookshelfDAO userManagerBookShelf = (BookshelfDAO) context.getBean("bookShelfDAOImpl");
-		Bookshelf bk1 = new Bookshelf("Rayon 1 - Fantasy", "Les livres de Fantasy", 10, l1);
-		Bookshelf bk2 = new Bookshelf("Rayon 2 - Cuisine", "Les livres de Cuisine", 10, l1);
-		Bookshelf bk3 = new Bookshelf("Rayon 3 - Histoire", "Les livres de Histoire", 10, l1);
-		Bookshelf bk4 = new Bookshelf("Rayon 4 - Philosophie", "Les livres de Philosophie", 10, l1);
-		Bookshelf bk5 = new Bookshelf("Rayon 5 - Fantastique", "Les livres de Fantastique", 10, l1);
-		Bookshelf bk6 = new Bookshelf("Rayon 1 - Fantasy", "Les livres de Fantasy", 10, l2);
-		Bookshelf bk7 = new Bookshelf("Rayon 2 - Fantasique", "Les livres de Fantasique", 10, l2);
-		Bookshelf bk8 = new Bookshelf("Rayon 3 - Histoire", "Les livres de Histoire", 10, l2);
-		Bookshelf bk9 = new Bookshelf("Rayon 1 - Fantasy", "Les livres de Fantasy", 10, l3);
-		Bookshelf bk10 = new Bookshelf("Rayon 2 - v", "Les livres de Fantasique", 10, l3);
-		userManagerBookShelf.insertBookShelf(bk1);
-		userManagerBookShelf.insertBookShelf(bk2);
-		userManagerBookShelf.insertBookShelf(bk3);
-		userManagerBookShelf.insertBookShelf(bk4);
-		userManagerBookShelf.insertBookShelf(bk5);
-		userManagerBookShelf.insertBookShelf(bk6);
-		userManagerBookShelf.insertBookShelf(bk7);
-		userManagerBookShelf.insertBookShelf(bk8);
-		userManagerBookShelf.insertBookShelf(bk9);
-		userManagerBookShelf.insertBookShelf(bk10);
 		System.out.println("Bookshelf insérés");
 
 		//////////////////////////////////////////////////////////////////////
@@ -193,11 +233,23 @@ public class MainTest {
 		Member m3 = new Member("RONCO", "ROMAIN", "roamin.ronco@infotel.com", "Rennes", "azerty123");
 		Member m4 = new Member("GUENOT", "MICKAEL", "mickael.guenot@infotel.com", "Lyon", "azerty123");
 		Member m5 = new Member("LE TEXIER", "LENA", "lena.letexier@infotel.com", "BrestpasMeme", "azerty123");
+		m1.setMember_Library(l1);
+		m2.setMember_Library(l1);
+		m3.setMember_Library(l1);
+		m4.setMember_Library(l2);
+		m5.setMember_Library(l2);
+		l1.getLibrary_ListMember().add(m1);
+		l1.getLibrary_ListMember().add(m2);
+		l1.getLibrary_ListMember().add(m3);
+		l2.getLibrary_ListMember().add(m4);
+		l2.getLibrary_ListMember().add(m5);
+
 		userManagerMember.insertMember(m1);
 		userManagerMember.insertMember(m2);
 		userManagerMember.insertMember(m3);
 		userManagerMember.insertMember(m4);
 		userManagerMember.insertMember(m5);
+
 		System.out.println("Membre insérés");
 
 	}

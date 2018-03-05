@@ -1,6 +1,7 @@
 package com.infotel.formation.entity;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -45,7 +46,6 @@ public class Book implements Serializable {
 		super();
 	}
 
-
 	public Book(long iSBN, String book_title, String book_description, float book_price, Date publication_date,
 			boolean popular_book) {
 		super();
@@ -55,6 +55,7 @@ public class Book implements Serializable {
 		this.book_price = book_price;
 		this.publication_date = publication_date;
 		this.popular_book = popular_book;
+		book_ListCopy = new ArrayList<BookCopy>();
 	}
 
 	public long getISBN() {

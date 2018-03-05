@@ -1,6 +1,7 @@
 package com.infotel.formation.entity;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -27,9 +28,10 @@ public class Library implements Serializable {
 	}
 
 	public Library(String library_name, String library_address) {
-		super();
 		this.library_name = library_name;
 		this.library_address = library_address;
+		library_ListMember = new ArrayList<Member>();
+		library_ListCatalog = new ArrayList<Catalog>();
 	}
 
 	@Override
@@ -63,5 +65,13 @@ public class Library implements Serializable {
 
 	public long getLibrary_code() {
 		return library_code;
+	}
+
+	public List<Member> getLibrary_ListMember() {
+		return library_ListMember;
+	}
+
+	public void setLibrary_ListMember(List<Member> library_ListMember) {
+		this.library_ListMember = library_ListMember;
 	}
 }

@@ -14,7 +14,7 @@ import com.infotel.formation.interfaces.CategoryDAO;
 
 @Repository
 @Transactional
-public class CatagoryDAOImpl implements CategoryDAO {
+public class CategoryDAOImpl implements CategoryDAO {
 	
 	@Autowired
 	private SessionFactory sessionFactory;

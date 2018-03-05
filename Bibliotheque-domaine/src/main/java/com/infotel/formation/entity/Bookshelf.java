@@ -17,7 +17,6 @@ public class Bookshelf implements Serializable {
 	private String bookshelf_name;
 	private String bookshelf_description;
 	private int book_number;
-	private Library bookshelf_library;
 
 	@OneToMany(mappedBy = "bookcopy_bookshelf")
 	private List<BookCopy> bookshelf_Listbook;
@@ -27,15 +26,12 @@ public class Bookshelf implements Serializable {
 	}
 
 	public Bookshelf() {
-		super();
 	}
 
-	public Bookshelf(String bookshelf_name, String bookshelf_description, int book_number, Library library_code) {
-		super();
+	public Bookshelf(String bookshelf_name, String bookshelf_description, int book_number) {
 		this.bookshelf_name = bookshelf_name;
 		this.bookshelf_description = bookshelf_description;
 		this.book_number = book_number;
-		this.bookshelf_library = library_code;
 	}
 
 	public long getBookshelf_id() {
@@ -62,14 +58,6 @@ public class Bookshelf implements Serializable {
 		this.bookshelf_description = bookshelf_description;
 	}
 
-	public Library getLibrary_code() {
-		return bookshelf_library;
-	}
-
-	public void setLibrary_code(Library library_code) {
-		this.bookshelf_library = library_code;
-	}
-
 	public int getBook_number() {
 		return book_number;
 	}
@@ -78,7 +66,7 @@ public class Bookshelf implements Serializable {
 	public String toString() {
 		return "Bookshelf [bookshelf_id=" + bookshelf_id + ", bookshelf_name=" + bookshelf_name
 				+ ", bookshelf_description=" + bookshelf_description + ", book_number=" + book_number
-				+ ", library_code=" + bookshelf_library + "]";
+				+ "]";
 	}
 
 }
