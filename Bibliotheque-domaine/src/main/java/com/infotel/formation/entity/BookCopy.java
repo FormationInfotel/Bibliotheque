@@ -13,9 +13,16 @@ public class BookCopy implements Serializable {
 	@Id
 	@GeneratedValue
 	private long copy_id;
-	private String ISBN;
+	private long ISBN;
 	private String copy_title;
 	private String bookshelf_id;
+
+	public BookCopy(long iSBN, String copy_title, Book bookcopy_parent) {
+		super();
+		ISBN = iSBN;
+		this.copy_title = copy_title;
+		this.bookcopy_parent = bookcopy_parent;
+	}
 
 	@ManyToOne
 	private Book bookcopy_parent;
@@ -54,7 +61,7 @@ public class BookCopy implements Serializable {
 		super();
 	}
 
-	public BookCopy(String iSBN, String copy_title, String bookshelf_id) {
+	public BookCopy(long iSBN, String copy_title, String bookshelf_id) {
 		ISBN = iSBN;
 		this.copy_title = copy_title;
 		this.bookshelf_id = bookshelf_id;
@@ -68,11 +75,11 @@ public class BookCopy implements Serializable {
 		this.copy_id = copy_id;
 	}
 
-	public String getISBN() {
+	public long getISBN() {
 		return ISBN;
 	}
 
-	public void setISBN(String iSBN) {
+	public void setISBN(long iSBN) {
 		ISBN = iSBN;
 	}
 

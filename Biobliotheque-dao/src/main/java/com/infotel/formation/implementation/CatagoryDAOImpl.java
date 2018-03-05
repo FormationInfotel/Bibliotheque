@@ -20,7 +20,7 @@ public class CatagoryDAOImpl implements CategoryDAO {
 	private SessionFactory sessionFactory;
 
 	@Override
-	public void insertAuthor(Category category) {
+	public void insertCategory(Category category) {
 		sessionFactory.getCurrentSession().save(category);
 	}
 

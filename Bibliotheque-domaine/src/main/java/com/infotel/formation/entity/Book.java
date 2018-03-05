@@ -23,9 +23,6 @@ public class Book implements Serializable {
 	private String book_description;
 	private float book_price;
 	private Date publication_date;
-	private int catalog_id;
-	private int editor_id;
-	private int category_id;
 	private String image_path;
 	private boolean popular_book;
 
@@ -48,17 +45,15 @@ public class Book implements Serializable {
 		super();
 	}
 
-	public Book(String book_title, String book_description, float book_price, Date publication_date, int catalog_id,
-			int editor_id, int category_id, String image_path, boolean popular_book) {
+
+	public Book(long iSBN, String book_title, String book_description, float book_price, Date publication_date,
+			boolean popular_book) {
 		super();
+		ISBN = iSBN;
 		this.book_title = book_title;
 		this.book_description = book_description;
 		this.book_price = book_price;
 		this.publication_date = publication_date;
-		this.catalog_id = catalog_id;
-		this.editor_id = editor_id;
-		this.category_id = category_id;
-		this.image_path = image_path;
 		this.popular_book = popular_book;
 	}
 
@@ -138,30 +133,6 @@ public class Book implements Serializable {
 		this.publication_date = publication_date;
 	}
 
-	public int getCatalog_id() {
-		return catalog_id;
-	}
-
-	public void setCatalog_id(int catalog_id) {
-		this.catalog_id = catalog_id;
-	}
-
-	public int getEditor_id() {
-		return editor_id;
-	}
-
-	public void setEditor_id(int editor_id) {
-		this.editor_id = editor_id;
-	}
-
-	public int getCategory_id() {
-		return category_id;
-	}
-
-	public void setCategory_id(int category_id) {
-		this.category_id = category_id;
-	}
-
 	public String getImage_path() {
 		return image_path;
 	}
@@ -185,8 +156,7 @@ public class Book implements Serializable {
 	@Override
 	public String toString() {
 		return "book [ISBN=" + ISBN + ", book_title=" + book_title + ", book_description=" + book_description
-				+ ", book_price=" + book_price + ", publication_date=" + publication_date + ", catalog_id=" + catalog_id
-				+ ", editor_id=" + editor_id + ", category_id=" + category_id + ", image_path=" + image_path
+				+ ", book_price=" + book_price + ", publication_date=" + publication_date + ", image_path=" + image_path
 				+ ", popular_book=" + popular_book + "]";
 	}
 
