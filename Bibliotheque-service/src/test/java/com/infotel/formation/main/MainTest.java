@@ -4,8 +4,6 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import com.infotel.formation.conteneur.ConteneurSpringFullJava;
-import com.infotel.formation.entity.Author;
-import com.infotel.formation.interfaces.AuthorDAO;
 
 public class MainTest {
 
@@ -13,13 +11,10 @@ public class MainTest {
 		ApplicationContext context = (ApplicationContext) new AnnotationConfigApplicationContext(
 				ConteneurSpringFullJava.class);
 
-		AuthorDAO userManager = (AuthorDAO) context.getBean("authorDAOImpl");
-
-		Author auteur = new Author("LEVEL", "LAURENE");
-
-		userManager.insertAuthor(auteur);
-
-		System.out.println("Autheur inséré");
+		// AuthorDAO userManager = (AuthorDAO) context.getBean("authorDAOImpl");
+		// Author auteur = new Author("LEVEL", "LAURENE");
+		// userManager.insertAuthor(auteur);
+		// System.out.println("Autheur inséré");
 
 	}
 

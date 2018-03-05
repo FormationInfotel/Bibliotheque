@@ -28,14 +28,14 @@ public class AuthorDAOImpl implements AuthorDAO {
 		Author authorById = null;
 
 		for (Author author : getAuthors()) {
-			if (author != null && author.getAuthor_id() > 0) {
+			if (author != null && author.getAuthor_id() > 0 && author.getAuthor_id() == authorId) {
 				authorById = author;
 				break;
 			}
 		}
 
 		if (authorById == null) {
-			throw new IllegalArgumentException("No product found with the product id : " + authorId);
+			throw new IllegalArgumentException("No Author found with the Author id : " + authorId);
 		}
 		return authorById;
 
@@ -44,7 +44,8 @@ public class AuthorDAOImpl implements AuthorDAO {
 	@SuppressWarnings("unchecked")
 	@Override
 	public Author getAuthor(String authorName) {
-		Query<Author> query = sessionFactory.getCurrentSession().createQuery("from Author where name = :authorName");
+		Query<Author> query = sessionFactory.getCurrentSession()
+				.createQuery("from Author where author_lastname = :authorName");
 		query.setParameter("name", authorName);
 		return (Author) query.list().get(0);
 	}
