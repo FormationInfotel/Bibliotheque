@@ -17,7 +17,7 @@ public class Category implements Serializable {
 	private String category_name;
 	private String category_description;
 
-	@OneToMany(mappedBy = "Book")
+	@OneToMany(mappedBy = "book_category")
 	private List<Book> category_listeBook;
 
 	public List<Book> getCategory_listeBook() {

@@ -17,10 +17,10 @@ public class Library implements Serializable {
 	private String library_name;
 	private String library_address;
 
-	@OneToMany(mappedBy = "Catalog")
+	@OneToMany(mappedBy = "catalog_library")
 	private List<Catalog> library_ListCatalog;
 
-	@OneToMany(mappedBy = "Member")
+	@OneToMany(mappedBy = "member_Library")
 	private List<Member> library_ListMember;
 
 	public Library() {

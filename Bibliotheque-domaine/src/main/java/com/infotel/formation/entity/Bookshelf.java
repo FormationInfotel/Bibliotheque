@@ -19,7 +19,7 @@ public class Bookshelf implements Serializable {
 	private int book_number;
 	private int library_code;
 	
-	@OneToMany(mappedBy = "BookCopy")
+	@OneToMany(mappedBy = "bookcopy_bookshelf")
 	private List<BookCopy> bookshelf_Listbook;
 
 	public void setBook_number(int book_number) {

@@ -23,6 +23,17 @@ public class BookCopy implements Serializable {
 	@ManyToOne
 	private Bookshelf bookcopy_bookshelf;
 
+	@ManyToOne
+	private BookBasket bookbasket_bookshelf;
+
+	public BookBasket getBookbasket_bookshelf() {
+		return bookbasket_bookshelf;
+	}
+
+	public void setBookbasket_bookshelf(BookBasket bookbasket_bookshelf) {
+		this.bookbasket_bookshelf = bookbasket_bookshelf;
+	}
+
 	public Book getBookcopy_parent() {
 		return bookcopy_parent;
 	}

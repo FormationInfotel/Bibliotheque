@@ -41,7 +41,7 @@ public class Book implements Serializable {
 	@ManyToOne
 	private Catalog book_catalog;
 
-	@OneToMany
+	@OneToMany(mappedBy = "bookcopy_parent")
 	private List<BookCopy> book_ListCopy;
 
 	public Book() {

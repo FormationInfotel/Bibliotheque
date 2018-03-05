@@ -3,18 +3,16 @@ package com.infotel.formation.entity;
 import java.io.Serializable;
 import java.util.Date;
 
-import javax.persistence.Entity;
 
-@Entity
-public class Borrow implements Serializable {
+public class Borrow_test implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private Date borrow_date;
 	private Date return_date;
 
-	public Borrow() {
+	public Borrow_test() {
 	}
 
-	public Borrow(Date borrow_date, Date return_date) {
+	public Borrow_test(Date borrow_date, Date return_date) {
 		super();
 		this.borrow_date = borrow_date;
 		this.return_date = return_date;

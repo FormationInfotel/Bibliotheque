@@ -18,7 +18,7 @@ public class Catalog implements Serializable {
 	private String catalog_name;
 	private Library library_code;
 
-	@OneToMany(mappedBy = "Book")
+	@OneToMany(mappedBy = "book_catalog")
 	private List<Book> catalog_book;
 
 	@ManyToOne

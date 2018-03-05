@@ -16,7 +16,7 @@ public class Editor implements Serializable {
 	private long editor_id;
 	private String editor_name;
 
-	@OneToMany(mappedBy = "Book")
+	@OneToMany(mappedBy = "book_editor")
 	private List<Book> editor_listeBook;
 
 	public List<Book> getEditor_listeBook() {
