@@ -1,7 +1,9 @@
 package com.infotel.formation.implementation;
+
 import java.util.List;
 
 import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -23,21 +25,35 @@ public class AuthorDAOImpl implements AuthorDAO {
 
 	@Override
 	public Author getAuthorById(int authorId) {
-		// TODO Auto-generated method stub
-		return null;
+		Author authorById = null;
+
+		for (Author author : getAuthors()) {
+			if (author != null && author.getAuthor_id() > 0) {
+				authorById = author;
+				break;
+			}
+		}
+
+		if (authorById == null) {
+			throw new IllegalArgumentException("No product found with the product id : " + authorId);
+		}
+		return authorById;
+
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public Author getAuthor(String authorName) {
-		// TODO Auto-generated method stub
-		return null;
+		Query<Author> query = sessionFactory.getCurrentSession().createQuery("from Author where name = :authorName");
+		query.setParameter("name", authorName);
+		return (Author) query.list().get(0);
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Author> getAuthors() {
-		// TODO Auto-generated method stub
-		return null;
+		List<Author> result = (List<Author>) sessionFactory.getCurrentSession().createQuery("from Author").list();
+		return result;
 	}
-
 
 }
