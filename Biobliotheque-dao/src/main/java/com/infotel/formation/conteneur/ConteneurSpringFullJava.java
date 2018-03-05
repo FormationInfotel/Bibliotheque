@@ -60,6 +60,8 @@ public class ConteneurSpringFullJava {
 
 		return txManager;
 	}
+	
+	
 
 	@Bean
 	public PersistenceExceptionTranslationPostProcessor exceptionTranslation() {

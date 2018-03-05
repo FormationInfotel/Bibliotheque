@@ -13,10 +13,16 @@ import com.infotel.formation.interfaces.AuthorDAO;
 
 @Repository
 @Transactional
-public class AuthorDAOImpl implements AuthorDAO {
+	public class AuthorDAOImpl extends _GenericDAOImpl <Author> implements  AuthorDAO {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Autowired
 	private SessionFactory sessionFactory;
+	
+	
 
 	@Override
 	public void insertAuthor(Author author) {
