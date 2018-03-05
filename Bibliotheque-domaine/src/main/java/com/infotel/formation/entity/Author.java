@@ -17,7 +17,7 @@ public class Author implements Serializable {
 	private String author_lastname;
 	private String author_firstname;
 
-	@OneToMany(mappedBy = "Book")
+	@OneToMany(mappedBy = "book_author")
 	private List<Book> author_listeBook;
 
 	public List<Book> getAuthor_listeBook() {

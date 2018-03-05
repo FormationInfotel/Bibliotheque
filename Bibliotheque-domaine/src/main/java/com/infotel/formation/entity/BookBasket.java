@@ -2,10 +2,12 @@ package com.infotel.formation.entity;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class BookBasket implements Serializable{
@@ -16,6 +18,9 @@ public class BookBasket implements Serializable{
 	private Date creation_date;
 	private Date delivery_date;
 	
+	@OneToMany(mappedBy = "bookbasket_bookshelf")
+	private List<BookCopy> bookbasket_Listbook;
+
 	public BookBasket() {
 		super();
 	}
