@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.infotel.formation.entity.Registration;
 import com.infotel.formation.interfaces.RegistrationDAO;
 
+
 @Repository
 @Transactional
 public class RegistrationDAOImpl implements RegistrationDAO {
