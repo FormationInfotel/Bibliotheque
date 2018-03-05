@@ -7,7 +7,7 @@ import com.infotel.formation.entity.Bookshelf;
 
 public interface BookshelfDAO {
 	
-	void insertAuthor(Bookshelf bookshelf);
+	void insertBookShelf(Bookshelf bookshelf);
 
 	public Bookshelf getBookshelfById(int bookshelfId);
 

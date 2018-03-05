@@ -18,7 +18,7 @@ public class Member implements Serializable {
 	private String member_email;
 	private String member_address;
 	private String member_password;
-	
+
 	@ManyToOne
 	private Library member_Library;
 
@@ -78,6 +78,18 @@ public class Member implements Serializable {
 
 	public String getMember_address() {
 		return member_address;
+	}
+
+	public Library getMember_Library() {
+		return member_Library;
+	}
+
+	public void setMember_Library(Library member_Library) {
+		this.member_Library = member_Library;
+	}
+
+	public void setMember_address(String member_address) {
+		this.member_address = member_address;
 	}
 
 	@Override

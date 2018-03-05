@@ -14,13 +14,13 @@ import com.infotel.formation.interfaces.CategoryDAO;
 
 @Repository
 @Transactional
-public class CatagoryDAOImpl implements CategoryDAO {
+public class CategoryDAOImpl implements CategoryDAO {
 	
 	@Autowired
 	private SessionFactory sessionFactory;
 
 	@Override
-	public void insertAuthor(Category category) {
+	public void insertCategory(Category category) {
 		sessionFactory.getCurrentSession().save(category);
 	}
 

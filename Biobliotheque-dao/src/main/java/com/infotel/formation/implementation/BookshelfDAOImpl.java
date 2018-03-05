@@ -20,7 +20,7 @@ public class BookshelfDAOImpl implements BookshelfDAO{
 	private SessionFactory sessionFactory;
 
 	@Override
-	public void insertAuthor(Bookshelf bookshelf) {
+	public void insertBookShelf(Bookshelf bookshelf) {
 		sessionFactory.getCurrentSession().save(bookshelf);
 	}
 

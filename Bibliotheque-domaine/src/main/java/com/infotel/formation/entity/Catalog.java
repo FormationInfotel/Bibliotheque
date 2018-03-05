@@ -16,7 +16,6 @@ public class Catalog implements Serializable {
 	@GeneratedValue
 	private long catalog_id;
 	private String catalog_name;
-	private Library library_code;
 
 	@OneToMany(mappedBy = "book_catalog")
 	private List<Book> catalog_book;
@@ -35,15 +34,14 @@ public class Catalog implements Serializable {
 	public Catalog() {
 	}
 
-	public Catalog(String catalog_name, Library library_code) {
-		super();
+	public Catalog(String catalog_name, Library catalog_library) {
 		this.catalog_name = catalog_name;
-		this.library_code = library_code;
+		this.catalog_library = catalog_library;
 	}
 
 	@Override
 	public String toString() {
-		return "Catalog [catalog_name=" + catalog_name + ", library_code=" + library_code + "]";
+		return "Catalog [catalog_name=" + catalog_name + "]";
 	}
 
 	public String getCatalog_name() {
@@ -54,16 +52,16 @@ public class Catalog implements Serializable {
 		this.catalog_name = catalog_name;
 	}
 
-	public Library getLibrary_code() {
-		return library_code;
-	}
-
-	public void setLibrary_code(Library library_code) {
-		this.library_code = library_code;
-	}
-
 	public long getCatalog_id() {
 		return catalog_id;
+	}
+
+	public Library getCatalog_library() {
+		return catalog_library;
+	}
+
+	public void setCatalog_library(Library catalog_library) {
+		this.catalog_library = catalog_library;
 	}
 
 }

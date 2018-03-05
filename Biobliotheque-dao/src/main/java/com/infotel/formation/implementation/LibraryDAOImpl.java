@@ -13,7 +13,7 @@ import com.infotel.formation.interfaces.LibraryDAO;
 
 @Repository
 @Transactional
-public class LibraryDOAImpl implements LibraryDAO {
+public class LibraryDAOImpl implements LibraryDAO {
 
 	@Autowired
 	private SessionFactory sessionFactory;
