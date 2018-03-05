@@ -17,10 +17,7 @@ import com.infotel.formation.interfaces._GenericDAO;
 @Repository
 @Transactional
 public abstract class _GenericDAOImpl<T> implements _GenericDAO<T>, Serializable {
-	
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = 1L;
 
 	@Autowired
@@ -53,6 +50,7 @@ public abstract class _GenericDAOImpl<T> implements _GenericDAO<T>, Serializable
 	}
 	
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<T> getList(T t) {
 		

@@ -10,18 +10,12 @@ import com.infotel.formation.interfaces.AuthorService;
 @Service
 public class AuthorServiceImpl implements AuthorService {
 
-	 @Autowired
-	 private AuthorDAO dao;
-	 
-	 
-	 
-	 
-	public void insertAuthor(String firstNme, String lastName){
-		 Author author = new Author(firstNme,lastName);
-		 dao.insert(author);
-	 }
-	
-		
-	
-	
+	@Autowired
+	private AuthorDAO dao;
+
+	public void insertAuthor(String firstNme, String lastName) {
+		Author author = new Author(firstNme, lastName);
+		dao.insert(author);
+	}
+
 }
