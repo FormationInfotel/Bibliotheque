@@ -26,4 +26,10 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
+	<!-- Hibernate core -->
+	<dependency>
+		<groupId>org.hibernate</groupId>
+		<artifactId>hibernate-core</artifactId>
+		<version>${hibernate.version}</version>
+	</dependency>
 </project>
