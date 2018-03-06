@@ -43,8 +43,8 @@ public class CatalogDAOImpl implements CatalogDAO {
 	@Override
 	public Catalog getCatalog(String catalogName) {
 		Query<Catalog> query = sessionFactory.getCurrentSession()
-				.createQuery("from Catalog where catalog_name = :catalogName");
-		query.setParameter("catalog_name", catalogName);
+				.createQuery("from Catalog where book_category = :catalogName");
+		query.setParameter("book_category", catalogName);
 		return (Catalog) query.list().get(0);
 	}
 

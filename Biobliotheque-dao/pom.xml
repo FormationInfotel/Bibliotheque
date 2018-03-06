@@ -7,10 +7,10 @@
 		<groupId>com.infotel.formation</groupId>
 		<artifactId>Bibliotheque</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
+		<relativePath>..</relativePath>
 	</parent>
 	<!-- <groupId>com.infotel.formation</groupId> -->
 	<artifactId>Bibliotheque-dao</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
 	<name>Bibliotheque-dao</name>
 	<url>http://maven.apache.org</url>
 	<properties>

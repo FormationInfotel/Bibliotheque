@@ -43,7 +43,6 @@ public class Book implements Serializable {
 	private List<BookCopy> book_ListCopy;
 
 	public Book() {
-		super();
 	}
 
 	public Book(long iSBN, String book_title, String book_description, float book_price, Date publication_date,

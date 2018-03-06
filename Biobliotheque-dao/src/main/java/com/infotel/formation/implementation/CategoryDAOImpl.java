@@ -11,11 +11,10 @@ import org.springframework.transaction.annotation.Transactional;
 import com.infotel.formation.entity.Category;
 import com.infotel.formation.interfaces.CategoryDAO;
 
-
 @Repository
 @Transactional
 public class CategoryDAOImpl implements CategoryDAO {
-	
+
 	@Autowired
 	private SessionFactory sessionFactory;
 
@@ -29,7 +28,7 @@ public class CategoryDAOImpl implements CategoryDAO {
 		Category categoryById = null;
 
 		for (Category category : getCategories()) {
-			if (category != null && category.getCategory_id() > 0) {
+			if (category != null && category.getCategory_id() > 0 && category.getCategory_id() == categoryId) {
 				categoryById = category;
 				break;
 			}
@@ -44,7 +43,8 @@ public class CategoryDAOImpl implements CategoryDAO {
 	@SuppressWarnings("unchecked")
 	@Override
 	public Category getCategory(String categoryName) {
-		Query<Category> query = sessionFactory.getCurrentSession().createQuery("from Category where category_name = :categoryName");
+		Query<Category> query = sessionFactory.getCurrentSession()
+				.createQuery("from Category where category_name = :categoryName");
 		query.setParameter("name", categoryName);
 		return (Category) query.list().get(0);
 	}
@@ -55,7 +55,5 @@ public class CategoryDAOImpl implements CategoryDAO {
 		List<Category> result = (List<Category>) sessionFactory.getCurrentSession().createQuery("from Category").list();
 		return result;
 	}
-	
-	
 
 }

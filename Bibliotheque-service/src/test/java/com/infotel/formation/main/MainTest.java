@@ -70,7 +70,7 @@ public class MainTest {
 		CategoryDAO userManagerCategory = (CategoryDAO) context.getBean("categoryDAOImpl");
 		Category c1 = new Category("Philosophie",
 				"Textes regroupant les textes philosophiques de nos époques et d'autre");
-		Category c2 = new Category("Histoire", "Textes regroupant notre Histoire");
+		Category c2 = new Category("Perdiodique", "Les périodiques");
 		Category c3 = new Category("Cuisine", "La cuisine pour les débutants et confirmés");
 		Category c4 = new Category("Fantastique", "Un élément surnaturel dans un monde réel");
 		Category c5 = new Category("Fantasy", "Un monde créé de toute pièce");
@@ -139,17 +139,17 @@ public class MainTest {
 		b2.setBook_editor(e1);
 
 		b3.setBook_author(auteur2);
-		b3.setBook_category(c5);
+		b3.setBook_category(c2);
 		b3.setBook_catalog(cat5);
 		b3.setBook_editor(e4);
 
 		b4.setBook_author(auteur4);
-		b4.setBook_category(c5);
+		b4.setBook_category(c2);
 		b4.setBook_catalog(cat1);
 		b4.setBook_editor(e2);
 
 		b5.setBook_author(auteur5);
-		b5.setBook_category(c1);
+		b5.setBook_category(c2);
 		b5.setBook_catalog(cat1);
 		b5.setBook_editor(e3);
 

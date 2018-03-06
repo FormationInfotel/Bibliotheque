@@ -1,17 +1,3 @@
-<<<<<<< HEAD
-C:\formation\workspaceProjetFinal\Bibliotheque\Bibliotheque-domaine\src\main\java\com\infotel\formation\entity\Category.java
-C:\formation\workspaceProjetFinal\Bibliotheque\Bibliotheque-domaine\src\main\java\com\infotel\formation\entity\Borrow_test.java
-C:\formation\workspaceProjetFinal\Bibliotheque\Bibliotheque-domaine\src\main\java\com\infotel\formation\entity\Library.java
-C:\formation\workspaceProjetFinal\Bibliotheque\Bibliotheque-domaine\src\main\java\com\infotel\formation\entity\Book.java
-C:\formation\workspaceProjetFinal\Bibliotheque\Bibliotheque-domaine\src\main\java\com\infotel\formation\entity\BookCopy.java
-C:\formation\workspaceProjetFinal\Bibliotheque\Bibliotheque-domaine\src\main\java\com\infotel\formation\entity\Catalog.java
-C:\formation\workspaceProjetFinal\Bibliotheque\Bibliotheque-domaine\src\main\java\com\infotel\formation\entity\Registration.java
-C:\formation\workspaceProjetFinal\Bibliotheque\Bibliotheque-domaine\src\main\java\com\infotel\formation\entity\Author.java
-C:\formation\workspaceProjetFinal\Bibliotheque\Bibliotheque-domaine\src\main\java\com\infotel\formation\entity\BookBasket.java
-C:\formation\workspaceProjetFinal\Bibliotheque\Bibliotheque-domaine\src\main\java\com\infotel\formation\entity\Bookshelf.java
-C:\formation\workspaceProjetFinal\Bibliotheque\Bibliotheque-domaine\src\main\java\com\infotel\formation\entity\Editor.java
-C:\formation\workspaceProjetFinal\Bibliotheque\Bibliotheque-domaine\src\main\java\com\infotel\formation\entity\Member.java
-=======
 C:\Users\llev\Desktop\ProjetFinal\Bibliotheque\Bibliotheque-domaine\src\main\java\com\infotel\formation\entity\Bookshelf.java
 C:\Users\llev\Desktop\ProjetFinal\Bibliotheque\Bibliotheque-domaine\src\main\java\com\infotel\formation\entity\Borrow_test.java
 C:\Users\llev\Desktop\ProjetFinal\Bibliotheque\Bibliotheque-domaine\src\main\java\com\infotel\formation\entity\Book.java
@@ -24,4 +10,3 @@ C:\Users\llev\Desktop\ProjetFinal\Bibliotheque\Bibliotheque-domaine\src\main\jav
 C:\Users\llev\Desktop\ProjetFinal\Bibliotheque\Bibliotheque-domaine\src\main\java\com\infotel\formation\entity\Editor.java
 C:\Users\llev\Desktop\ProjetFinal\Bibliotheque\Bibliotheque-domaine\src\main\java\com\infotel\formation\entity\BookCopy.java
 C:\Users\llev\Desktop\ProjetFinal\Bibliotheque\Bibliotheque-domaine\src\main\java\com\infotel\formation\entity\Member.java
->>>>>>> branch 'master' of https://github.com/FormationInfotel/Bibliotheque.git
