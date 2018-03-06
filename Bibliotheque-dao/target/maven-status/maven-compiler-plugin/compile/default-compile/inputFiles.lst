@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 C:\formation\Bibliotheque\Bibliotheque\Bibliotheque-dao\src\main\java\com\infotel\formation\implementation\BookshelfDAOImpl.java
 C:\formation\Bibliotheque\Bibliotheque\Bibliotheque-dao\src\main\java\com\infotel\formation\conteneur\ConteneurSpringFullJava.java
 C:\formation\Bibliotheque\Bibliotheque\Bibliotheque-dao\src\main\java\com\infotel\formation\implementation\RegistrationDAOImpl.java
@@ -23,3 +24,30 @@ C:\formation\Bibliotheque\Bibliotheque\Bibliotheque-dao\src\main\java\com\infote
 C:\formation\Bibliotheque\Bibliotheque\Bibliotheque-dao\src\main\java\com\infotel\formation\interfaces\BookshelfDAO.java
 C:\formation\Bibliotheque\Bibliotheque\Bibliotheque-dao\src\main\java\com\infotel\formation\implementation\BookCopyDAOImpl.java
 C:\formation\Bibliotheque\Bibliotheque\Bibliotheque-dao\src\main\java\com\infotel\formation\interfaces\_GenericDAO.java
+=======
+C:\Users\llev\Desktop\ProjetFinal\Bibliotheque\Bibliotheque-dao\src\main\java\com\infotel\formation\implementation\LibraryDAOImpl.java
+C:\Users\llev\Desktop\ProjetFinal\Bibliotheque\Bibliotheque-dao\src\main\java\com\infotel\formation\interfaces\BookBasketDAO.java
+C:\Users\llev\Desktop\ProjetFinal\Bibliotheque\Bibliotheque-dao\src\main\java\com\infotel\formation\interfaces\AuthorDAO.java
+C:\Users\llev\Desktop\ProjetFinal\Bibliotheque\Bibliotheque-dao\src\main\java\com\infotel\formation\interfaces\_GenericDAO.java
+C:\Users\llev\Desktop\ProjetFinal\Bibliotheque\Bibliotheque-dao\src\main\java\com\infotel\formation\conteneur\ConteneurSpringFullJava.java
+C:\Users\llev\Desktop\ProjetFinal\Bibliotheque\Bibliotheque-dao\src\main\java\com\infotel\formation\implementation\AuthorDAOImpl.java
+C:\Users\llev\Desktop\ProjetFinal\Bibliotheque\Bibliotheque-dao\src\main\java\com\infotel\formation\implementation\BookCopyDAOImpl.java
+C:\Users\llev\Desktop\ProjetFinal\Bibliotheque\Bibliotheque-dao\src\main\java\com\infotel\formation\implementation\BookshelfDAOImpl.java
+C:\Users\llev\Desktop\ProjetFinal\Bibliotheque\Bibliotheque-dao\src\main\java\com\infotel\formation\implementation\EditorDAOImpl.java
+C:\Users\llev\Desktop\ProjetFinal\Bibliotheque\Bibliotheque-dao\src\main\java\com\infotel\formation\interfaces\BookshelfDAO.java
+C:\Users\llev\Desktop\ProjetFinal\Bibliotheque\Bibliotheque-dao\src\main\java\com\infotel\formation\implementation\MemberDAOImpl.java
+C:\Users\llev\Desktop\ProjetFinal\Bibliotheque\Bibliotheque-dao\src\main\java\com\infotel\formation\implementation\BookDAOImpl.java
+C:\Users\llev\Desktop\ProjetFinal\Bibliotheque\Bibliotheque-dao\src\main\java\com\infotel\formation\implementation\CatalogDAOImpl.java
+C:\Users\llev\Desktop\ProjetFinal\Bibliotheque\Bibliotheque-dao\src\main\java\com\infotel\formation\implementation\CategoryDAOImpl.java
+C:\Users\llev\Desktop\ProjetFinal\Bibliotheque\Bibliotheque-dao\src\main\java\com\infotel\formation\interfaces\CatalogDAO.java
+C:\Users\llev\Desktop\ProjetFinal\Bibliotheque\Bibliotheque-dao\src\main\java\com\infotel\formation\interfaces\LibraryDAO.java
+C:\Users\llev\Desktop\ProjetFinal\Bibliotheque\Bibliotheque-dao\src\main\java\com\infotel\formation\implementation\BookBasketDAOImpl.java
+C:\Users\llev\Desktop\ProjetFinal\Bibliotheque\Bibliotheque-dao\src\main\java\com\infotel\formation\interfaces\BookDAO.java
+C:\Users\llev\Desktop\ProjetFinal\Bibliotheque\Bibliotheque-dao\src\main\java\com\infotel\formation\interfaces\CategoryDAO.java
+C:\Users\llev\Desktop\ProjetFinal\Bibliotheque\Bibliotheque-dao\src\main\java\com\infotel\formation\interfaces\RegistrationDAO.java
+C:\Users\llev\Desktop\ProjetFinal\Bibliotheque\Bibliotheque-dao\src\main\java\com\infotel\formation\implementation\RegistrationDAOImpl.java
+C:\Users\llev\Desktop\ProjetFinal\Bibliotheque\Bibliotheque-dao\src\main\java\com\infotel\formation\interfaces\EditorDAO.java
+C:\Users\llev\Desktop\ProjetFinal\Bibliotheque\Bibliotheque-dao\src\main\java\com\infotel\formation\interfaces\MemberDAO.java
+C:\Users\llev\Desktop\ProjetFinal\Bibliotheque\Bibliotheque-dao\src\main\java\com\infotel\formation\implementation\_GenericDAOImpl.java
+C:\Users\llev\Desktop\ProjetFinal\Bibliotheque\Bibliotheque-dao\src\main\java\com\infotel\formation\interfaces\BookCopyDAO.java
+>>>>>>> branch 'master' of https://github.com/FormationInfotel/Bibliotheque.git
