@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class PageBaseController {
 	
-	@RequestMapping("/")
+	@RequestMapping("/test")
 	public String getHeader() {
 		return "pageBase";
 	}
