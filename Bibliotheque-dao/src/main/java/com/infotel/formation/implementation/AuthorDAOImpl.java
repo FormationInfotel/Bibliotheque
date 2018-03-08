@@ -45,9 +45,18 @@ import com.infotel.formation.interfaces.AuthorDAO;
 	@Override
 	public Author getAuthor(String authorName) {
 		Query<Author> query = sessionFactory.getCurrentSession()
-				.createQuery("from Author where author_lastname = :authorName");
-		query.setParameter("name", authorName);
-		return (Author) query.list().get(0);
+				.createQuery("from Author Where author_name LIKE :authorName");
+		query.setParameter("authorName", "%" + authorName + "%").list();
+		return query.list().get(0);
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Author> getListAuthorByKeyword(String authorname) {
+		Query<Author> query = sessionFactory.getCurrentSession()
+				.createQuery("from Author Where author_firstname LIKE :authorname OR author_lastname LIKE :authorname");
+		query.setParameter("authorname", "%" + authorname + "%").list();
+		return query.list();
 	}
 
 	@SuppressWarnings("unchecked")
@@ -56,5 +65,6 @@ import com.infotel.formation.interfaces.AuthorDAO;
 		List<Author> result = (List<Author>) sessionFactory.getCurrentSession().createQuery("from Author").list();
 		return result;
 	}
+
 
 }

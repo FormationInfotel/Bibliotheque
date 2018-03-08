@@ -44,9 +44,19 @@ public class CategoryDAOImpl implements CategoryDAO {
 	@Override
 	public Category getCategory(String categoryName) {
 		Query<Category> query = sessionFactory.getCurrentSession()
-				.createQuery("from Category where category_name = :categoryName");
-		query.setParameter("name", categoryName);
-		return (Category) query.list().get(0);
+				.createQuery("from Category Where category_name LIKE :categoryName");
+
+		query.setParameter("editorName", "%" + categoryName + "%").list();
+		return query.list().get(0);
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Category> getListCategoryByKeyword(String categoryName) {
+		Query<Category> query = sessionFactory.getCurrentSession()
+				.createQuery("from Category Where category_name LIKE :categoryName");
+		query.setParameter("categoryName", "%" + categoryName + "%").list();
+		return query.list();
 	}
 
 	@SuppressWarnings("unchecked")

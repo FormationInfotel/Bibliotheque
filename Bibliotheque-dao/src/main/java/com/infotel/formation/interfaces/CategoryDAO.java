@@ -4,7 +4,6 @@ import java.util.List;
 
 import com.infotel.formation.entity.Category;
 
-
 public interface CategoryDAO {
 
 	public Category getCategoryById(int categoryId);
@@ -14,5 +13,7 @@ public interface CategoryDAO {
 	List<Category> getCategories();
 
 	void insertCategory(Category category);
+
+	List<Category> getListCategoryByKeyword(String categoryName);
 
 }

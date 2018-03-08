@@ -13,4 +13,6 @@ public interface AuthorDAO extends _GenericDAO<Author>{
 
 	List<Author> getAuthors();
 
+	List<Author> getListAuthorByKeyword(String authorname);
+
 }

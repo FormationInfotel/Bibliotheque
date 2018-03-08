@@ -43,10 +43,20 @@ public class EditorDAOImpl implements EditorDAO {
 	@Override
 	public Editor getEditor(String editorName) {
 		Query<Editor> query = sessionFactory.getCurrentSession()
-				.createQuery("from Editor where editor_name = :editorName");
-		query.setParameter("editor_name", editorName);
+				.createQuery("from Editor Where editor_name LIKE :editorName");
+		query.setParameter("editorName", "%" + editorName + "%").list();
 		return (Editor) query.list().get(0);
 	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Editor> getListEditorByKeyword(String editorName) {
+		Query<Editor> query = sessionFactory.getCurrentSession()
+				.createQuery("from Editor Where editor_name LIKE :editorName");
+		query.setParameter("editorName", "%" + editorName + "%").list();
+		return query.list();
+	}
+
 
 	@SuppressWarnings("unchecked")
 	@Override

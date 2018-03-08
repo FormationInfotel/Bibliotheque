@@ -12,4 +12,6 @@ public interface EditorDAO {
 	Editor getEditor(String editorName);
 
 	List<Editor> getEditors();
+
+	List<Editor> getListEditorByKeyword(String editorName);
 }
