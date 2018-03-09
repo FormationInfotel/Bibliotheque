@@ -8,16 +8,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.infotel.formation.entity.Author;
 import com.infotel.formation.entity.Member;
-import com.infotel.formation.interfaces.AuthorDAO;
 import com.infotel.formation.interfaces.MemberDAO;
-
 
 @Repository
 @Transactional
-public class MemberDAOImpl extends _GenericDAOImpl <Member> implements  MemberDAO{
-	
+public class MemberDAOImpl extends _GenericDAOImpl<Member> implements MemberDAO {
+
 	/**
 	 * 
 	 */
@@ -50,10 +47,11 @@ public class MemberDAOImpl extends _GenericDAOImpl <Member> implements  MemberDA
 	@SuppressWarnings("unchecked")
 	@Override
 	public Member getMember(String memberFirstName, String memberLastName) {
-		Query<Member> query = sessionFactory.getCurrentSession().createQuery("from Member where member_firstname = :memberFirstName AND member_lastname = :memberLastName");
+		Query<Member> query = sessionFactory.getCurrentSession().createQuery(
+				"from Member where member_firstname = :memberFirstName AND member_lastname = :memberLastName");
 		query.setParameter("firstName", memberFirstName);
 		query.setParameter("lastName", memberLastName);
-				return (Member) query.list().get(0);
+		return (Member) query.list().get(0);
 	}
 
 	@SuppressWarnings("unchecked")
@@ -61,6 +59,42 @@ public class MemberDAOImpl extends _GenericDAOImpl <Member> implements  MemberDA
 	public List<Member> getMembers() {
 		List<Member> result = (List<Member>) sessionFactory.getCurrentSession().createQuery("from Member").list();
 		return result;
+	}
+
+	@Override
+	public Member getUserByMail(String memberMail) {
+		@SuppressWarnings("unchecked")
+		Query<Member> query = sessionFactory.getCurrentSession()
+				.createQuery("from Member where member_email = :memberMail");
+		query.setParameter("memberMail", memberMail);
+		return (Member) query.list().get(0);
+	}
+
+	@Override
+	public boolean isMailAlreadyExist(String memberMail) {
+		@SuppressWarnings("unchecked")
+		Query<Member> query = sessionFactory.getCurrentSession()
+				.createQuery("from Member where member_email = :memberMail");
+		query.setParameter("memberMail", memberMail);
+
+		if (query.list() != null) {
+			return true;
+		} else
+			return false;
+
+	}
+
+	@Override
+	public boolean isAccountExist(Member member) {
+		Query<Member> query = sessionFactory.getCurrentSession()
+				.createQuery("from Member where member_email = :email AND member_password = :pw");
+		query.setParameter("email", member.getMember_email());
+		query.setParameter("pw", member.getMember_password());
+
+		if (query.list() != null) {
+			return true;
+		} else
+			return false;
 	}
 
 }

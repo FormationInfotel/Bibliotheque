@@ -27,7 +27,7 @@ public class LibraryDAOImpl implements LibraryDAO {
 	public Library getLibraryById(long libraryId) {
 		Library libraryById = null;
 
-		for (Library library : getLibrarys()) {
+		for (Library library : getLibraries()) {
 			if (library != null && library.getLibrary_code() > 0 && library.getLibrary_code() == libraryId) {
 				libraryById = library;
 				break;
@@ -51,7 +51,7 @@ public class LibraryDAOImpl implements LibraryDAO {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<Library> getLibrarys() {
+	public List<Library> getLibraries() {
 		List<Library> result = (List<Library>) sessionFactory.getCurrentSession().createQuery("from Library").list();
 		return result;
 	}

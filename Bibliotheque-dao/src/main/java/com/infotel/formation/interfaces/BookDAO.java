@@ -18,9 +18,6 @@ public interface BookDAO {
 
 	public List<Book> getBooksByRecommand();
 
-	// public List<Book> getBooksByAll(String keyword, long keywordLong, int
-	// keywordInt);
-
 	public List<Book> getBooksByTitle(String keyword);
 
 	public List<Book> getBooksByDescript(String keyword);
@@ -29,10 +26,6 @@ public interface BookDAO {
 
 	public List<Book> getBooksByCategory(Category category);
 
-	// public List<Book> getBooksByKeyword(String keyword);
-
 	public List<Book> getBooksByAuthor(Author author);
-
-	// public List<Book> getBooksByAuthor(String author);
 
 }
