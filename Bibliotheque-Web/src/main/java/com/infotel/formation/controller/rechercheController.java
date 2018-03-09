@@ -1,5 +1,6 @@
 package com.infotel.formation.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.infotel.formation.entity.Author;
+import com.infotel.formation.entity.Book;
 import com.infotel.formation.entity.Category;
 import com.infotel.formation.entity.Editor;
 import com.infotel.formation.interfaces.AuthorDAO;
@@ -36,35 +38,47 @@ public class rechercheController {
 
 	@RequestMapping(value = "/Recherche", method = RequestMethod.POST)
 	private String resultatRecherche(HttpServletRequest request, Model model) {
-		if (request.getParameter("txboxRecherche") != "") {
-			String motGeneral = request.getParameter("txboxRecherche");
-			model.addAttribute("ListeResultat", bookDAO.getBooksByTitle(motGeneral));
-
-		} else if (request.getParameter("txboxTitre") != "") {
+		List<Book> listeBook = new ArrayList<Book>();
+		if (request.getParameter("txboxTitre") != "") {
 			String motTitre = request.getParameter("txboxTitre");
 			System.out.println(bookDAO.getBooksByTitle(motTitre));
-			model.addAttribute("ListeResultat", bookDAO.getBooksByTitle(motTitre));
+			for (Book book : bookDAO.getBooksByTitle(motTitre)) {
+				listeBook.add(book);
+			}
 
-		} else if (request.getParameter("txboxAuthor") != "") {
+		}
+		if (request.getParameter("txboxAuthor") != "") {
 			String motAuthor = request.getParameter("txboxAuthor");
 			List<Author> listAuthor = authorDAO.getListAuthorByKeyword(motAuthor);
 			for (Author author : listAuthor) {
-				model.addAttribute("ListeResultat", bookDAO.getBooksByAuthor(author));
+				for (Book book : bookDAO.getBooksByAuthor(author)) {
+					listeBook.add(book);
+				}
 			}
-		} else if (request.getParameter("txboxEditor") != "") {
+		}
+		if (request.getParameter("txboxEditor") != "") {
 			String motEditor = request.getParameter("txboxEditor");
 			List<Editor> listEdit = editorDAO.getListEditorByKeyword(motEditor);
 			for (Editor editor : listEdit) {
-				model.addAttribute("ListeResultat", bookDAO.getBooksByEditor(editor));
+				for (Book book : bookDAO.getBooksByEditor(editor)) {
+					listeBook.add(book);
+				}
 			}
-		} else if (request.getParameter("txboxCategory") != "") {
+		}
+		if (request.getParameter("txboxCategory") != "") {
 			String motCategory = request.getParameter("txboxCategory");
 			List<Category> listCat = categoryDAO.getListCategoryByKeyword(motCategory);
 			for (Category category : listCat) {
-				model.addAttribute("ListeResultat", bookDAO.getBooksByCategory(category));
+				for (Book book : bookDAO.getBooksByCategory(category)) {
+					listeBook.add(book);
+				}
 			}
+		}
+
+		if (listeBook.size() == 0) {
+			model.addAttribute("resultDefault", "Aucun résultat trouvé");
 		} else {
-			model.addAttribute("ListeResultat", 0);
+			model.addAttribute("ListeResultat", listeBook);
 		}
 		return "Resultat";
 	}

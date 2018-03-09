@@ -20,15 +20,10 @@
 			<hr>
 			<br>
 			<form method="POST" action="${context}/Recherche">
-				<div>
-					<input class="form-control" id="txboxRecherche"
-						name="txboxRecherche" type="text"
-						placeholder="Votre recherche....">
-				</div>
 				<br>
 				<div>
 					<label class="form-check-label" for="defaultCheck1">Pour
-						affiner votre recherche :</label>
+						faire votre recherche :</label>
 				</div>
 				<br>
 

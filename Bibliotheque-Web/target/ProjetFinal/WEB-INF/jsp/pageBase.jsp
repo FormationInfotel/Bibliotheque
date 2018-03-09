@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ page isELIgnored="false"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -14,6 +16,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 </head>
 <body>
+	<c:set var="context" value="${pageContext.request.contextPath }"></c:set>
 	<!-- /////////////////// -->
 	<!-- Header avec nav bar -->
 	<!-- /////////////////// -->
@@ -27,11 +30,11 @@
 
 	<div class="collapse navbar-collapse" id="navbarsExample05">
 		<ul class="navbar-nav mr-auto">
-			<li class="nav-item active"><a class="nav-link" href="/ProjetFinal/">Accueil
-					<span class="sr-only">(current)</span>
+			<li class="nav-item active"><a class="nav-link"
+				href="/ProjetFinal/">Accueil <span class="sr-only">(current)</span>
 			</a></li>
-			<li class="nav-item active"><a class="nav-link" href="/ProjetFinal/Recherche">Recherche
-					<span class="sr-only">(current)</span>
+			<li class="nav-item active"><a class="nav-link"
+				href="/ProjetFinal/Recherche">Recherche <span class="sr-only">(current)</span>
 			</a></li>
 
 			<li class="nav-item dropdown"><a
@@ -43,9 +46,10 @@
 						class="dropdown-item" href="#">Se connecter</a>
 				</div></li>
 		</ul>
-		<form class="form-inline">
+		<form class="form-inline" method="POST" action="${context}/Recherche">
 			<input class="form-control mr-sm-2" type="search"
-				placeholder="Search" aria-label="Search">
+				placeholder="Nom de livre" aria-label="Search" id="txboxRecherche"
+				name="txboxRecherche">
 			<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
 		</form>
 	</div>

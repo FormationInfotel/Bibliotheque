@@ -4,6 +4,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<c:url value="/resources/img/" var="img" />
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 </head>
 <body>
@@ -15,6 +16,12 @@
 			<h1 class="display-4">Resultat de votre recherche :</h1>
 			<br>
 			<hr>
+			<c:set var="result" value="Aucun résultat trouvé" />
+			<c:if test="${ListeResultat == null}">
+				<p>
+					<c:out value="${result}" />
+				<p>
+			</c:if>
 		</div>
 	</div>
 	<div class="album py-5 bg-light">
@@ -23,9 +30,7 @@
 				<c:forEach items="${ListeResultat}" var="book">
 					<div class="col-md-4">
 						<div class="card mb-4 box-shadow">
-							<!-- 						<img class="card-img-top" -->
-							<!-- 							data-src="holder.js/100px225?theme=thumb&bg=55595c&fg=eceeef&text=Thumbnail" -->
-							<!-- 							alt="Card image cap"> -->
+							<img class="card-img-top" src="${img}/1.jpg" />
 							<div class="card-body">
 								<p class="card-text">${book.book_title}</p>
 								<p class="card-text">${book.book_description}</p>
