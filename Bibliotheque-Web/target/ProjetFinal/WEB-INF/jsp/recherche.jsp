@@ -2,11 +2,15 @@
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ page isELIgnored="false"%>
 <html>
 <head>
+
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 </head>
 <body>
+	<c:set var="context" value="${pageContext.request.contextPath }"></c:set>
 	<div>
 		<%@include file="pageBase.jsp"%>
 	</div>
@@ -15,7 +19,7 @@
 			<h1 class="display-4">Recherche</h1>
 			<hr>
 			<br>
-			<form method="POST" action="/ProjetFinal/Resultat">
+			<form method="POST" action="${context}/Recherche">
 				<div>
 					<input class="form-control" id="txboxRecherche"
 						name="txboxRecherche" type="text"
@@ -28,25 +32,21 @@
 				</div>
 				<br>
 
-				<div class="form-group">
-					<input class="form-check-input" type="checkbox" value="checkTitre"
-						id="checkTitre"> <label class="form-check-label"
-						for="defaultCheck1">Titre du livre</label>
+				<div>
+					<input class="form-control" id="txboxTitre" name="txboxTitre"
+						type="text" placeholder="Titre ?">
 				</div>
-				<div class="form-group">
-					<input class="form-check-input" type="checkbox" value="checkAutor"
-						id="checkAutor"> <label class="form-check-label"
-						for="defaultCheck1">Auteur</label>
+				<div>
+					<input class="form-control" id="txboxAuthor" name="txboxAuthor"
+						type="text" placeholder="Auteur ?">
 				</div>
-				<div class="form-group">
-					<input class="form-check-input" type="checkbox" value="checkEditeur"
-						id="checkEditeur"> <label class="form-check-label"
-						for="defaultCheck1">Editeur</label>
+				<div>
+					<input class="form-control" id="txboxEditor" name="txboxEditor"
+						type="text" placeholder="Editeur ?">
 				</div>
-				<div class="form-group">
-					<input class="form-check-input" type="checkbox" value="categorie"
-						id="checkCategory"> <label class="form-check-label"
-						for="defaultCheck1">Catégorie</label>
+				<div>
+					<input class="form-control" id="txboxCategory" name="txboxCategory"
+						type="text" placeholder="Catégorie ?">
 				</div>
 				<br> <br>
 				<div>

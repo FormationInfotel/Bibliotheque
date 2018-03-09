@@ -6,9 +6,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class ResultatController {
 
-	@RequestMapping("/ProjetFinal/Resultat")
+	@RequestMapping("/resultat")
 	public String recommendedBooks() {
-		return "resultat";
+		return "Resultat";
 	}
 
 }

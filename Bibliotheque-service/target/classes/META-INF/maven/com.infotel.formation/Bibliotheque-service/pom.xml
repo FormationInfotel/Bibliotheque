@@ -10,7 +10,6 @@
 	</parent>
 	<!-- <groupId>com.infotel.formation</groupId> -->
 	<artifactId>Bibliotheque-service</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
 	<name>Bibliotheque-service</name>
 	<url>http://maven.apache.org</url>
 	<properties>
