@@ -8,14 +8,20 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.infotel.formation.entity.Author;
 import com.infotel.formation.entity.Member;
+import com.infotel.formation.interfaces.AuthorDAO;
 import com.infotel.formation.interfaces.MemberDAO;
 
 
 @Repository
 @Transactional
-public class MemberDAOImpl implements MemberDAO{
+public class MemberDAOImpl extends _GenericDAOImpl <Member> implements  MemberDAO{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Autowired
 	private SessionFactory sessionFactory;
 
