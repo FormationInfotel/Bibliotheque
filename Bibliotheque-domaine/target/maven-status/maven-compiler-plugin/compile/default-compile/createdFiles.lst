@@ -1,4 +1,5 @@
 com\infotel\formation\entity\Book.class
+com\infotel\formation\entity\Borrow.class
 com\infotel\formation\entity\Registration.class
 com\infotel\formation\entity\Borrow_test.class
 com\infotel\formation\entity\Author.class
