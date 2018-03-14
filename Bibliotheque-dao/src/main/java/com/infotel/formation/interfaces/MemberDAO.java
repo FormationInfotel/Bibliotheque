@@ -20,4 +20,6 @@ public interface MemberDAO {
 
 	public boolean isAccountExist(Member member);
 
+	boolean isAccountExistString(String mail, String pswd);
+
 }
