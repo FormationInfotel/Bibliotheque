@@ -26,13 +26,30 @@ public class MemberDAOImpl extends _GenericDAOImpl<Member> implements MemberDAO 
 	public void insertMember(Member member) {
 		sessionFactory.getCurrentSession().save(member);
 	}
+		
+	
+	@Override
+	public void updateMember(Member member) {
+		
+				
+		sessionFactory.getCurrentSession().saveOrUpdate(member);
+		//sessionFactory.getCurrentSession().update(member);
+	}
+	
+	
+	
+	
+	@Override
+	public void deleteMember(Member member)  {
+		sessionFactory.getCurrentSession().remove(member);
+	}
 
 	@Override
 	public Member getMemberById(int memberId) {
 		Member memberById = null;
 
 		for (Member member : getMembers()) {
-			if (member != null && member.getMember_id() > 0) {
+			if (member != null && member.getMember_id() > 0 && member.getMember_id() == memberId) {
 				memberById = member;
 				break;
 			}
@@ -97,4 +114,13 @@ public class MemberDAOImpl extends _GenericDAOImpl<Member> implements MemberDAO 
 			return false;
 	}
 
+
+
+
+
+
+
+
+
+	
 }
