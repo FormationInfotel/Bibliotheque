@@ -83,7 +83,22 @@ public class MemberDAOImpl extends _GenericDAOImpl<Member> implements MemberDAO 
 			return false;
 
 	}
+	@SuppressWarnings("unchecked")
+	@Override
+	public boolean isAccountExistString(String mail, String pswd) {
+		Query<Member> query = sessionFactory.getCurrentSession()
+				.createQuery("from Member where member_email = :mail AND member_password = :pswd");
+		query.setParameter("mail", mail);
+		query.setParameter("pswd", pswd);
+		System.out.println(query.list().size());
 
+		if (query.list().size() != 0) {
+			return true;
+		} else
+			return false;
+	}
+
+	@SuppressWarnings("unchecked")
 	@Override
 	public boolean isAccountExist(Member member) {
 		Query<Member> query = sessionFactory.getCurrentSession()
