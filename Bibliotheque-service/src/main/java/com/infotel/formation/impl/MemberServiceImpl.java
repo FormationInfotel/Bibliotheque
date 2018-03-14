@@ -3,6 +3,7 @@ package com.infotel.formation.impl;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,6 +21,16 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public void insertMember(Member member) {
 		memberDAO.insertMember(member);
+	}
+
+	@Override
+	public void updateMember(Member member) {
+		memberDAO.updateMember(member);
+	}
+
+	@Override
+	public void deleteMember(Member member) {
+		memberDAO.deleteMember(member);
 	}
 
 	@Override
@@ -54,6 +65,16 @@ public class MemberServiceImpl implements MemberService {
 		}
 
 		return generatedPassword;
+	}
+
+	@Override
+	public List<Member> getMembers() {
+		return memberDAO.getMembers();
+	}
+
+	@Override
+	public Member getMemberById(int idMember) {
+		return memberDAO.getMemberById(idMember);
 	}
 
 

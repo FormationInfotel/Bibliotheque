@@ -11,6 +11,10 @@
 </head>
 <body>
 
+
+	<div>
+		<%@include file="pageBase.jsp"%>
+	</div>
 <c:set var="titre" value="Registration" scope="session"></c:set>
     <form:form modelAttribute="nouveauMembre" class="form-horizontal" >
    <fieldset>
@@ -69,3 +73,4 @@
 </form:form>
 </body>
 </html>
+

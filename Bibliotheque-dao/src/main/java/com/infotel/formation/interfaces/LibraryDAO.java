@@ -9,7 +9,7 @@ public interface LibraryDAO {
 
 	public Library getLibraryById(long libraryId);
 
-	Library getLibrary(String libraryName);
+	Library getLibraryByName(String libraryName);
 
 	List<Library> getLibraries();
 

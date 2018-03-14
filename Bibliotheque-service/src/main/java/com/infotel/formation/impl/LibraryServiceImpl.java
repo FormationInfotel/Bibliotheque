@@ -26,4 +26,9 @@ public class LibraryServiceImpl implements LibraryService{
 	public Library getLibraryById(long idLibrary) {
 		return libraryDAO.getLibraryById(idLibrary);
 	}
+
+	@Override
+	public Library getLibraryByName(String libraryName) {
+		return libraryDAO.getLibraryByName(libraryName);
+	}
 }

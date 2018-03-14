@@ -42,10 +42,10 @@ public class LibraryDAOImpl implements LibraryDAO {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public Library getLibrary(String libraryName) {
+	public Library getLibraryByName(String libraryName) {
 		Query<Library> query = sessionFactory.getCurrentSession()
 				.createQuery("from Library where library_name = :libraryName");
-		query.setParameter("library_name", libraryName);
+		query.setParameter("libraryName", libraryName);
 		return (Library) query.list().get(0);
 	}
 

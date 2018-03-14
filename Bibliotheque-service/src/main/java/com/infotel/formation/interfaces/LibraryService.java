@@ -10,4 +10,6 @@ public interface LibraryService {
 
 	public Library getLibraryById(long idLibrary);
 
+	public Library getLibraryByName(String libraryName);
+
 }
