@@ -30,11 +30,11 @@
 				<c:forEach items="${ListeResultat}" var="book">
 					<div class="col-md-4">
 						<div class="card mb-4 box-shadow">
-							<img class="card-img-top" src="${img}/1.jpg" />
+							<img class="card-img-top" src="${img}${book.image_path}.jpg" />
 							<div class="card-body">
 								<p class="card-text">${book.book_title}</p>
 								<p class="card-text">${book.book_description}</p>
-								<p class="card-text">${book.book_price}euros</p>
+								<p class="card-text">${book.book_price}       euros</p>
 								<div class="d-flex justify-content-between align-items-center">
 									<div class="btn-group">
 										<button type="button" class="btn btn-sm btn-outline-secondary">Voir
