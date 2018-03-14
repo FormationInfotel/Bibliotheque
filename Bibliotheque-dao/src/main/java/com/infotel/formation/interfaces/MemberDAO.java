@@ -7,6 +7,10 @@ import com.infotel.formation.entity.Member;
 public interface MemberDAO {
 
 	void insertMember(Member member);
+	
+	void updateMember(Member member);
+	
+	 void deleteMember(Member member);
 
 	public Member getMemberById(int memberId);
 
