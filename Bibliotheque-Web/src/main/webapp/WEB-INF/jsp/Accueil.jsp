@@ -29,9 +29,10 @@
 						<div class="card mb-4 box-shadow">
 							<img class="card-img-top" src="${img}${book.image_path}.jpg" />
 							<div class="card-body">
-								<p class="card-text">${book.book_title}</p>
+								<p class="card-text">Titre : ${book.book_title}</p>
 								<p class="card-text">${book.book_description}</p>
-								<p class="card-text">${book.book_price}     euros</p>
+								<p class="card-text">Prix : ${book.book_price}     euros</p>
+								<p class="card-text">Auteur : ${book.book_author.author_lastname}   ${book.book_author.author_firstname}</p>
 								<div class="d-flex justify-content-between align-items-center">
 									<div class="btn-group">
 										<button type="button" class="btn btn-sm btn-outline-secondary">Voir
