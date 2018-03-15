@@ -41,8 +41,8 @@ public class rechercheController {
 		List<Book> listeBook = new ArrayList<Book>();
 		if (request.getParameter("txboxTitre") != "") {
 			String motTitre = request.getParameter("txboxTitre");
-			System.out.println(bookDAO.getBooksByTitle(motTitre));
-			for (Book book : bookDAO.getBooksByTitle(motTitre)) {
+			System.out.println(bookDAO.getBooksByTitleDescript(motTitre));
+			for (Book book : bookDAO.getBooksByTitleDescript(motTitre)) {
 				listeBook.add(book);
 			}
 
@@ -74,6 +74,28 @@ public class rechercheController {
 				}
 			}
 		}
+
+		if (listeBook.size() == 0) {
+			model.addAttribute("resultDefault", "Aucun résultat trouvé");
+		} else {
+			model.addAttribute("ListeResultat", listeBook);
+		}
+		return "Resultat";
+	}
+	
+	
+	@RequestMapping(value = "/Recherche", method = RequestMethod.POST)
+	private String resultatRecherche2(HttpServletRequest request, Model model) {
+		List<Book> listeBook = new ArrayList<Book>();
+		if (request.getParameter("txboxTitre") != "") {
+			String motTitre = request.getParameter("txboxTitre");
+			System.out.println(bookDAO.getBooksByTitleDescript(motTitre));
+			for (Book book : bookDAO.getBooksByTitleDescript(motTitre)) {
+				listeBook.add(book);
+			}
+
+		}
+		
 
 		if (listeBook.size() == 0) {
 			model.addAttribute("resultDefault", "Aucun résultat trouvé");

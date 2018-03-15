@@ -27,7 +27,7 @@ public class MainTestRequete {
 
 		System.out.println("recherche par titre :");
 		String strTitle = "Harry";
-		System.out.println(userManagerBook.getBooksByTitle(strTitle));
+		System.out.println(userManagerBook.getBooksByTitleDescript(strTitle));
 		System.out.println("recherche descript");
 		String strDesc = "anneau";
 		System.out.println(userManagerBook.getBooksByDescript(strDesc));
