@@ -58,7 +58,8 @@
 	<!-- //////////////////// -->
 	<footer class="footer">
 	<div class="container">
-		<span class="text-muted">Place sticky footer content here.</span>
+		<a class="text-muted" href="/ProjetFinal/MentionLegale">Mentions
+			Légales</a>
 	</div>
 	</footer>
 </body>
