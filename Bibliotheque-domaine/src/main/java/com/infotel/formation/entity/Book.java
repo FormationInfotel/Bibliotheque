@@ -44,6 +44,7 @@ public class Book implements Serializable {
 	@OneToMany(mappedBy = "bookcopy_parent")
 	private List<BookCopy> book_ListCopy;
 
+
 	public Book() {
 	}
 
