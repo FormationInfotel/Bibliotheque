@@ -107,7 +107,6 @@ public class MemberDAOImpl extends _GenericDAOImpl<Member> implements MemberDAO 
 				.createQuery("from Member where member_email = :mail AND member_password = :pswd");
 		query.setParameter("mail", mail);
 		query.setParameter("pswd", pswd);
-		System.out.println(query.list().size());
 
 		if (query.list().size() != 0) {
 			return true;

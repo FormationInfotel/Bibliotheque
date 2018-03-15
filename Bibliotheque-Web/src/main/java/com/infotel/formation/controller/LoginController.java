@@ -1,5 +1,7 @@
 package com.infotel.formation.controller;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -31,25 +33,15 @@ public class LoginController {
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
-    private String connexionMembre(@ModelAttribute("login") Member membre, Model model) {
-
+    private String connexionMembre(Model model, HttpServletRequest request) {
+    	String email = request.getParameter("txtboxEmail");
+    	String pswd = request.getParameter("txtboxPswd");
     	
+    	if (memberDAO.isAccountExistString(email, pswd)) {
+    		return "redirect:/";
+    	}
     	
-    	System.out.println("email " + membre.getMember_email());
-    	System.out.println("pw " +membre.getMember_password());
-    	
-        //String pw = memberDAO.cryptageMdp(nouveauMembre);
-    	String pw = null;
-    	membre.setMember_password(pw);
-    	
-    	 return "redirect:/";
-    	
-//        if (memberDAO.identification(nouveauMembre.getMember_email(), nouveauMembre.getMember_password()) == null) {
-//            model.addAttribute("msgErreur", "Veuillez saisir un identifiant et un mot de passe valide");
-//            return "connexion";
-//        } else {
-//            return "redirect:/";
-//        }
+    	return "login";
     }
 
 }
