@@ -22,8 +22,7 @@ public class BookDTO implements Serializable {
 	}
 
 	public BookDTO(long iSBN, String book_title, String book_description, float book_price, Date publication_date,
-			String image_path, boolean popular_book, long book_authorId, long book_editorId, long book_categoryId) {
-		super();
+			String image_path, boolean popular_book) {
 		ISBN = iSBN;
 		this.book_title = book_title;
 		this.book_description = book_description;
@@ -31,9 +30,6 @@ public class BookDTO implements Serializable {
 		this.publication_date = publication_date;
 		this.image_path = image_path;
 		this.popular_book = popular_book;
-		this.book_authorId = book_authorId;
-		this.book_editorId = book_editorId;
-		this.book_categoryId = book_categoryId;
 	}
 
 	public long getISBN() {

@@ -128,6 +128,12 @@ public class MainTest {
 		Book b5 = new Book(00001140L, "Freud pour les Nuls", "La philosophie pour les débutants", new Float(18), d1,
 				false);
 
+		b1.setImage_path("1");
+		b2.setImage_path("2");
+		b3.setImage_path("3");
+		b4.setImage_path("4");
+		b5.setImage_path("5");
+
 		b1.setBook_author(auteur3);
 		b1.setBook_category(c3);
 		b1.setBook_catalog(cat1);

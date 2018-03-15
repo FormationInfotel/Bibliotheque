@@ -1,6 +1,7 @@
 package com.infotel.formation.impl;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,7 +9,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.infotel.formation.entity.Book;
-import com.infotel.formation.entity.Editor;
 import com.infotel.formation.interfaces.AuthorDAO;
 import com.infotel.formation.interfaces.BookDAO;
 import com.infotel.formation.interfaces.BookService;
@@ -59,6 +59,14 @@ public class BookServiceImpl implements BookService{
 		
 		return rechercheLivre;
 		
+	}
+
+	public void insertBook(Book book) {
+		bookDAO.insertBook(book);
+	}
+
+	public List<Book> getBooks() {
+		return bookDAO.getBooks();
 	}
 
 }

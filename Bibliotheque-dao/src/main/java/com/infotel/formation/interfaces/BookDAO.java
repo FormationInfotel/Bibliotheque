@@ -1,7 +1,6 @@
 package com.infotel.formation.interfaces;
 
 import java.util.List;
-import java.util.Set;
 
 import com.infotel.formation.entity.Author;
 import com.infotel.formation.entity.Book;
@@ -9,7 +8,7 @@ import com.infotel.formation.entity.Category;
 import com.infotel.formation.entity.Editor;
 
 public interface BookDAO {
-	void insertBook(Book book);
+	public void insertBook(Book book);
 
 	public Book getBookById(int bookId);
 
