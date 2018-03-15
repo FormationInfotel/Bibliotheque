@@ -40,15 +40,7 @@ public class CategoryDAOImpl implements CategoryDAO {
 		return categoryById;
 	}
 
-	@SuppressWarnings("unchecked")
-	@Override
-	public Category getCategory(String categoryName) {
-		Query<Category> query = sessionFactory.getCurrentSession()
-				.createQuery("from Category Where category_name LIKE :categoryName");
-
-		query.setParameter("editorName", "%" + categoryName + "%").list();
-		return query.list().get(0);
-	}
+	
 
 	@SuppressWarnings("unchecked")
 	@Override

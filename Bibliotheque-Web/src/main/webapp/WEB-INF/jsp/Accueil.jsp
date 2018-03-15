@@ -17,8 +17,7 @@
 	<div class="jumbotron jumbotron-fluid">
 		<div class="container">
 			<h1 class="display-4">BibliGestion</h1>
-			<p class="lead">Bienvenue dans l'espace de gestion de votre
-				bibliothèque !</p>
+			<p class="lead">Bienvenue dans l'espace de gestion de votre	bibliothèque !</p>
 		</div>
 	</div>
 	<div class="album py-5 bg-light">

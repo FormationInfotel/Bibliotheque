@@ -7,7 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.infotel.formation.entity.Author;
 import com.infotel.formation.entity.Book;
+import com.infotel.formation.entity.Category;
 import com.infotel.formation.entity.Editor;
 import com.infotel.formation.interfaces.AuthorDAO;
 import com.infotel.formation.interfaces.BookDAO;
@@ -17,48 +19,49 @@ import com.infotel.formation.interfaces.EditorDAO;
 
 @Service
 @Transactional
-public class BookServiceImpl implements BookService{
+public class BookServiceImpl implements BookService {
 
-	
 	@Autowired
 	BookDAO bookDAO;
-	
+
 	@Autowired
 	AuthorDAO authorDAO;
-	
+
 	@Autowired
 	CategoryDAO categoryDAO;
-	
+
 	@Autowired
 	EditorDAO editorDAO;
-	
+
 	@SuppressWarnings("unchecked")
 	public Set<Book> getBooksByKeyword(String keyword) {
-		
+
 		Set<Book> rechercheLivre = new HashSet<Book>();
-					
-		
-		
+
 		for (Book book : bookDAO.getBooksByTitleDescript(keyword)) {
 			rechercheLivre.add(book);
 		}
-		
-		for (Book book :bookDAO.getBooksByCategory(categoryDAO.getCategory(keyword))) {
-			rechercheLivre.add(book);
+
+		for (Category category : categoryDAO.getListCategoryByKeyword(keyword)) {
+			for (Book book : bookDAO.getBooksByCategory(category)) {
+				rechercheLivre.add(book);
+			}
 		}
-		
-		for (Book book : bookDAO.getBooksByEditor(editorDAO.getEditor(keyword))) {
-			rechercheLivre.add(book);
+
+		for (Editor editor : editorDAO.getListEditorByKeyword(keyword)) {
+			for (Book book : bookDAO.getBooksByEditor(editor)) {
+				rechercheLivre.add(book);
+			}
 		}
-		
-		for (Book book : bookDAO.getBooksByAuthor(authorDAO.getAuthor(keyword))) {
-			rechercheLivre.add(book);
-		}		
-				
-		
-		
+
+		for (Author author : authorDAO.getListAuthorByKeyword(keyword)) {
+			for (Book book : bookDAO.getBooksByAuthor(author)) {
+				rechercheLivre.add(book);
+			}
+		}
+
 		return rechercheLivre;
-		
+
 	}
 
 }
