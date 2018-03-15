@@ -1,6 +1,7 @@
 package com.infotel.formation.interfaces;
 
 import java.util.List;
+import java.util.Set;
 
 import com.infotel.formation.entity.Author;
 import com.infotel.formation.entity.Book;
@@ -18,7 +19,7 @@ public interface BookDAO {
 
 	public List<Book> getBooksByRecommand();
 
-	public List<Book> getBooksByTitle(String keyword);
+	public List<Book> getBooksByTitleDescript(String keyword);
 
 	public List<Book> getBooksByDescript(String keyword);
 

@@ -1,7 +1,9 @@
 package com.infotel.formation.implementation;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
@@ -13,6 +15,7 @@ import com.infotel.formation.entity.Author;
 import com.infotel.formation.entity.Book;
 import com.infotel.formation.entity.Category;
 import com.infotel.formation.entity.Editor;
+import com.infotel.formation.interfaces.AuthorDAO;
 import com.infotel.formation.interfaces.BookDAO;
 
 @Repository
@@ -68,7 +71,7 @@ public class BookDAOImpl implements BookDAO {
 	}
 
 	@SuppressWarnings("unchecked")
-	public List<Book> getBooksByTitle(String keyword) {
+	public List<Book> getBooksByTitleDescript(String keyword) {
 		Query<Book> query = sessionFactory.getCurrentSession()
 				.createQuery("from Book Where book_title LIKE :keyword OR book_description LIKE :keyword");
 
@@ -110,4 +113,5 @@ public class BookDAOImpl implements BookDAO {
 
 	}
 
+	
 }
