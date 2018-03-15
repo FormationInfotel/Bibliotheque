@@ -38,7 +38,7 @@
 			</a></li>
 
 			<li class="nav-item active"><a class="nav-link"
-				href="/ProjetFinal/Login">Espace Membre <span class="sr-only">(current)</span>
+				href="/ProjetFinal/login">Espace Membre <span class="sr-only">(current)</span>
 			</a></li>
 		</ul>
 		<form class="form-inline" method="POST" action="${context}/Recherche">
