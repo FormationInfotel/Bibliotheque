@@ -7,7 +7,7 @@ import com.infotel.formation.entity.Editor;
 public interface EditorDAO {
 	void insertEditor(Editor editor);
 
-	public Editor getEditorById(int editorId);
+	public Editor getEditorById(long editorId);
 
 	Editor getEditor(String editorName);
 

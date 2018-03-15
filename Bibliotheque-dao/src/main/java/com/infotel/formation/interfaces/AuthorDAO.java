@@ -7,7 +7,7 @@ import com.infotel.formation.entity.Author;
 public interface AuthorDAO extends _GenericDAO<Author>{
 	void insertAuthor(Author author);
 
-	public Author getAuthorById(int authorId);
+	public Author getAuthorById(long authorId);
 
 	Author getAuthor(String authorName);
 

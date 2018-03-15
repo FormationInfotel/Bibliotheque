@@ -24,7 +24,7 @@ public class CategoryDAOImpl implements CategoryDAO {
 	}
 
 	@Override
-	public Category getCategoryById(int categoryId) {
+	public Category getCategoryById(long categoryId) {
 		Category categoryById = null;
 
 		for (Category category : getCategories()) {

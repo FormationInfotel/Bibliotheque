@@ -24,7 +24,7 @@ import com.infotel.formation.interfaces.AuthorDAO;
 	}
 
 	@Override
-	public Author getAuthorById(int authorId) {
+	public Author getAuthorById(long authorId) {
 		Author authorById = null;
 
 		for (Author author : getAuthors()) {

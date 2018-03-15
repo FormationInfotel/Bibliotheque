@@ -6,7 +6,7 @@ import com.infotel.formation.entity.Category;
 
 public interface CategoryDAO {
 
-	public Category getCategoryById(int categoryId);
+	public Category getCategoryById(long categoryId);
 
 	Category getCategory(String categoryName);
 

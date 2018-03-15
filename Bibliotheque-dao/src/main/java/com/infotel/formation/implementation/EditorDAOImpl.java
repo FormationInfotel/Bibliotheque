@@ -23,7 +23,7 @@ public class EditorDAOImpl implements EditorDAO {
 	}
 
 	@Override
-	public Editor getEditorById(int editorId) {
+	public Editor getEditorById(long editorId) {
 		Editor editorById = null;
 
 		for (Editor editor : getEditors()) {
