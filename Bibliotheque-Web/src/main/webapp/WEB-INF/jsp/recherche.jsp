@@ -28,20 +28,8 @@
 				<br>
 
 				<div>
-					<input class="form-control" id="txboxTitre" name="txboxTitre"
-						type="text" placeholder="Titre ?">
-				</div>
-				<div>
-					<input class="form-control" id="txboxAuthor" name="txboxAuthor"
-						type="text" placeholder="Auteur ?">
-				</div>
-				<div>
-					<input class="form-control" id="txboxEditor" name="txboxEditor"
-						type="text" placeholder="Editeur ?">
-				</div>
-				<div>
-					<input class="form-control" id="txboxCategory" name="txboxCategory"
-						type="text" placeholder="Catégorie ?">
+					<input class="form-control" id="txboxRecherche" name="txboxRecherche"
+						type="text" placeholder="Recherche">
 				</div>
 				<br> <br>
 				<div>

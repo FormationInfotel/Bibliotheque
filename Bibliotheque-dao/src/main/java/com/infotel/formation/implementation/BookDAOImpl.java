@@ -1,10 +1,7 @@
 package com.infotel.formation.implementation;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
-
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +12,6 @@ import com.infotel.formation.entity.Author;
 import com.infotel.formation.entity.Book;
 import com.infotel.formation.entity.Category;
 import com.infotel.formation.entity.Editor;
-import com.infotel.formation.interfaces.AuthorDAO;
 import com.infotel.formation.interfaces.BookDAO;
 
 @Repository
