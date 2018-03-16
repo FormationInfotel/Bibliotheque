@@ -11,6 +11,10 @@ public interface BookService {
 
 	public void insertBook(Book book);
 
+	public void updateBook(Book book);
+
+	public void deleteBook(Book book);
+
 	List<Book> getBooks();
 
 

@@ -2,6 +2,7 @@ package com.infotel.formation.implementation;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +25,16 @@ public class BookDAOImpl implements BookDAO {
 	@Override
 	public void insertBook(Book book) {
 		sessionFactory.getCurrentSession().save(book);
+	}
+
+	@Override
+	public void updateBook(Book book) {
+		sessionFactory.getCurrentSession().update(book);
+	}
+
+	@Override
+	public void deleteBook(Book book) {
+		sessionFactory.getCurrentSession().delete(book);
 	}
 
 	@Override

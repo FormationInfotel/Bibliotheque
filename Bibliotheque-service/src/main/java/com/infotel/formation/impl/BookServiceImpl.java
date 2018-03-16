@@ -34,6 +34,23 @@ public class BookServiceImpl implements BookService {
 	@Autowired
 	EditorDAO editorDAO;
 
+	@Override
+	public void insertBook(Book book) {
+		bookDAO.insertBook(book);
+	}
+
+	@Override
+	public void updateBook(Book book) {
+		bookDAO.updateBook(book);
+
+	}
+
+	@Override
+	public void deleteBook(Book book) {
+		bookDAO.deleteBook(book);
+
+	}
+
 	@SuppressWarnings("unchecked")
 	public Set<Book> getBooksByKeyword(String keyword) {
 
@@ -65,12 +82,11 @@ public class BookServiceImpl implements BookService {
 
 	}
 
-	public void insertBook(Book book) {
-		bookDAO.insertBook(book);
-	}
+
 
 	public List<Book> getBooks() {
 		return bookDAO.getBooks();
 	}
+
 
 }

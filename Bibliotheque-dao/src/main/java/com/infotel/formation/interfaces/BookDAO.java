@@ -10,6 +10,10 @@ import com.infotel.formation.entity.Editor;
 public interface BookDAO {
 	public void insertBook(Book book);
 
+	public void updateBook(Book book);
+
+	public void deleteBook(Book book);
+
 	public Book getBookById(int bookId);
 
 	Book getBook(String bookTitle);

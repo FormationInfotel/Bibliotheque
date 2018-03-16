@@ -55,4 +55,14 @@ public class BookController {
 		return viewBooks;
 	}
 
+	@PostMapping(value = "/book/update", consumes = { MediaType.APPLICATION_JSON_VALUE })
+	public void updateBook(@RequestBody Book book) {
+		bookService.updateBook(book);
+	}
+
+	@PostMapping(value = "/book/delete", consumes = { MediaType.APPLICATION_JSON_VALUE })
+	public void deleteBook(@RequestBody Book book) {
+		bookService.deleteBook(book);
+	}
+
 }
