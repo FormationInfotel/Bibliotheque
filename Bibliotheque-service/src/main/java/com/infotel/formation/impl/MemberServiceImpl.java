@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.infotel.formation.entity.Member;
+import com.infotel.formation.exception.ErrorConstants;
+import com.infotel.formation.exception.ServiceException;
 import com.infotel.formation.interfaces.MemberDAO;
 import com.infotel.formation.interfaces.MemberService;
 
@@ -75,6 +77,16 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public Member getMemberById(int idMember) {
 		return memberDAO.getMemberById(idMember);
+	}
+	
+	@Override
+	public Member login(String email, String pw) throws Exception {
+		
+		if (!memberDAO.isAccountExistString(email, pw))
+			throw new ServiceException(ErrorConstants.ACCOUNT_NOT_EXISTING);
+		else 
+			return memberDAO.getUserByMail(email);
+		
 	}
 
 	@Override

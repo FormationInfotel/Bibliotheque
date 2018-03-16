@@ -22,9 +22,9 @@ public interface MemberService {
 	
 	public boolean isAccountExist(Member member);
 
+	public Member login(String email, String pw) throws Exception;
 
-	public String encryptPw(String pw);
-	
+	public String encryptPw(String pw);	
 	
 	public List<Member> getMembers();
 

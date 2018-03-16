@@ -19,6 +19,7 @@ public class Member implements Serializable {
 	private String member_email;
 	private String member_address;
 	private String member_password;
+	private boolean isMemberAdmin;
 
 	@ManyToOne
 	private Library member_Library;
@@ -28,13 +29,14 @@ public class Member implements Serializable {
 	}
 
 	public Member(String member_lastname, String member_firstname, String member_email, String member_address,
-			String member_password) {
+			String member_password, boolean isMemberAdmin) {
 		super();
 		this.member_lastname = member_lastname;
 		this.member_firstname = member_firstname;
 		this.member_email = member_email;
 		this.member_address = member_address;
 		this.member_password = member_password;
+		this.isMemberAdmin = isMemberAdmin;
 	}
 
 	public long getMember_id() {
@@ -92,12 +94,25 @@ public class Member implements Serializable {
 	public void setMember_address(String member_address) {
 		this.member_address = member_address;
 	}
+	
+	
+
+	public boolean isMemberAdmin() {
+		return isMemberAdmin;
+	}
+
+	public void setMemberAdmin(boolean isMemberAdmin) {
+		this.isMemberAdmin = isMemberAdmin;
+	}
 
 	@Override
 	public String toString() {
 		return "Member [member_id=" + member_id + ", member_lastname=" + member_lastname + ", member_firstname="
 				+ member_firstname + ", member_email=" + member_email + ", member_address=" + member_address
-				+ ", member_password=" + member_password + "]";
+				+ ", member_password=" + member_password + ", isMemberAdmin=" + isMemberAdmin + ", member_Library="
+				+ member_Library + "]";
 	}
+
+	
 
 }
