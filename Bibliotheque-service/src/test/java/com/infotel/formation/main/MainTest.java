@@ -239,22 +239,26 @@ public class MainTest {
 		Member m3 = new Member("RONCO", "ROMAIN", "roamin.ronco@infotel.com", "Rennes", "azerty123");
 		Member m4 = new Member("GUENOT", "MICKAEL", "mickael.guenot@infotel.com", "Lyon", "azerty123");
 		Member m5 = new Member("LE TEXIER", "LENA", "lena.letexier@infotel.com", "BrestpasMeme", "azerty123");
+		Member m6 = new Member("az", "az", "az@az", "az", "az");
 		m1.setMember_Library(l1);
 		m2.setMember_Library(l1);
 		m3.setMember_Library(l1);
 		m4.setMember_Library(l2);
 		m5.setMember_Library(l2);
+		m6.setMember_Library(l1);
 		l1.getLibrary_ListMember().add(m1);
 		l1.getLibrary_ListMember().add(m2);
 		l1.getLibrary_ListMember().add(m3);
 		l2.getLibrary_ListMember().add(m4);
 		l2.getLibrary_ListMember().add(m5);
+		l1.getLibrary_ListMember().add(m6);
 
 		userManagerMember.insertMember(m1);
 		userManagerMember.insertMember(m2);
 		userManagerMember.insertMember(m3);
 		userManagerMember.insertMember(m4);
 		userManagerMember.insertMember(m5);
+		userManagerMember.insertMember(m6);
 
 		System.out.println("Membre insérés");
 

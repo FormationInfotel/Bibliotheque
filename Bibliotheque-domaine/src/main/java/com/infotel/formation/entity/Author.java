@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -18,7 +19,7 @@ public class Author implements Serializable {
 	private String author_lastname;
 	private String author_firstname;
 
-	@OneToMany(mappedBy = "book_author")
+	@OneToMany(mappedBy = "book_author", fetch = FetchType.EAGER)
 	private List<Book> author_listeBook;
 
 	public List<Book> getAuthor_listeBook() {

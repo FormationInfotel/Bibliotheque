@@ -24,6 +24,16 @@ import com.infotel.formation.interfaces.AuthorDAO;
 	}
 
 	@Override
+	public void updateAuthor(Author author) {
+		sessionFactory.getCurrentSession().update(author);
+	}
+
+	@Override
+	public void deleteAuthor(Author author) {
+		sessionFactory.getCurrentSession().delete(author);
+	}
+
+	@Override
 	public Author getAuthorById(long authorId) {
 		Author authorById = null;
 
