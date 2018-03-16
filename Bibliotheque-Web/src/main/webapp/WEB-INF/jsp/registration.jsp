@@ -12,62 +12,6 @@
 		<%@include file="pageBase.jsp"%>
 	</div>
 	<c:set var="titre" value="Registration" scope="session"></c:set>
-	<%--     <form:form modelAttribute="nouveauMembre" class="form-horizontal" >
-   <fieldset>
-       <legend>Sign up</legend>
-       <div class="form-group">
-           <label class="control-label col-lg-2" ">Firstname</label>
-           <div class="col-lg-10">
-               <form:input id="Firstname" path="member_firstname" type="text" required="required" class="form:input-large" />
-           </div>
-       </div>
-       <div class="form-group">
-           <label class="control-label col-lg-2" >Lastname</label>
-           <div class="col-lg-10">
-               <form:input id="Lastname" path="member_lastname" type="text" required="required" class="form:input-large" />
-           </div>
-       </div>
-       <div class="form-group">
-           <label class="control-label col-lg-2" >Postal address</label>
-           <div class="col-lg-10">
-               <form:input id="Postaladdress" path="member_address" type="text" class="form:input-large" />
-           </div>
-       </div>
-        <div class="form-group">
-           <label class="control-label col-lg-2" >Member's Library</label>
-           <div class="col-lg-10">
-               <form:select path="member_Library" modelAttribute="biblioDuMembre">
-                    <form:option value = "NONE" label = "Library"/>
-                    <form:options value = "" items="${libraryList}" />
-                </form:select> 
-            </div>
-       </div>
-        <div class="form-group">
-           <label class="control-label col-lg-2" >Email</label>
-           <div class="col-lg-10">
-               <form:input id="Email" path="member_email" type="email" required="required" class="form:input-large" />
-           </div>
-       </div>
-        <div class="form-group">
-           <label class="control-label col-lg-2" >Password</label>
-           <div class="col-lg-10">
-               <form:input id="Password1" path="" type="password" required="required" class="form:input-large" />
-            </div>
-       </div>
-        <div class="form-group">
-           <label class="control-label col-lg-2" >Password confirmation</label>
-           <div class="col-lg-10">
-               <form:input id="Password" path="member_password" type="password" required="required" class="form:input-large" />
-           </div>
-       </div>
-       <div class="form-group">
-           <div class="col-lg-10 col-lg-offset-2">
-               <input type="submit" id="btnAdd" class="btn btn-primary" value="Register" />
-           </div>
-       </div>
-   </fieldset>
-</form:form> --%>
-
 	<div class="jumbotron jumbotron-fluid">
 	<div class="container">
 	<form:form modelAttribute="nouveauMembre" class="form-horizontal">

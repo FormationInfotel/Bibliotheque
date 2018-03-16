@@ -71,50 +71,7 @@ public class MemberController {
 
 		return libraryList;
 	}
-	// @ModelAttribute("libraryList")
-	// public List<String> getLibraryList() {
-	// List<String> result1 = new ArrayList<String>();
-	// for (Library L : libraryService.getLibraries()) {
-	// result1.add(L.getLibrary_name());
-	// }
-	// return result1;
-	// }
-	//
-	// @ModelAttribute("LibId")
-	// public List<Long> getLibraryId() {
-	// List<Long> result1 = new ArrayList<Long>();
-	// for (Library L : libraryService.getLibraries()) {
-	// result1.add(L.getLibrary_code());
-	// }
-	// return result1;
-	// }
 
-	/////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	/////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	/////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-	@RequestMapping(value = "/login1", method = RequestMethod.GET)
-	private String connexionMembre(Model model) {
-		Member membre = new Member();
-		model.addAttribute("membre", membre);
-		return "login";
-	}
-
-	@RequestMapping(value = "/login1", method = RequestMethod.POST)
-	private String connexionMembre(@ModelAttribute("login") Member membre, Model model) {
-		String pw = memberService.encryptPw(membre.getMember_password());
-		membre.setMember_password(pw);
-
-		// model.addAttribute("membre", membre);
-		model.addAttribute("membre", membre);
-
-		if (memberService.isAccountExist(membre)) {
-			return "login";
-		} else {
-			model.addAttribute("errMsg", "Password incorrect");
-			return "redirect:/";
-		}
-	}
 
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -137,20 +94,18 @@ public class MemberController {
 	public String saveOrUpdateUser(@ModelAttribute("userForm") Member membre, BindingResult result, Model model,
 			HttpServletRequest request, final RedirectAttributes redirectAttributes) {
 
+				//A debug dropdownlist
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		// Member user = memberService.getMemberById(id);
-
 		Member tmpMember = new Member();
-
 		System.out.println(membre);
-
 		tmpMember = memberService.getMemberById((int) membre.getMember_id());
-
 		String libname = "Mediathèque Angers";
 		// String libname = request.getParameterValues("ListeLib");
-
 		// System.out.println(libname);
 		// System.out.println(libraryService.getLibraryByName(libname));
-
 		membre.setMember_Library(libraryService.getLibraryByName(libname));
 
 		if (tmpMember == membre) {
@@ -159,11 +114,8 @@ public class MemberController {
 			memberService.updateMember(membre);
 		}
 
-		// POST/REDIRECT/GET
+		
 		return "redirect:/users/" + membre.getMember_id();
-
-		// POST/FORWARD/GET
-		// return "user/list";
 
 	}
 

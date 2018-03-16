@@ -11,32 +11,6 @@
 	<div>
 		<%@include file="pageBase.jsp"%>
 	</div>
-	<%-- 	<c:set var="titre" value="Login" scope="session"></c:set> --%>
-	<%-- 	<form:form modelAttribute="membre" class="form-horizontal"> --%>
-	<!-- 		<fieldset> -->
-	<!-- 			<legend>Login</legend> -->
-	<!-- 			<div class="form-group"> -->
-	<!-- 				<label class="form-check-label" for="email">Email</label> -->
-	<!-- 				<div class="col-lg-10"> -->
-	<%-- 					<form:input id="email" path="member_email" type="email" --%>
-	<%-- 						required="required" class="form:input-large" /> --%>
-	<!-- 				</div> -->
-	<!-- 			</div> -->
-	<!-- 			<div class="form-group"> -->
-	<!-- 				<label class="form-check-label" for="mdp">Mot de passe</label> -->
-	<!-- 				<div class="col-lg-10"> -->
-	<%-- 					<form:input id="mdp" path="member_password" type="password" --%>
-	<%-- 						required="required" class="form:input-large" /> --%>
-	<!-- 				</div> -->
-	<!-- 			</div> -->
-	<!-- 			<div class="form-group"> -->
-	<!-- 				<div class="col-lg-10 col-lg-offset-2"> -->
-	<!-- 					<input type="submit" id="btnAdd" class="btn btn-primary" -->
-	<!-- 						value="Log in" /> -->
-	<!-- 				</div> -->
-	<!-- 			</div> -->
-	<!-- 		</fieldset> -->
-	<%-- 	</form:form> --%>
 	<div class="jumbotron jumbotron-fluid" id="criteres">
 		<div class="container">
 			<h1 class="display-4">Connexion</h1>
