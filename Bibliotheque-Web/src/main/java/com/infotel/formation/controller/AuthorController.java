@@ -88,7 +88,8 @@ public class AuthorController {
 		Resultat res = new Resultat();
 
 		try {
-			authorService.deleteAuthor(mapper.mapIntoAuthor(authorDTO));
+			//authorService.deleteAuthor(mapper.mapIntoAuthor(authorDTO));
+			authorService.deleteAuthor(authorService.getAuthorById(authorDTO.getAuthor_id()));
 
 			res.setIsSucces(true);
 			res.setMessage(ControllerConstants.UPDATE_SUCCESS);

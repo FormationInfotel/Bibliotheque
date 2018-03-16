@@ -34,7 +34,8 @@ public class BookController {
 	@Autowired
 	CategoryService categoryService;
 
-	BookMapper mapper = new BookMapper();
+	@Autowired
+	BookMapper mapper;
 
 	
 	
@@ -43,10 +44,8 @@ public class BookController {
 		List<BookDTO> viewBooks = new ArrayList<BookDTO>();
 
 		List<Book> books = bookService.getBooks();
-		System.out.println(books);
 
 		for (Book book : books) {
-
 			viewBooks.add(mapper.mapIntoBookDTO(book));
 		}
 		return viewBooks;
@@ -78,8 +77,12 @@ public class BookController {
 	public Resultat updateBook(@RequestBody BookDTO bookDTO) throws Exception {
 		Resultat res = new Resultat();
 
+		
+
 		try {
-			bookService.updateBook(mapper.mapIntoBook(bookDTO));
+			//bookService.updateBook(mapper.mapIntoBook(bookDTO));
+			//bookService.deleteBook(mapper.mapIntoBook(bookDTO));
+			bookService.deleteBook(bookService.getBookById(bookDTO.getISBN()));
 
 			res.setIsSucces(true);
 			res.setMessage(ControllerConstants.UPDATE_SUCCESS);
