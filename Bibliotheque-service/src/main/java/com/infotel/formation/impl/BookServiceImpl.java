@@ -91,5 +91,9 @@ public class BookServiceImpl implements BookService {
 		return bookDAO.getRecommendedBooks();
 	}
 
+	@Override
+	public Book getBookById(Long Id) {
+		return bookDAO.getBookById(Id);
+	}
 
 }
