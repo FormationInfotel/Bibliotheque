@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.infotel.formation.DTO.AuthorDTO;
@@ -31,24 +32,23 @@ public class AuthorController {
 		List<Author> authors = authorService.getAuthors();
 
 		for (Author author : authors) {
-			System.out.println(author);
 			viewAuthor.add(mapper.mapIntoAuthorDTO(author));
 		}
 		return viewAuthor;
 	}
 
 	@PutMapping(value = "/author/add", consumes = { MediaType.APPLICATION_JSON_VALUE })
-	public void addAuthor(AuthorDTO authorDTO) {
+	public void addAuthor(@RequestBody AuthorDTO authorDTO) {
 		authorService.insertAuthor(mapper.mapIntoAuthor(authorDTO));
 	}
 
 	@PostMapping(value = "/author/update", consumes = { MediaType.APPLICATION_JSON_VALUE })
-	public void updateAuthor(AuthorDTO authorDTO) {
+	public void updateAuthor(@RequestBody AuthorDTO authorDTO) {
 		authorService.updateAuthor(mapper.mapIntoAuthor(authorDTO));
 	}
 
 	@DeleteMapping(value = "/author/delete", consumes = { MediaType.APPLICATION_JSON_VALUE })
-	public void deleteAuthor(AuthorDTO authorDTO) {
+	public void deleteAuthor(@RequestBody AuthorDTO authorDTO) {
 		authorService.deleteAuthor(authorService.getAuthorById(authorDTO.getAuthor_id()));
 	}
 }

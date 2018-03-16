@@ -92,7 +92,7 @@ public class BookServiceImpl implements BookService {
 	}
 
 	@Override
-	public Book getBookById(Long Id) {
+	public Book getBookById(long Id) {
 		return bookDAO.getBookById(Id);
 	}
 
