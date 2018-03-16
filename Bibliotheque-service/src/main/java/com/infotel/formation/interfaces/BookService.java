@@ -15,6 +15,8 @@ public interface BookService {
 
 	public void deleteBook(Book book);
 	
+	public Book getBookById(Long Id);
+
 	public List<Book> getRecommendedBooks();
 
 	List<Book> getBooks();

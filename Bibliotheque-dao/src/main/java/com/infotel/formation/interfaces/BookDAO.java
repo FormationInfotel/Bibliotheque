@@ -14,7 +14,7 @@ public interface BookDAO {
 
 	public void deleteBook(Book book);
 
-	public Book getBookById(int bookId);
+	public Book getBookById(Long bookId);
 
 	Book getBook(String bookTitle);
 
@@ -31,5 +31,6 @@ public interface BookDAO {
 	public List<Book> getBooksByCategory(Category category);
 
 	public List<Book> getBooksByAuthor(Author author);
+
 
 }

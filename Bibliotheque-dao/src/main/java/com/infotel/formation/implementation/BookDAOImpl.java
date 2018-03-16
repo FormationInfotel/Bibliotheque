@@ -38,18 +38,14 @@ public class BookDAOImpl implements BookDAO {
 	}
 
 	@Override
-	public Book getBookById(int bookId) {
+	public Book getBookById(Long bookId) {
 		Book bookById = null;
 
 		for (Book book : getBooks()) {
-			if (book != null && book.getISBN() > 0) {
+			if (book != null && book.getISBN() > 0 && book.getISBN() == bookId) {
 				bookById = book;
 				break;
 			}
-		}
-
-		if (bookById == null) {
-			throw new IllegalArgumentException("No product found with the product id : " + bookId);
 		}
 		return bookById;
 	}
