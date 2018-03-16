@@ -8,11 +8,11 @@ public interface AuthorService {
 
 	public Author getAuthorById(long authorId);
 
-	public void insertAuthor(Author author);
+	public void insertAuthor(Author author) throws Exception;
 
-	public void updateAuthor(Author author);
+	public void updateAuthor(Author author) throws Exception;
 
-	public void deleteAuthor(Author author);
+	public void deleteAuthor(Author author) throws Exception;
 
 	public List<Author> getAuthors();
 }

@@ -5,14 +5,19 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.infotel.formation.DTO.AuthorDTO;
 import com.infotel.formation.Mapper.AuthorMapper;
 import com.infotel.formation.entity.Author;
+import com.infotel.formation.exception.ServiceException;
 import com.infotel.formation.interfaces.AuthorService;
+import com.infotel.formation.utils.ControllerConstants;
+import com.infotel.formation.utils.Resultat;
 
 @RestController
 public class AuthorController {
@@ -34,18 +39,68 @@ public class AuthorController {
 		return viewAuthor;
 	}
 
-	@PostMapping(value = "/author/add", consumes = { MediaType.APPLICATION_JSON_VALUE })
-	public void addAuthor(AuthorDTO authorDTO) {
-		authorService.insertAuthor(mapper.mapIntoAuthor(authorDTO));
+	@PutMapping(value = "/author/add", consumes = { MediaType.APPLICATION_JSON_VALUE })
+	public Resultat addAuthor(AuthorDTO authorDTO) throws Exception {
+		Resultat res = new Resultat();
+
+		try {
+			authorService.insertAuthor(mapper.mapIntoAuthor(authorDTO));
+
+			res.setIsSucces(true);
+			res.setMessage(ControllerConstants.INSERT_SUCCESS);
+			res.setPayload(authorDTO);
+
+		} catch (ServiceException serviceException) {
+			res.setIsSucces(false);
+			res.setMessage(serviceException.getMessage());
+		} catch (Exception e) {
+			res.setIsSucces(false);
+			res.setMessage("Err");
+		}
+
+		return res;
 	}
 
 	@PostMapping(value = "/author/update", consumes = { MediaType.APPLICATION_JSON_VALUE })
-	public void updateAuthor(AuthorDTO authorDTO) {
-		authorService.updateAuthor(mapper.mapIntoAuthor(authorDTO));
+	public Resultat updateAuthor(AuthorDTO authorDTO) throws Exception {
+		Resultat res = new Resultat();
+
+		try {
+			authorService.updateAuthor(mapper.mapIntoAuthor(authorDTO));
+
+			res.setIsSucces(true);
+			res.setMessage(ControllerConstants.UPDATE_SUCCESS);
+			res.setPayload(authorDTO);
+
+		} catch (ServiceException serviceException) {
+			res.setIsSucces(false);
+			res.setMessage(serviceException.getMessage());
+		} catch (Exception e) {
+			res.setIsSucces(false);
+			res.setMessage("Err");
+		}
+		return res;
 	}
 
-	@PostMapping(value = "/author/delete", consumes = { MediaType.APPLICATION_JSON_VALUE })
-	public void deleteAuthor(AuthorDTO authorDTO) {
-		authorService.deleteAuthor(mapper.mapIntoAuthor(authorDTO));
+	@DeleteMapping(value = "/author/delete", consumes = { MediaType.APPLICATION_JSON_VALUE })
+	public Resultat deleteAuthor(AuthorDTO authorDTO) throws Exception {
+		Resultat res = new Resultat();
+
+		try {
+			authorService.deleteAuthor(mapper.mapIntoAuthor(authorDTO));
+
+			res.setIsSucces(true);
+			res.setMessage(ControllerConstants.UPDATE_SUCCESS);
+			res.setPayload(authorDTO);
+
+		} catch (ServiceException serviceException) {
+			res.setIsSucces(false);
+			res.setMessage(serviceException.getMessage());
+		} catch (Exception e) {
+			res.setIsSucces(false);
+			res.setMessage("Err");
+		}
+		return res;
 	}
+
 }
