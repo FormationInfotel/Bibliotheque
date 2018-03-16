@@ -17,6 +17,7 @@ import com.infotel.formation.interfaces.AuthorService;
 import com.infotel.formation.interfaces.BookService;
 import com.infotel.formation.interfaces.CategoryService;
 import com.infotel.formation.interfaces.EditorService;
+import com.infotel.formation.utils.Resultat;
 
 @RestController
 public class BookController {
@@ -46,11 +47,20 @@ public class BookController {
 	}
 
 	@PostMapping(value = "/book/add", consumes = { MediaType.APPLICATION_JSON_VALUE })
-	public void addBook(@RequestBody BookDTO bookDTO) {
+	public Resultat addBook(@RequestBody BookDTO bookDTO) throws Exception {
+		Resultat res = new Resultat();
+		
+		
+		try {
+			bookService.insertBook(mapper.mapIntoBook(bookDTO));
 
-		bookService.insertBook(mapper.mapIntoBook(bookDTO));
-
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		
 		System.out.println("Insert done successfully");
+		
+		return res;
 	}
 
 	@PostMapping(value = "/book/update/", consumes = { MediaType.APPLICATION_JSON_VALUE })

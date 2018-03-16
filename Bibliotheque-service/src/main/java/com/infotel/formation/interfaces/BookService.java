@@ -7,19 +7,19 @@ import com.infotel.formation.entity.Book;
 
 public interface BookService {
 	
-	public Set<Book> getBooksByKeyword(String keyword);
+	public Set<Book> getBooksByKeyword(String keyword) throws Exception;
 
-	public void insertBook(Book book);
+	public void insertBook(Book book) throws Exception;
 
-	public void updateBook(Book book);
+	public void updateBook(Book book) throws Exception;
 
-	public void deleteBook(Book book);
+	public void deleteBook(Book book) throws Exception;
 	
-	public Book getBookById(Long Id);
+	public Book getBookById(Long Id)throws Exception ;
 
-	public List<Book> getRecommendedBooks();
+	public List<Book> getRecommendedBooks() throws Exception;
 
-	List<Book> getBooks();
+	List<Book> getBooks() throws Exception;
 
 
 }
