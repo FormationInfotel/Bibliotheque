@@ -234,12 +234,12 @@ public class MainTest {
 		///////////////////// CREATION DES MEMBRES ///////////////////////////
 		//////////////////////////////////////////////////////////////////////
 		MemberDAO userManagerMember = (MemberDAO) context.getBean("memberDAOImpl");
-		Member m1 = new Member("LEVEL", "LAURENE", "laurene.level@infotel.com", "35 rue Pasteur Retiers", "azerty123");
-		Member m2 = new Member("COCHENNEC", "YOANN", "yoann.cochennec@infotel.com", "Brestmeme", "azerty123");
-		Member m3 = new Member("RONCO", "ROMAIN", "roamin.ronco@infotel.com", "Rennes", "azerty123");
-		Member m4 = new Member("GUENOT", "MICKAEL", "mickael.guenot@infotel.com", "Lyon", "azerty123");
-		Member m5 = new Member("LE TEXIER", "LENA", "lena.letexier@infotel.com", "BrestpasMeme", "azerty123");
-		Member m6 = new Member("az", "az", "az@az", "az", "az");
+		Member m1 = new Member("LEVEL", "LAURENE", "laurene.level@infotel.com", "35 rue Pasteur Retiers", "azerty123",false);
+		Member m2 = new Member("COCHENNEC", "YOANN", "yoann.cochennec@infotel.com", "Brestmeme", "azerty123",false);
+		Member m3 = new Member("RONCO", "ROMAIN", "roamin.ronco@infotel.com", "Rennes", "azerty123",false);
+		Member m4 = new Member("GUENOT", "MICKAEL", "mickael.guenot@infotel.com", "Lyon", "azerty123",false);
+		Member m5 = new Member("LE TEXIER", "LENA", "lena.letexier@infotel.com", "BrestpasMeme", "azerty123",false);
+		Member m6 = new Member("az", "az", "az@az", "az", "az",true);
 		m1.setMember_Library(l1);
 		m2.setMember_Library(l1);
 		m3.setMember_Library(l1);
