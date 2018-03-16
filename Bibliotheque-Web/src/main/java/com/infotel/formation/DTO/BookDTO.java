@@ -15,6 +15,7 @@ public class BookDTO implements Serializable {
 	private boolean popular_book;
 
 	private long book_authorId;
+
 	private long book_editorId;
 	private long book_categoryId;
 
@@ -106,6 +107,10 @@ public class BookDTO implements Serializable {
 
 	public long getBook_authorId() {
 		return book_authorId;
+	}
+
+	public void setBook_authorId(long book_authorId) {
+		this.book_authorId = book_authorId;
 	}
 
 }

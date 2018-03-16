@@ -46,22 +46,37 @@ public class BookController {
 		List<BookDTO> viewBooks = new ArrayList<BookDTO>();
 		
 		List<Book> books = bookService.getBooks();
+		System.out.println(books);
 		
 		for (Book book : books) {
-			viewBooks.add(new BookDTO(book.getISBN(), book.getBook_title(), book.getBook_description(),
-					book.getBook_price(), book.getPublication_date(), book.getImage_path(), book.isPopular_book()));
-
+			BookDTO bDTO = new BookDTO(book.getISBN(), book.getBook_title(), book.getBook_description(),
+					book.getBook_price(), book.getPublication_date(), book.getImage_path(), book.isPopular_book());
+			bDTO.setBook_authorId(book.getBook_author().getAuthor_id());
+			bDTO.setBook_editorId(book.getBook_editor().getEditor_id());
+			bDTO.setBook_categoryId(book.getBook_category().getCategory_id());
+			System.out.println(bDTO);
+			viewBooks.add(bDTO);
 		}
 		return viewBooks;
 	}
 
-	@PostMapping(value = "/book/update", consumes = { MediaType.APPLICATION_JSON_VALUE })
-	public void updateBook(@RequestBody Book book) {
+	@PostMapping(value = "/book/update/", consumes = { MediaType.APPLICATION_JSON_VALUE })
+	public void updateBook(@RequestBody BookDTO bookDTO) {
+		Book book = new Book(bookDTO.getISBN(), bookDTO.getBook_title(), bookDTO.getBook_description(),
+				bookDTO.getBook_price(), bookDTO.getPublication_date(), bookDTO.isPopular_book());
+		book.setBook_author(authorService.getAuthorById(bookDTO.getBook_authorId()));
+		book.setBook_editor(editorService.getEditorById(bookDTO.getBook_editorId()));
+		book.setBook_category(categoryService.getCategoryById(bookDTO.getBook_categoryId()));
 		bookService.updateBook(book);
 	}
 
 	@PostMapping(value = "/book/delete", consumes = { MediaType.APPLICATION_JSON_VALUE })
-	public void deleteBook(@RequestBody Book book) {
+	public void deleteBook(@RequestBody BookDTO bookDTO) {
+		Book book = new Book(bookDTO.getISBN(), bookDTO.getBook_title(), bookDTO.getBook_description(),
+				bookDTO.getBook_price(), bookDTO.getPublication_date(), bookDTO.isPopular_book());
+		book.setBook_author(authorService.getAuthorById(bookDTO.getBook_authorId()));
+		book.setBook_editor(editorService.getEditorById(bookDTO.getBook_editorId()));
+		book.setBook_category(categoryService.getCategoryById(bookDTO.getBook_categoryId()));
 		bookService.deleteBook(book);
 	}
 
