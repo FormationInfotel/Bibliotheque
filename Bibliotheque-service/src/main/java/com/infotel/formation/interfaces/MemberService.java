@@ -14,14 +14,18 @@ public interface MemberService {
 
 	public Member getMemberById(int idMember);
 
-	public boolean isAccountExist(Member member);
-
 	public Member getUserByMail(String memberMail);
 
 	public boolean isMailAlreadyExist(String memberMail);
+	
+	public boolean isAccountExistString(String email, String pw);
+	
+	public boolean isAccountExist(Member member);
+
 
 	public String encryptPw(String pw);
-
+	
+	
 	public List<Member> getMembers();
 
 }

@@ -6,14 +6,18 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.infotel.formation.interfaces.BookDAO;
+import com.infotel.formation.interfaces.BookService;
 
 @Controller
 public class AccueilController {
+	
 	@Autowired
-	private BookDAO bookDao;
+	private BookService bookService;
+	
+	
 	@RequestMapping("/")
 	public String recommendedBooks(Model model) {
-		model.addAttribute("recommendedBooks", bookDao.getBooksByRecommand());
+		model.addAttribute("recommendedBooks", bookService.getRecommendedBooks());
 		return "Accueil";
 	}
 }

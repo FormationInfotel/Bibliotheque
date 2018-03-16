@@ -22,13 +22,13 @@ public class rechercheController {
 	@Autowired
 	public BookService bookService;
 
-	@RequestMapping(value = "/Recherche", method = RequestMethod.GET)
+	@RequestMapping(value = "/recherche", method = RequestMethod.GET)
 	public String rechercheBook(Model model) {
 		return "recherche";
 	}
 
-	@RequestMapping(value = "/Recherche", method = RequestMethod.POST)
-	private String resultatRecherche2(HttpServletRequest request, Model model) {
+	@RequestMapping(value = "/recherche", method = RequestMethod.POST)
+	private String resultatRecherche(HttpServletRequest request, Model model) {
 		List<Book> listeBook = new ArrayList<Book>();
 		if (request.getParameter("txboxRecherche") != "") {
 			String motTitre = request.getParameter("txboxRecherche");

@@ -51,7 +51,6 @@ public class BookServiceImpl implements BookService {
 
 	}
 
-	@SuppressWarnings("unchecked")
 	public Set<Book> getBooksByKeyword(String keyword) {
 
 		Set<Book> rechercheLivre = new HashSet<Book>();
@@ -83,9 +82,13 @@ public class BookServiceImpl implements BookService {
 	}
 
 
-
 	public List<Book> getBooks() {
 		return bookDAO.getBooks();
+	}
+
+	@Override
+	public List<Book> getRecommendedBooks() {
+		return bookDAO.getRecommendedBooks();
 	}
 
 

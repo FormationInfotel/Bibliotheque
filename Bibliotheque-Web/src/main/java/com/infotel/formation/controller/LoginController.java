@@ -9,16 +9,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.infotel.formation.entity.Member;
-import com.infotel.formation.interfaces.MemberDAO;
+import com.infotel.formation.interfaces.MemberService;
 
 @Controller
 public class LoginController {
 	
-	@Autowired
-	private MemberDAO memberDAO;
+//	@Autowired
+//	private MemberDAO memberDAO;
 
-	// @Autowired
-	// private MemberService memberService;
+	 @Autowired
+	 private MemberService memberService;
 	
 	
 	
@@ -36,7 +36,7 @@ public class LoginController {
     	String email = request.getParameter("txtboxEmail");
     	String pswd = request.getParameter("txtboxPswd");
     	
-    	if (memberDAO.isAccountExistString(email, pswd)) {
+    	if (memberService.isAccountExistString(email, pswd)) {
     		return "redirect:/";
     	}
     	

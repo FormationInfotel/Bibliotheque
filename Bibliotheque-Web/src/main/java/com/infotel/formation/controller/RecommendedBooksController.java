@@ -5,20 +5,18 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.infotel.formation.interfaces.BookDAO;
+import com.infotel.formation.interfaces.BookService;
 
 @Controller
 public class RecommendedBooksController {
 
-	@Autowired
-	private BookDAO bookDao;
-
-	// @Autowired
-	// private BookService bookService;
+	
+	 @Autowired
+	private BookService bookService;
 
 	@RequestMapping("/recommendedBooks")
 	public String recommendedBooks(Model model) {
-		model.addAttribute("recommendedBooks", bookDao.getBooksByRecommand());
+		model.addAttribute("recommendedBooks", bookService.getRecommendedBooks());
 		return "recommendedBooks";
 	}
 
