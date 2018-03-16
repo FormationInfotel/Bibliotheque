@@ -24,7 +24,8 @@ public class AuthorController {
 	@Autowired
 	AuthorService authorService;
 
-	AuthorMapper mapper = new AuthorMapper();
+	@Autowired
+	AuthorMapper mapper;
 
 	@GetMapping(value = "/author/get")
 	public List<AuthorDTO> getBooks() {

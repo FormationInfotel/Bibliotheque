@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.infotel.formation.DTO.MemberDTO;
+import com.infotel.formation.Mapper.AuthorMapper;
 import com.infotel.formation.entity.Member;
 import com.infotel.formation.exception.ServiceException;
 import com.infotel.formation.interfaces.MemberService;
@@ -21,6 +22,10 @@ public class LoginController {
 
 	@Autowired
 	private MemberService memberService;
+	
+//	@Autowired
+//	MemberMapper mapper;
+
 
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	private String connexionMembre(Model model) {
@@ -47,6 +52,8 @@ public class LoginController {
 		try {
 			Member membre = memberService.login(identifiants.getEmail(), identifiants.getPassword());
 
+			
+			// Member mapper incoming
 			memberDTO.setMember_firstname(membre.getMember_firstname());
 			memberDTO.setMember_lastname(membre.getMember_lastname());
 			memberDTO.setMember_address(membre.getMember_address());
