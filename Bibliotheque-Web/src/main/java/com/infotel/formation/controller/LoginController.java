@@ -1,13 +1,11 @@
 package com.infotel.formation.controller;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.infotel.formation.entity.Member;
 import com.infotel.formation.exception.ServiceException;
@@ -16,7 +14,7 @@ import com.infotel.formation.utils.ControllerConstants;
 import com.infotel.formation.utils.Resultat;
 import com.infotel.formation.viewmodel.IdentifiantsVM;
 
-@Controller
+@RestController
 public class LoginController {
 
 	@Autowired
@@ -46,10 +44,12 @@ public class LoginController {
 		Resultat res = new Resultat();
 				
 		try {
-			memberService.login(identifiants.getEmail(), identifiants.getPassword());
+						
+			Member member = memberService.login(identifiants.getEmail(), identifiants.getPassword());
 			
 			res.setIsSucces(true);
 			res.setMessage(ControllerConstants.LOGIN_SUCCESS);
+			res.setPayload(member);
 			
 
 		} catch (ServiceException serviceException) {
