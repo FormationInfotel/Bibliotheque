@@ -20,7 +20,7 @@ public interface BookDAO {
 
 	List<Book> getBooks();
 
-	public List<Book> getBooksByRecommand();
+	public List<Book> getRecommendedBooks();
 
 	public List<Book> getBooksByTitleDescript(String keyword);
 

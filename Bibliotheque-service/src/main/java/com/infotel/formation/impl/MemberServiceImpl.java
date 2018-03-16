@@ -77,5 +77,10 @@ public class MemberServiceImpl implements MemberService {
 		return memberDAO.getMemberById(idMember);
 	}
 
+	@Override
+	public boolean isAccountExistString(String email, String pw) {
+		return memberDAO.isAccountExistString(email, pw);
+	}
+
 
 }

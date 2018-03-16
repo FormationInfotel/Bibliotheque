@@ -71,7 +71,7 @@ public class BookDAOImpl implements BookDAO {
 	}
 
 	@SuppressWarnings("unchecked")
-	public List<Book> getBooksByRecommand() {
+	public List<Book> getRecommendedBooks() {
 		List<Book> listeBook = new ArrayList<Book>();
 		listeBook = sessionFactory.getCurrentSession().createQuery("from Book as b where b.popular_book = true").list();
 		return listeBook;

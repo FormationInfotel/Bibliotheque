@@ -19,7 +19,7 @@
 			<h1 class="display-4">Recherche</h1>
 			<hr>
 			<br>
-			<form method="POST" action="${context}/Recherche">
+			<form method="POST" action="${context}/recherche">
 				<br>
 				<div>
 					<label class="form-check-label" for="defaultCheck1">Pour

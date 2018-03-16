@@ -14,6 +14,8 @@ public interface BookService {
 	public void updateBook(Book book);
 
 	public void deleteBook(Book book);
+	
+	public List<Book> getRecommendedBooks();
 
 	List<Book> getBooks();
 

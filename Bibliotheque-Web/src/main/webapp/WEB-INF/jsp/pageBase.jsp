@@ -34,14 +34,14 @@
 				href="/ProjetFinal/">Accueil <span class="sr-only">(current)</span>
 			</a></li>
 			<li class="nav-item active"><a class="nav-link"
-				href="/ProjetFinal/Recherche">Recherche <span class="sr-only">(current)</span>
+				href="/ProjetFinal/recherche">Recherche <span class="sr-only">(current)</span>
 			</a></li>
 
 			<li class="nav-item active"><a class="nav-link"
 				href="/ProjetFinal/login">Espace Membre <span class="sr-only">(current)</span>
 			</a></li>
 		</ul>
-		<form class="form-inline" method="POST" action="${context}/Recherche">
+		<form class="form-inline" method="POST" action="${context}/recherche">
 			<input class="form-control mr-sm-2" type="search"
 				placeholder="Nom de livre" aria-label="Search" id="txboxRecherche"
 				name="txboxRecherche">
