@@ -12,7 +12,7 @@ public class AuthorMapper {
 	@Autowired
 	BookService bookService;
 
-	public Author mapIntoAuhor(AuthorDTO authorDTO) {
+	public Author mapIntoAuthor(AuthorDTO authorDTO) {
 		Author author = new Author(authorDTO.getAuthor_lastname(), authorDTO.getAuthor_firstname());
 
 		for (Long id : authorDTO.getAuthor_listeBookId()) {
@@ -24,7 +24,6 @@ public class AuthorMapper {
 
 	public AuthorDTO mapIntoAuthorDTO(Author author) {
 		AuthorDTO authorDTO = new AuthorDTO(author.getAuthor_lastname(), author.getAuthor_firstname());
-
 		for (Book book : author.getAuthor_listeBook()) {
 			authorDTO.getAuthor_listeBookId().add(book.getISBN());
 		}

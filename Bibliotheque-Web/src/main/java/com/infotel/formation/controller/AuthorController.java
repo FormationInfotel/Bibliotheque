@@ -1,5 +1,6 @@
 package com.infotel.formation.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +9,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.infotel.formation.DTO.AuthorDTO;
+import com.infotel.formation.Mapper.AuthorMapper;
 import com.infotel.formation.entity.Author;
 import com.infotel.formation.interfaces.AuthorService;
 
@@ -16,23 +19,33 @@ public class AuthorController {
 	@Autowired
 	AuthorService authorService;
 
+	AuthorMapper mapper = new AuthorMapper();
+
 	@GetMapping(value = "/author/get")
-	public List<Author> getAuthors() {
-		return authorService.getAuthors();
+	public List<AuthorDTO> getBooks() {
+		List<AuthorDTO> viewAuthor = new ArrayList<AuthorDTO>();
+
+		List<Author> authors = authorService.getAuthors();
+
+		for (Author author : authors) {
+			System.out.println(author);
+			viewAuthor.add(mapper.mapIntoAuthorDTO(author));
+		}
+		return viewAuthor;
 	}
 
 	@PostMapping(value = "/author/add", consumes = { MediaType.APPLICATION_JSON_VALUE })
-	public void addAuthor(Author author) {
-		authorService.insertAuthor(author);
+	public void addAuthor(AuthorDTO authorDTO) {
+		authorService.insertAuthor(mapper.mapIntoAuthor(authorDTO));
 	}
 
 	@PostMapping(value = "/author/update", consumes = { MediaType.APPLICATION_JSON_VALUE })
-	public void updateAuthor(Author author) {
-		authorService.insertAuthor(author);
+	public void updateAuthor(AuthorDTO authorDTO) {
+		authorService.updateAuthor(mapper.mapIntoAuthor(authorDTO));
 	}
 
 	@PostMapping(value = "/author/delete", consumes = { MediaType.APPLICATION_JSON_VALUE })
-	public void deleteAuthor(Author author) {
-		authorService.insertAuthor(author);
+	public void deleteAuthor(AuthorDTO authorDTO) {
+		authorService.deleteAuthor(mapper.mapIntoAuthor(authorDTO));
 	}
 }

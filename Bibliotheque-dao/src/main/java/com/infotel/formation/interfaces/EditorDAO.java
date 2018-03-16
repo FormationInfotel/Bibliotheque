@@ -5,7 +5,11 @@ import java.util.List;
 import com.infotel.formation.entity.Editor;
 
 public interface EditorDAO {
-	void insertEditor(Editor editor);
+	public void insertEditor(Editor editor);
+
+	public void updateEditor(Editor editor);
+
+	public void deleteEditor(Editor editor);
 
 	public Editor getEditorById(long editorId);
 

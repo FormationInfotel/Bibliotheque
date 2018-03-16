@@ -16,6 +16,7 @@ public class Editor implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long editor_id;
 	private String editor_name;
+	private String editor_address;
 
 	@OneToMany(mappedBy = "book_editor")
 	private List<Book> editor_listeBook;
@@ -62,5 +63,4 @@ public class Editor implements Serializable {
 		return editor_id;
 	}
 
-	private String editor_address;
 }

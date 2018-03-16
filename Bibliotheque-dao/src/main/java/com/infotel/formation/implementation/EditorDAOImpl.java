@@ -23,6 +23,16 @@ public class EditorDAOImpl implements EditorDAO {
 	}
 
 	@Override
+	public void updateEditor(Editor editor) {
+		sessionFactory.getCurrentSession().update(editor);
+	}
+
+	@Override
+	public void deleteEditor(Editor editor) {
+		sessionFactory.getCurrentSession().delete(editor);
+	}
+
+	@Override
 	public Editor getEditorById(long editorId) {
 		Editor editorById = null;
 
@@ -31,10 +41,6 @@ public class EditorDAOImpl implements EditorDAO {
 				editorById = editor;
 				break;
 			}
-		}
-
-		if (editorById == null) {
-			throw new IllegalArgumentException("No Editor found with the Editor id : " + editorId);
 		}
 		return editorById;
 	}
@@ -64,5 +70,6 @@ public class EditorDAOImpl implements EditorDAO {
 		List<Editor> result = (List<Editor>) sessionFactory.getCurrentSession().createQuery("from Editor").list();
 		return result;
 	}
+
 
 }
