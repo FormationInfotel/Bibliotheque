@@ -5,8 +5,10 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.infotel.formation.DTO.AuthorDTO;
@@ -19,7 +21,8 @@ public class AuthorController {
 	@Autowired
 	AuthorService authorService;
 
-	AuthorMapper mapper = new AuthorMapper();
+	@Autowired
+	AuthorMapper mapper;
 
 	@GetMapping(value = "/author/get")
 	public List<AuthorDTO> getBooks() {
@@ -34,7 +37,7 @@ public class AuthorController {
 		return viewAuthor;
 	}
 
-	@PostMapping(value = "/author/add", consumes = { MediaType.APPLICATION_JSON_VALUE })
+	@PutMapping(value = "/author/add", consumes = { MediaType.APPLICATION_JSON_VALUE })
 	public void addAuthor(AuthorDTO authorDTO) {
 		authorService.insertAuthor(mapper.mapIntoAuthor(authorDTO));
 	}
@@ -44,7 +47,7 @@ public class AuthorController {
 		authorService.updateAuthor(mapper.mapIntoAuthor(authorDTO));
 	}
 
-	@PostMapping(value = "/author/delete", consumes = { MediaType.APPLICATION_JSON_VALUE })
+	@DeleteMapping(value = "/author/delete", consumes = { MediaType.APPLICATION_JSON_VALUE })
 	public void deleteAuthor(AuthorDTO authorDTO) {
 		authorService.deleteAuthor(mapper.mapIntoAuthor(authorDTO));
 	}

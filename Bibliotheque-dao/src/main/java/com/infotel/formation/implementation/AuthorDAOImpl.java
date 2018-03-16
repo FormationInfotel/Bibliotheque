@@ -43,10 +43,6 @@ import com.infotel.formation.interfaces.AuthorDAO;
 				break;
 			}
 		}
-
-		if (authorById == null) {
-			throw new IllegalArgumentException("No Author found with the Author id : " + authorId);
-		}
 		return authorById;
 
 	}

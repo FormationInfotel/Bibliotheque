@@ -17,6 +17,7 @@ public class AuthorServiceImpl implements AuthorService {
 	@Autowired
 	AuthorDAO authorDAO;
 
+	@Override
 	public Author getAuthorById(long authorId) {
 		return authorDAO.getAuthorById(authorId);
 	}

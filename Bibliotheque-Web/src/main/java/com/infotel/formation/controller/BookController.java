@@ -5,8 +5,10 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -29,6 +31,7 @@ public class BookController {
 	@Autowired
 	CategoryService categoryService;
 
+	@Autowired
 	BookMapper mapper;
 
 	@GetMapping(value = "/book/get")
@@ -36,21 +39,17 @@ public class BookController {
 		List<BookDTO> viewBooks = new ArrayList<BookDTO>();
 
 		List<Book> books = bookService.getBooks();
-		System.out.println(books);
 
 		for (Book book : books) {
-
 			viewBooks.add(mapper.mapIntoBookDTO(book));
 		}
 		return viewBooks;
 	}
 
-	@PostMapping(value = "/book/add", consumes = { MediaType.APPLICATION_JSON_VALUE })
+	@PutMapping(value = "/book/add", consumes = { MediaType.APPLICATION_JSON_VALUE })
 	public void addBook(@RequestBody BookDTO bookDTO) {
 
 		bookService.insertBook(mapper.mapIntoBook(bookDTO));
-
-		System.out.println("Insert done successfully");
 	}
 
 	@PostMapping(value = "/book/update/", consumes = { MediaType.APPLICATION_JSON_VALUE })
@@ -59,7 +58,7 @@ public class BookController {
 		bookService.updateBook(mapper.mapIntoBook(bookDTO));
 	}
 
-	@PostMapping(value = "/book/delete", consumes = { MediaType.APPLICATION_JSON_VALUE })
+	@DeleteMapping(value = "/book/delete", consumes = { MediaType.APPLICATION_JSON_VALUE })
 	public void deleteBook(@RequestBody BookDTO bookDTO) {
 
 		bookService.deleteBook(mapper.mapIntoBook(bookDTO));

@@ -5,8 +5,10 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.infotel.formation.DTO.EditorDTO;
@@ -16,9 +18,11 @@ import com.infotel.formation.interfaces.EditorService;
 
 @RestController
 public class EditorController {
+
 	@Autowired
 	EditorService editorService;
 
+	@Autowired
 	EditorMapper mapper;
 
 	@GetMapping(value = "/editor/get")
@@ -34,7 +38,7 @@ public class EditorController {
 		return viewEditor;
 	}
 
-	@PostMapping(value = "/editor/add", consumes = { MediaType.APPLICATION_JSON_VALUE })
+	@PutMapping(value = "/editor/add", consumes = { MediaType.APPLICATION_JSON_VALUE })
 	public void addAuthor(EditorDTO editorDTO) {
 		editorService.insertEditor(mapper.mapIntoEditor(editorDTO));
 	}
@@ -44,7 +48,7 @@ public class EditorController {
 		editorService.insertEditor(mapper.mapIntoEditor(editorDTO));
 	}
 
-	@PostMapping(value = "/editor/delete", consumes = { MediaType.APPLICATION_JSON_VALUE })
+	@DeleteMapping(value = "/editor/delete", consumes = { MediaType.APPLICATION_JSON_VALUE })
 	public void deleteAuthor(EditorDTO editorDTO) {
 		editorService.insertEditor(mapper.mapIntoEditor(editorDTO));
 	}
