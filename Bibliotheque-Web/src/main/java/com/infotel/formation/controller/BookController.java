@@ -52,7 +52,7 @@ public class BookController {
 		bookService.insertBook(mapper.mapIntoBook(bookDTO));
 	}
 
-	@PostMapping(value = "/book/update/", consumes = { MediaType.APPLICATION_JSON_VALUE })
+	@PostMapping(value = "/book/update", consumes = { MediaType.APPLICATION_JSON_VALUE })
 	public void updateBook(@RequestBody BookDTO bookDTO) {
 
 		bookService.updateBook(mapper.mapIntoBook(bookDTO));
@@ -61,7 +61,7 @@ public class BookController {
 	@DeleteMapping(value = "/book/delete", consumes = { MediaType.APPLICATION_JSON_VALUE })
 	public void deleteBook(@RequestBody BookDTO bookDTO) {
 
-		bookService.deleteBook(mapper.mapIntoBook(bookDTO));
+		bookService.deleteBook(bookService.getBookById(bookDTO.getISBN()));
 	}
 
 }

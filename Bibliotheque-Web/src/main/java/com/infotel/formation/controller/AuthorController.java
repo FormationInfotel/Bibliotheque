@@ -49,6 +49,6 @@ public class AuthorController {
 
 	@DeleteMapping(value = "/author/delete", consumes = { MediaType.APPLICATION_JSON_VALUE })
 	public void deleteAuthor(AuthorDTO authorDTO) {
-		authorService.deleteAuthor(mapper.mapIntoAuthor(authorDTO));
+		authorService.deleteAuthor(authorService.getAuthorById(authorDTO.getAuthor_id()));
 	}
 }
