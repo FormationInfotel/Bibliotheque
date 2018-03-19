@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.infotel.formation.DTO.AuthorDTO;
@@ -40,8 +41,8 @@ public class AuthorController {
 		return viewAuthor;
 	}
 
-	@PutMapping(value = "/author/add", consumes = { MediaType.APPLICATION_JSON_VALUE })
-	public Resultat addAuthor(AuthorDTO authorDTO) throws Exception {
+	@PutMapping(value = "/author/add") //, consumes = { MediaType.APPLICATION_JSON_VALUE })
+	public Resultat addAuthor(@RequestBody AuthorDTO authorDTO) throws Exception {
 		Resultat res = new Resultat();
 
 		try {
@@ -62,8 +63,8 @@ public class AuthorController {
 		return res;
 	}
 
-	@PostMapping(value = "/author/update", consumes = { MediaType.APPLICATION_JSON_VALUE })
-	public Resultat updateAuthor(AuthorDTO authorDTO) throws Exception {
+	@PostMapping(value = "/author/update")//, consumes = { MediaType.APPLICATION_JSON_VALUE })
+	public Resultat updateAuthor(@RequestBody AuthorDTO authorDTO) throws Exception {
 		Resultat res = new Resultat();
 
 		try {
@@ -84,7 +85,7 @@ public class AuthorController {
 	}
 
 	@DeleteMapping(value = "/author/delete", consumes = { MediaType.APPLICATION_JSON_VALUE })
-	public Resultat deleteAuthor(AuthorDTO authorDTO) throws Exception {
+	public Resultat deleteAuthor(@RequestBody AuthorDTO authorDTO) throws Exception {
 		Resultat res = new Resultat();
 
 		try {
