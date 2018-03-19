@@ -75,7 +75,7 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public Member getMemberById(int idMember) {
+	public Member getMemberById(long idMember) {
 		return memberDAO.getMemberById(idMember);
 	}
 	

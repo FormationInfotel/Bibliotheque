@@ -45,7 +45,7 @@ public class MemberDAOImpl extends _GenericDAOImpl<Member> implements MemberDAO 
 	}
 
 	@Override
-	public Member getMemberById(int memberId) {
+	public Member getMemberById(long memberId) {
 		Member memberById = null;
 
 		for (Member member : getMembers()) {

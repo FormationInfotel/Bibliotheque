@@ -6,13 +6,13 @@ import com.infotel.formation.entity.Member;
 
 public interface MemberService {
 
-	public void insertMember(Member member);
+	public void insertMember(Member member) throws Exception;
 
-	public void updateMember(Member member);
+	public void updateMember(Member member) throws Exception;
 
-	public void deleteMember(Member member);
+	public void deleteMember(Member member) throws Exception;
 
-	public Member getMemberById(int idMember);
+	public Member getMemberById(long idMember);
 
 	public Member getUserByMail(String memberMail);
 

@@ -12,7 +12,7 @@ public interface MemberDAO {
 	
 	 void deleteMember(Member member);
 
-	public Member getMemberById(int memberId);
+	public Member getMemberById(long memberId);
 
 	Member getMember(String memberFirstName, String memberLastName);
 
