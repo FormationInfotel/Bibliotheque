@@ -35,23 +35,19 @@ public class AuthorController {
 		List<Author> authors = authorService.getAuthors();
 
 		for (Author author : authors) {
-			System.out.println(author);
 			viewAuthor.add(mapper.mapIntoAuthorDTO(author));
 		}
 		return viewAuthor;
 	}
 
-	@PutMapping(value = "/author/add") //, consumes = { MediaType.APPLICATION_JSON_VALUE })
-	public Resultat addAuthor(@RequestBody AuthorDTO authorDTO) throws Exception {
+	@PutMapping(value = "/author/add", consumes = { MediaType.APPLICATION_JSON_VALUE })
+	public Resultat addAuthor(@RequestBody AuthorDTO authorDTO) {
 		Resultat res = new Resultat();
-
 		try {
-			authorService.insertAuthor(mapper.mapIntoAuthor(authorDTO));
-
+		authorService.insertAuthor(mapper.mapIntoAuthor(authorDTO));
 			res.setIsSucces(true);
 			res.setMessage(ControllerConstants.INSERT_SUCCESS);
 			res.setPayload(authorDTO);
-
 		} catch (ServiceException serviceException) {
 			res.setIsSucces(false);
 			res.setMessage(serviceException.getMessage());
@@ -63,7 +59,7 @@ public class AuthorController {
 		return res;
 	}
 
-	@PostMapping(value = "/author/update")//, consumes = { MediaType.APPLICATION_JSON_VALUE })
+	@PostMapping(value = "/author/update", consumes = { MediaType.APPLICATION_JSON_VALUE })
 	public Resultat updateAuthor(@RequestBody AuthorDTO authorDTO) throws Exception {
 		Resultat res = new Resultat();
 
@@ -89,7 +85,6 @@ public class AuthorController {
 		Resultat res = new Resultat();
 
 		try {
-			//authorService.deleteAuthor(mapper.mapIntoAuthor(authorDTO));
 			authorService.deleteAuthor(authorService.getAuthorById(authorDTO.getAuthor_id()));
 
 			res.setIsSucces(true);

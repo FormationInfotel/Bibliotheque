@@ -55,7 +55,7 @@ public class MemberController {
 			return "redirect:/";
 
 		} else {
-			memberService.insertMember(nouveauMembre);
+			// memberService.insertMember(nouveauMembre);
 			return "registration";
 		}
 
@@ -109,9 +109,9 @@ public class MemberController {
 		membre.setMember_Library(libraryService.getLibraryByName(libname));
 
 		if (tmpMember == membre) {
-			memberService.insertMember(membre);
+			// memberService.insertMember(membre);
 		} else {
-			memberService.updateMember(membre);
+			// memberService.updateMember(membre);
 		}
 
 		
@@ -153,7 +153,7 @@ public class MemberController {
 		Member tmpMembre = new Member();
 		tmpMembre = memberService.getMemberById(id);
 
-		memberService.deleteMember(tmpMembre);
+		// memberService.deleteMember(tmpMembre);
 
 		redirectAttributes.addFlashAttribute("css", "success");
 		redirectAttributes.addFlashAttribute("msg", "User is deleted!");
