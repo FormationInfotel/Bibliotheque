@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,10 +15,7 @@ import com.infotel.formation.DTO.BookDTO;
 import com.infotel.formation.Mapper.BookMapper;
 import com.infotel.formation.entity.Book;
 import com.infotel.formation.exception.ServiceException;
-import com.infotel.formation.interfaces.AuthorService;
 import com.infotel.formation.interfaces.BookService;
-import com.infotel.formation.interfaces.CategoryService;
-import com.infotel.formation.interfaces.EditorService;
 import com.infotel.formation.utils.ControllerConstants;
 import com.infotel.formation.utils.Resultat;
 
@@ -27,12 +23,6 @@ import com.infotel.formation.utils.Resultat;
 public class BookController {
 	@Autowired
 	BookService bookService;
-	@Autowired
-	AuthorService authorService;
-	@Autowired
-	EditorService editorService;
-	@Autowired
-	CategoryService categoryService;
 
 	@Autowired
 	BookMapper mapper;
@@ -102,7 +92,7 @@ public class BookController {
 	public Resultat deleteBook(@RequestBody BookDTO bookDTO) {
 		Resultat res = new Resultat();
 		try {
-			bookService.deleteBook(mapper.mapIntoBook(bookDTO));
+			bookService.deleteBook(bookService.getBookById(bookDTO.getISBN()));
 			
 			res.setIsSucces(true);
 			res.setMessage(ControllerConstants.DELETE_SUCCESS);

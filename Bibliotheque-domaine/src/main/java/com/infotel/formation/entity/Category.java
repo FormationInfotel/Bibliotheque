@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -18,7 +19,7 @@ public class Category implements Serializable {
 	private String category_name;
 	private String category_description;
 
-	@OneToMany(mappedBy = "book_category")
+	@OneToMany(mappedBy = "book_category", fetch = FetchType.EAGER)
 	private List<Book> category_listeBook;
 
 	public List<Book> getCategory_listeBook() {
@@ -36,6 +37,10 @@ public class Category implements Serializable {
 		super();
 		this.category_name = category_name;
 		this.category_description = category_description;
+	}
+
+	public void setCategory_id(long category_id) {
+		this.category_id = category_id;
 	}
 
 	@Override

@@ -24,6 +24,17 @@ public class CategoryDAOImpl implements CategoryDAO {
 	}
 
 	@Override
+	public void updateCategory(Category category) {
+		sessionFactory.getCurrentSession().update(category);
+	}
+
+	@Override
+	public void deleteCategory(Category category) {
+		sessionFactory.getCurrentSession().delete(category);
+	}
+
+
+	@Override
 	public Category getCategoryById(long categoryId) {
 		Category categoryById = null;
 
@@ -57,5 +68,6 @@ public class CategoryDAOImpl implements CategoryDAO {
 		List<Category> result = (List<Category>) sessionFactory.getCurrentSession().createQuery("from Category").list();
 		return result;
 	}
+
 
 }

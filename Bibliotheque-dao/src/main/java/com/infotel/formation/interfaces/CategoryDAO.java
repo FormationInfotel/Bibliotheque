@@ -10,7 +10,11 @@ public interface CategoryDAO {
 
 	List<Category> getCategories();
 
-	void insertCategory(Category category);
+	public void insertCategory(Category category);
+
+	public void updateCategory(Category category);
+
+	public void deleteCategory(Category category);
 
 	List<Category> getListCategoryByKeyword(String categoryName);
 
