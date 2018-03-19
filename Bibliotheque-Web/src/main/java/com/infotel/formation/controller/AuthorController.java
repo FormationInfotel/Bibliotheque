@@ -39,19 +39,7 @@ public class AuthorController {
 		}
 		return viewAuthor;
 	}
-
-	@PutMapping(value = "/author/add") //, consumes = { MediaType.APPLICATION_JSON_VALUE })
-	public Resultat addAuthor(@RequestBody AuthorDTO authorDTO) throws Exception {
-		Resultat res = new Resultat();
-
-		try {
-			authorService.insertAuthor(mapper.mapIntoAuthor(authorDTO));
-
-			res.setIsSucces(true);
-			res.setMessage(ControllerConstants.INSERT_SUCCESS);
-			res.setPayload(authorDTO);
-
-		} catch (ServiceException serviceException) {
+	
 	@PutMapping(value = "/author/add", consumes = { MediaType.APPLICATION_JSON_VALUE })
 	public void addAuthor(@RequestBody AuthorDTO authorDTO) {
 		authorService.insertAuthor(mapper.mapIntoAuthor(authorDTO));
