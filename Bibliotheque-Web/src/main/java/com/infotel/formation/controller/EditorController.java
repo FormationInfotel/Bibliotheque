@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.infotel.formation.DTO.EditorDTO;
@@ -39,18 +40,19 @@ public class EditorController {
 	}
 
 	@PutMapping(value = "/editor/add", consumes = { MediaType.APPLICATION_JSON_VALUE })
-	public void addAuthor(EditorDTO editorDTO) {
+	public void addAuthor(@RequestBody EditorDTO editorDTO) {
 		editorService.insertEditor(mapper.mapIntoEditor(editorDTO));
 	}
 
 	@PostMapping(value = "/editor/update", consumes = { MediaType.APPLICATION_JSON_VALUE })
-	public void updateAuthor(EditorDTO editorDTO) {
-		editorService.insertEditor(mapper.mapIntoEditor(editorDTO));
+	public void updateAuthor(@RequestBody EditorDTO editorDTO) {
+		editorService.updateEditor(mapper.mapIntoEditor(editorDTO));
 	}
 
 	@DeleteMapping(value = "/editor/delete", consumes = { MediaType.APPLICATION_JSON_VALUE })
-	public void deleteAuthor(EditorDTO editorDTO) {
-		editorService.insertEditor(mapper.mapIntoEditor(editorDTO));
+	public void deleteAuthor(@RequestBody EditorDTO editorDTO) {
+		editorService.deleteEditor(editorService.getEditorById(editorDTO.getEditor_id()));
+
 	}
 
 }

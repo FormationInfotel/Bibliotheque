@@ -16,7 +16,7 @@ public class EditorMapper {
 
 	public Editor mapIntoEditor(EditorDTO editorDTO) {
 		Editor editor = new Editor(editorDTO.getEditor_name(), editorDTO.getEditor_address());
-
+		editor.setEditor_id(editorDTO.getEditor_id());
 		for (Long id : editorDTO.getEditor_listeBookId()) {
 			editor.getEditor_listeBook().add(bookService.getBookById(id));
 		}
@@ -26,7 +26,7 @@ public class EditorMapper {
 
 	public EditorDTO mapIntoEditorDTO(Editor editor) {
 		EditorDTO editorDTO = new EditorDTO(editor.getEditor_name(), editor.getEditor_address());
-
+		editorDTO.setEditor_id(editor.getEditor_id());
 		for (Book book : editor.getEditor_listeBook()) {
 			editorDTO.getEditor_listeBookId().add(book.getISBN());
 		}

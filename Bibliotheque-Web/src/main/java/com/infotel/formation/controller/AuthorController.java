@@ -35,7 +35,6 @@ public class AuthorController {
 		List<Author> authors = authorService.getAuthors();
 
 		for (Author author : authors) {
-			System.out.println(author);
 			viewAuthor.add(mapper.mapIntoAuthorDTO(author));
 		}
 		return viewAuthor;
@@ -53,6 +52,9 @@ public class AuthorController {
 			res.setPayload(authorDTO);
 
 		} catch (ServiceException serviceException) {
+	@PutMapping(value = "/author/add", consumes = { MediaType.APPLICATION_JSON_VALUE })
+	public void addAuthor(@RequestBody AuthorDTO authorDTO) {
+		authorService.insertAuthor(mapper.mapIntoAuthor(authorDTO));
 			res.setIsSucces(false);
 			res.setMessage(serviceException.getMessage());
 		} catch (Exception e) {
@@ -82,6 +84,9 @@ public class AuthorController {
 			res.setMessage("Err");
 		}
 		return res;
+	@PostMapping(value = "/author/update", consumes = { MediaType.APPLICATION_JSON_VALUE })
+	public void updateAuthor(@RequestBody AuthorDTO authorDTO) {
+		authorService.updateAuthor(mapper.mapIntoAuthor(authorDTO));
 	}
 
 	@DeleteMapping(value = "/author/delete", consumes = { MediaType.APPLICATION_JSON_VALUE })
@@ -104,6 +109,8 @@ public class AuthorController {
 			res.setMessage("Err");
 		}
 		return res;
+	public void deleteAuthor(@RequestBody AuthorDTO authorDTO) {
+		authorService.deleteAuthor(authorService.getAuthorById(authorDTO.getAuthor_id()));
 	}
 
 }

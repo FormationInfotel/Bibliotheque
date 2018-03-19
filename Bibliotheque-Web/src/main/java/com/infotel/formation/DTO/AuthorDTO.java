@@ -7,7 +7,8 @@ import java.util.List;
 public class AuthorDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	private int author_id;
+	private long author_id;
+
 	private String author_lastname;
 	private String author_firstname;
 
@@ -46,7 +47,12 @@ public class AuthorDTO implements Serializable {
 		this.author_listeBookId = author_listeBookId;
 	}
 
-	public int getAuthor_id() {
+	public long getAuthor_id() {
 		return author_id;
 	}
+
+	public void setAuthor_id(long author_id) {
+		this.author_id = author_id;
+	}
+
 }

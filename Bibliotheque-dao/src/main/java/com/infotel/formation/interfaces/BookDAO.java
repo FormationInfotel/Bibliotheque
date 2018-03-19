@@ -14,7 +14,7 @@ public interface BookDAO {
 
 	public void deleteBook(Book book);
 
-	public Book getBookById(Long bookId);
+	public Book getBookById(long bookId);
 
 	Book getBook(String bookTitle);
 

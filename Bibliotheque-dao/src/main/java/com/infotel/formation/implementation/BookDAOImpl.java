@@ -38,7 +38,7 @@ public class BookDAOImpl implements BookDAO {
 	}
 
 	@Override
-	public Book getBookById(Long bookId) {
+	public Book getBookById(long bookId) {
 		Book bookById = null;
 
 		for (Book book : getBooks()) {
