@@ -17,10 +17,7 @@ public class AuthorMapper {
 	public Author mapIntoAuthor(AuthorDTO authorDTO) {
 		Author author = new Author(authorDTO.getAuthor_lastname(), authorDTO.getAuthor_firstname());
 		author.setAuthor_id(authorDTO.getAuthor_id());
-		System.out.println(authorDTO.getAuthor_listeBookId());
 		for (Long id : authorDTO.getAuthor_listeBookId()) {
-			System.out.println(id);
-			System.out.println(bookService.getBookById(id));
 			author.getAuthor_listeBook().add(bookService.getBookById(id));
 		}
 

@@ -1,6 +1,7 @@
 package com.infotel.formation.entity;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -42,6 +43,7 @@ public class Author implements Serializable {
 		super();
 		this.author_lastname = author_lastname;
 		this.author_firstname = author_firstname;
+		author_listeBook = new ArrayList<Book>();
 	}
 
 	public void setAuthor_id(long author_id) {

@@ -1,9 +1,11 @@
 package com.infotel.formation.entity;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -18,7 +20,7 @@ public class Editor implements Serializable {
 	private String editor_name;
 	private String editor_address;
 
-	@OneToMany(mappedBy = "book_editor")
+	@OneToMany(mappedBy = "book_editor", fetch = FetchType.EAGER)
 	private List<Book> editor_listeBook;
 
 	public List<Book> getEditor_listeBook() {
@@ -41,6 +43,11 @@ public class Editor implements Serializable {
 		super();
 		this.editor_name = editor_name;
 		this.editor_address = editor_address;
+		editor_listeBook = new ArrayList<Book>();
+	}
+
+	public void setEditor_id(long editor_id) {
+		this.editor_id = editor_id;
 	}
 
 	public String getEditor_name() {

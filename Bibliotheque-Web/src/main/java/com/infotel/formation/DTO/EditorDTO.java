@@ -26,6 +26,10 @@ public class EditorDTO implements Serializable {
 		return editor_name;
 	}
 
+	public void setEditor_id(long editor_id) {
+		this.editor_id = editor_id;
+	}
+
 	public void setEditor_name(String editor_name) {
 		this.editor_name = editor_name;
 	}
