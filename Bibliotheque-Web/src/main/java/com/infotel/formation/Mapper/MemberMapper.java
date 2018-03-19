@@ -1,11 +1,13 @@
 package com.infotel.formation.Mapper;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import com.infotel.formation.DTO.MemberDTO;
 import com.infotel.formation.entity.Member;
 import com.infotel.formation.interfaces.LibraryService;
 
+@Component
 public class MemberMapper {
 
 	@Autowired
