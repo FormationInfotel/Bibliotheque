@@ -23,7 +23,7 @@ import com.infotel.formation.utils.Resultat;
 @RestController
 public class AuthorController {
 	@Autowired
-	AuthorService authorService;
+	AuthorService authorService; 
 
 	@Autowired
 	AuthorMapper mapper;
@@ -39,10 +39,16 @@ public class AuthorController {
 		}
 		return viewAuthor;
 	}
-	
+
 	@PutMapping(value = "/author/add", consumes = { MediaType.APPLICATION_JSON_VALUE })
-	public void addAuthor(@RequestBody AuthorDTO authorDTO) {
+	public Resultat addAuthor(@RequestBody AuthorDTO authorDTO) {
+		Resultat res = new Resultat();
+		try {
 		authorService.insertAuthor(mapper.mapIntoAuthor(authorDTO));
+			res.setIsSucces(true);
+			res.setMessage(ControllerConstants.INSERT_SUCCESS);
+			res.setPayload(authorDTO);
+		} catch (ServiceException serviceException) {
 			res.setIsSucces(false);
 			res.setMessage(serviceException.getMessage());
 		} catch (Exception e) {
@@ -72,9 +78,6 @@ public class AuthorController {
 			res.setMessage("Err");
 		}
 		return res;
-	@PostMapping(value = "/author/update", consumes = { MediaType.APPLICATION_JSON_VALUE })
-	public void updateAuthor(@RequestBody AuthorDTO authorDTO) {
-		authorService.updateAuthor(mapper.mapIntoAuthor(authorDTO));
 	}
 
 	@DeleteMapping(value = "/author/delete", consumes = { MediaType.APPLICATION_JSON_VALUE })
@@ -82,7 +85,6 @@ public class AuthorController {
 		Resultat res = new Resultat();
 
 		try {
-			//authorService.deleteAuthor(mapper.mapIntoAuthor(authorDTO));
 			authorService.deleteAuthor(authorService.getAuthorById(authorDTO.getAuthor_id()));
 
 			res.setIsSucces(true);
@@ -97,8 +99,6 @@ public class AuthorController {
 			res.setMessage("Err");
 		}
 		return res;
-	public void deleteAuthor(@RequestBody AuthorDTO authorDTO) {
-		authorService.deleteAuthor(authorService.getAuthorById(authorDTO.getAuthor_id()));
 	}
 
 }
