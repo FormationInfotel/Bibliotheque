@@ -59,7 +59,7 @@ public class AuthorController {
 		return res;
 	}
 
-	@PostMapping(value = "/author/update")//, consumes = { MediaType.APPLICATION_JSON_VALUE })
+	@PostMapping(value = "/author/update", consumes = { MediaType.APPLICATION_JSON_VALUE })
 	public Resultat updateAuthor(@RequestBody AuthorDTO authorDTO) throws Exception {
 		Resultat res = new Resultat();
 
