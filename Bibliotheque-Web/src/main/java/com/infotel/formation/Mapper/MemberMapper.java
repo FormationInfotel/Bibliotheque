@@ -14,11 +14,17 @@ public class MemberMapper {
 	LibraryService libraryService;
 
 	public Member mapIntoMember(MemberDTO memberDTO) {
+		System.out.println(memberDTO.getMember_lastname());
+		System.out.println(memberDTO.getMember_firstname());
+		System.out.println(memberDTO.getMember_email());
+		System.out.println(memberDTO.getMember_address());
+		System.out.println(memberDTO.getMember_password());
+		System.out.println(memberDTO.isMemberAdmin());
 		Member member = new Member(memberDTO.getMember_lastname(), memberDTO.getMember_firstname(),
 				memberDTO.getMember_email(), memberDTO.getMember_address(), memberDTO.getMember_password(),
 				memberDTO.isMemberAdmin());
-		member.setMember_id(memberDTO.getMember_id());
-		member.setMember_Library(libraryService.getLibraryById(memberDTO.getMember_LibraryId()));
+		// member.setMember_id(memberDTO.getMember_id());
+		// member.setMember_Library(libraryService.getLibraryById(memberDTO.getMember_LibraryId()));
 
 		return (member);
 	}

@@ -43,9 +43,13 @@ public class MemberController2 {
 
 	@PutMapping(value = "/member/add", consumes = { MediaType.APPLICATION_JSON_VALUE })
 	public Resultat addMember(@RequestBody MemberDTO memberDTO) {
+		System.out.println("ici");
 		Resultat res = new Resultat();
 		try {
+			System.out.println("ici1");
+			System.out.println(memberDTO);
 			memberService.insertMember(mapper.mapIntoMember(memberDTO));
+
 			res.setIsSucces(true);
 			res.setMessage(ControllerConstants.INSERT_SUCCESS);
 			res.setPayload(memberDTO);
