@@ -28,35 +28,34 @@ public class ConteneurSpringFullJava {
 
 	@Bean
 	public LocalSessionFactoryBean sessionFactory() {
-		// System.out.println("debut session");
 		LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
+		
 		sessionFactory.setDataSource(restDataSource());
 		sessionFactory.setPackagesToScan(new String[] { "com.infotel.formation" });
 		sessionFactory.setHibernateProperties(hibernateProperties());
-		// System.out.println("fin session");
+		
 		return sessionFactory;
 
 	}
 
 	@Bean
 	public DataSource restDataSource() {
-		// System.out.println("debut datasource");
 		BasicDataSource dataSource = new BasicDataSource();
-		dataSource.setDriverClassName(env.getProperty("jdbc.driverClassName"));
+		
+		dataSource.setDriverClassName(env.getProperty("jdbc.driverClassName"));				
 		dataSource.setUrl(env.getProperty("jdbc.url"));
 		dataSource.setUsername(env.getProperty("jdbc.user"));
 		dataSource.setPassword(env.getProperty("jdbc.pass"));
-		// System.out.println("fin datasource");
+		
 		return dataSource;
 	}
 
 	@Bean
 	@Autowired
 	public HibernateTransactionManager transactionManager(SessionFactory sessionFactory) {
-		// System.out.println("debut transaction manager");
 		HibernateTransactionManager txManager = new HibernateTransactionManager();
+		
 		txManager.setSessionFactory(sessionFactory);
-		// System.out.println("fin transaction manager");
 
 		return txManager;
 	}
@@ -79,5 +78,15 @@ public class ConteneurSpringFullJava {
 			}
 		};
 	}
+	
+	
+	// Autoriser les Cross Origin Request pour les api de note backend
+	//	   @Override
+	//	   public void addCorsMappings(CorsRegistry registry) {
+	//	    registry.addMapping("/**").allowedOrigins("http://localhost:4200");
+	//	   }
+		
+	
+	
 
 }
