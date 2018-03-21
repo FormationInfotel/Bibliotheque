@@ -1,7 +1,6 @@
 package com.infotel.formation.DTO;
 
 import java.io.Serializable;
-import java.util.Date;
 
 public class BookDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -10,7 +9,7 @@ public class BookDTO implements Serializable {
 	private String book_title;
 	private String book_description;
 	private float book_price;
-	private Date publication_date;
+	private String publication_date;
 	private String image_path;
 	private boolean popular_book;
 
@@ -22,7 +21,7 @@ public class BookDTO implements Serializable {
 	public BookDTO() {
 	}
 
-	public BookDTO(long iSBN, String book_title, String book_description, float book_price, Date publication_date,
+	public BookDTO(long iSBN, String book_title, String book_description, float book_price, String publication_date,
 			String image_path, boolean popular_book) {
 		ISBN = iSBN;
 		this.book_title = book_title;
@@ -65,11 +64,11 @@ public class BookDTO implements Serializable {
 		this.book_price = book_price;
 	}
 
-	public Date getPublication_date() {
+	public String getPublication_date() {
 		return publication_date;
 	}
 
-	public void setPublication_date(Date publication_date) {
+	public void setPublication_date(String publication_date) {
 		this.publication_date = publication_date;
 	}
 

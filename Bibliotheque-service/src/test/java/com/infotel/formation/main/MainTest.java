@@ -1,7 +1,5 @@
 package com.infotel.formation.main;
 
-import java.util.Date;
-
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
@@ -117,15 +115,15 @@ public class MainTest {
 		///////////////////// CREATION DES BOOKS DANS LA BASE //////////////////////////
 		////////////////////////////////////////////////////////////////////////////////
 		BookDAO userManagerBook = (BookDAO) context.getBean("bookDAOImpl");
-		Date d1 = new Date(2018, 03, 05);
 		Book b1 = new Book(00001110L, "Les recettes les plus simples du monde",
-				"Des recettes pour les débutants, peu d'ingrédients et pas cher", new Float(22.50), d1, true);
-		Book b2 = new Book(00001120L, "Harry Potter 1", "synopsis", new Float(25), d1, false);
+				"Des recettes pour les débutants, peu d'ingrédients et pas cher", new Float(22.50), "01/01/18", true);
+		Book b2 = new Book(00001120L, "Harry Potter 1", "synopsis", new Float(25), "01/01/18", false);
 		Book b3 = new Book(00001130L, "Les seigneur des Anneaux", "Un anneau pour les gouverner tous !", new Float(12),
-				d1, false);
+				"01/01/18", false);
 		Book b4 = new Book(00001140L, "Game of Thrones - Intégrale 1", "Longue histoire, adaptée en Série",
-				new Float(30), d1, true);
-		Book b5 = new Book(00001140L, "Freud pour les Nuls", "La philosophie pour les débutants", new Float(18), d1,
+				new Float(30), "01/01/18", true);
+		Book b5 = new Book(00001140L, "Freud pour les Nuls", "La philosophie pour les débutants", new Float(18),
+				"01/01/18",
 				false);
 
 		b1.setImage_path("1");
