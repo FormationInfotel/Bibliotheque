@@ -6,7 +6,13 @@ import com.infotel.formation.entity.Library;
 
 public interface LibraryService {
 
-	public List<Library> getLibraries();
+	public void insertLibrary(Library library) throws Exception;
+
+	public void updateLibrary(Library library) throws Exception;
+
+	public void deleteLibrary(Library library) throws Exception;
+
+	public List<Library> getLibraries() throws Exception;
 
 	public Library getLibraryById(long idLibrary);
 

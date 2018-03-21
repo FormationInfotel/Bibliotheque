@@ -5,7 +5,11 @@ import java.util.List;
 import com.infotel.formation.entity.Library;
 
 public interface LibraryDAO {
-	void insertLibrary(Library library);
+	public void insertLibrary(Library library);
+
+	public void updateLibrary(Library library);
+
+	public void deleteLibrary(Library library);
 
 	public Library getLibraryById(long libraryId);
 

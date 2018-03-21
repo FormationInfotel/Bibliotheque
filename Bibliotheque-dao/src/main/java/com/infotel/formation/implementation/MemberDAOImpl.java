@@ -2,6 +2,7 @@ package com.infotel.formation.implementation;
 
 import java.util.List;
 
+import org.hibernate.Hibernate;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,21 +27,16 @@ public class MemberDAOImpl extends _GenericDAOImpl<Member> implements MemberDAO 
 	public void insertMember(Member member) {
 		sessionFactory.getCurrentSession().save(member);
 	}
-		
-	
+
 	@Override
 	public void updateMember(Member member) {
-		
-				
+
 		sessionFactory.getCurrentSession().saveOrUpdate(member);
-		//sessionFactory.getCurrentSession().update(member);
+		// sessionFactory.getCurrentSession().update(member);
 	}
-	
-	
-	
-	
+
 	@Override
-	public void deleteMember(Member member)  {
+	public void deleteMember(Member member) {
 		sessionFactory.getCurrentSession().remove(member);
 	}
 
@@ -75,6 +71,10 @@ public class MemberDAOImpl extends _GenericDAOImpl<Member> implements MemberDAO 
 	@Override
 	public List<Member> getMembers() {
 		List<Member> result = (List<Member>) sessionFactory.getCurrentSession().createQuery("from Member").list();
+		for (Member member : result) {
+			Hibernate.initialize(member.getMember_Library());
+		}
+
 		return result;
 	}
 
@@ -100,6 +100,7 @@ public class MemberDAOImpl extends _GenericDAOImpl<Member> implements MemberDAO 
 			return false;
 
 	}
+
 	@SuppressWarnings("unchecked")
 	@Override
 	public boolean isAccountExistString(String mail, String pswd) {
@@ -128,13 +129,4 @@ public class MemberDAOImpl extends _GenericDAOImpl<Member> implements MemberDAO 
 			return false;
 	}
 
-
-
-
-
-
-
-
-
-	
 }

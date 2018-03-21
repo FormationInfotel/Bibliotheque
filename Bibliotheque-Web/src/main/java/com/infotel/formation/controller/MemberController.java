@@ -1,8 +1,5 @@
 package com.infotel.formation.controller;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -61,16 +58,16 @@ public class MemberController {
 
 	}
 
-	@ModelAttribute("libraryList")
-	public Map<Long, String> getLibraryList() {
-		Map<Long, String> libraryList = new HashMap<Long, String>();
-
-		for (Library L : libraryService.getLibraries()) {
-			libraryList.put(L.getLibrary_code(), L.getLibrary_name());
-		}
-
-		return libraryList;
-	}
+	// @ModelAttribute("libraryList")
+	// public Map<Long, String> getLibraryList() {
+	// Map<Long, String> libraryList = new HashMap<Long, String>();
+	//
+	// for (Library L : libraryService.getLibraries()) {
+	// libraryList.put(L.getLibrary_code(), L.getLibrary_name());
+	// }
+	//
+	// return libraryList;
+	// }
 
 
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////
