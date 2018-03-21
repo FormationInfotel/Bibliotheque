@@ -6,16 +6,16 @@ import java.util.List;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.infotel.formation.DTO.BookDTO;
 import com.infotel.formation.Mapper.BookMapper;
 import com.infotel.formation.entity.Book;
 import com.infotel.formation.interfaces.BookService;
+import com.infotel.formation.utils.ControllerConstants;
+import com.infotel.formation.utils.Resultat;
 
 @RestController
 public class RechercheController {
@@ -26,21 +26,26 @@ public class RechercheController {
 	@Autowired
 	BookMapper mapper;
 
-	@GetMapping(value = "/research/{keyword}")
-	public List<BookDTO> getBooks(@PathVariable("keyword") String keyword) throws Exception {
+	@PostMapping(value = "/research/{keyword}")
+	public Resultat getBooks(@PathVariable("keyword") String keyword) throws Exception {
+		//public List<BookDTO> getBooks(@PathVariable("keyword") String keyword) throws Exception {
 		List<BookDTO> viewBooks = new ArrayList<BookDTO>();
-
 		Set<Book> books = new HashSet<Book>();
+		
+		Resultat res = new Resultat();
 
 		books = bookService.getBooksByKeyword(keyword);
 
 		for (Book book : books) {
-
 			viewBooks.add(mapper.mapIntoBookDTO(book));
-
 		}
+		
+		res.setIsSucces(true);
+		res.setMessage(ControllerConstants.RESEARCH_SUCCES);
+		res.setPayload(viewBooks);
 
-		return viewBooks;
+		return res;
+		//return viewBooks;
 	}
 
 	// @GetMapping(value = "/research/{keyword}")
