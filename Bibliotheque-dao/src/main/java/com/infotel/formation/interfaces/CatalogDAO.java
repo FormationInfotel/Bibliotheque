@@ -7,7 +7,7 @@ import com.infotel.formation.entity.Catalog;
 public interface CatalogDAO {
 	void insertCatalog(Catalog catalog);
 
-	public Catalog getCatalogById(int catalogId);
+	public Catalog getCatalogById(long catalogId);
 
 	Catalog getCatalog(String catalogName);
 

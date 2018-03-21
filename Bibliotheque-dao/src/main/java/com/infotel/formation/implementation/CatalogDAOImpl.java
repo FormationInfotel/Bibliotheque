@@ -23,7 +23,7 @@ public class CatalogDAOImpl implements CatalogDAO {
 	}
 
 	@Override
-	public Catalog getCatalogById(int catalogId) {
+	public Catalog getCatalogById(long catalogId) {
 		Catalog catalogById = null;
 
 		for (Catalog catalog : getCatalogs()) {
@@ -31,10 +31,6 @@ public class CatalogDAOImpl implements CatalogDAO {
 				catalogById = catalog;
 				break;
 			}
-		}
-
-		if (catalogById == null) {
-			throw new IllegalArgumentException("No catalog found with the catalog id : " + catalogById);
 		}
 		return catalogById;
 	}

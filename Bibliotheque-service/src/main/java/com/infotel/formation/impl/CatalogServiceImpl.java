@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.infotel.formation.entity.Catalog;
 import com.infotel.formation.interfaces.CatalogDAO;
 import com.infotel.formation.interfaces.CatalogService;
 
@@ -13,4 +14,9 @@ public class CatalogServiceImpl implements CatalogService{
 
 	@Autowired
 	CatalogDAO catalogDAO;
+
+	@Override
+	public Catalog getCatalogById(long catalogId) {
+		return catalogDAO.getCatalogById(catalogId);
+	}
 }

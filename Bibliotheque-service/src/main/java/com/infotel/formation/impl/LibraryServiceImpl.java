@@ -31,4 +31,19 @@ public class LibraryServiceImpl implements LibraryService{
 	public Library getLibraryByName(String libraryName) {
 		return libraryDAO.getLibraryByName(libraryName);
 	}
+
+	@Override
+	public void insertLibrary(Library library) {
+		libraryDAO.insertLibrary(library);
+	}
+
+	@Override
+	public void updateLibrary(Library library) {
+		libraryDAO.updateLibrary(library);
+	}
+
+	@Override
+	public void deleteLibrary(Library library) {
+		libraryDAO.deleteLibrary(library);
+	}
 }

@@ -2,6 +2,7 @@ package com.infotel.formation.implementation;
 
 import java.util.List;
 
+import org.hibernate.Hibernate;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,16 @@ public class LibraryDAOImpl implements LibraryDAO {
 	@Override
 	public void insertLibrary(Library library) {
 		sessionFactory.getCurrentSession().save(library);
+	}
+
+	@Override
+	public void updateLibrary(Library library) {
+		sessionFactory.getCurrentSession().update(library);
+	}
+
+	@Override
+	public void deleteLibrary(Library library) {
+		sessionFactory.getCurrentSession().delete(library);
 	}
 
 	@Override
@@ -53,7 +64,12 @@ public class LibraryDAOImpl implements LibraryDAO {
 	@Override
 	public List<Library> getLibraries() {
 		List<Library> result = (List<Library>) sessionFactory.getCurrentSession().createQuery("from Library").list();
+		for (Library library : result) {
+			Hibernate.initialize(library.getLibrary_ListMember());
+			Hibernate.initialize(library.getLibrary_ListCatalog());
+		}
 		return result;
 	}
+
 
 }

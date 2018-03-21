@@ -12,45 +12,56 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.infotel.formation.DTO.MemberDTO;
-import com.infotel.formation.Mapper.MemberMapper;
-import com.infotel.formation.entity.Member;
+import com.infotel.formation.DTO.LibraryDTO;
+import com.infotel.formation.Mapper.LibraryMapper;
+import com.infotel.formation.entity.Library;
 import com.infotel.formation.exception.ServiceException;
-import com.infotel.formation.interfaces.MemberService;
+import com.infotel.formation.interfaces.LibraryService;
 import com.infotel.formation.utils.ControllerConstants;
 import com.infotel.formation.utils.Resultat;
 
 @RestController
-public class MemberController2 {
-	
-	@Autowired
-	MemberService memberService;
+public class LibraryController {
 
 	@Autowired
-	MemberMapper mapper;
+	LibraryService libraryService;
 
-	@GetMapping(value = "/member/get")
-	public List<MemberDTO> getMembers() {
-		List<MemberDTO> viewMembers = new ArrayList<MemberDTO>();
+	@Autowired
+	LibraryMapper mapper;
 
-		List<Member> members = memberService.getMembers();
-
-		for (Member member : members) {
-			viewMembers.add(mapper.mapIntoMemberDTO(member));
-		}
-		return viewMembers;
-	}
-
-	@PutMapping(value = "/member/add", consumes = { MediaType.APPLICATION_JSON_VALUE })
-	public Resultat addMember(@RequestBody MemberDTO memberDTO) {
+	@GetMapping(value = "/library/get")
+	public Resultat getLibraries() {
 		Resultat res = new Resultat();
 		try {
-			System.out.println(memberDTO);
-			memberService.insertMember(mapper.mapIntoMember(memberDTO));
+			List<LibraryDTO> viewLibraries = new ArrayList<LibraryDTO>();
+
+			List<Library> libraries = libraryService.getLibraries();
+
+			for (Library library : libraries) {
+				viewLibraries.add(mapper.mapIntoLibraryDTO(library));
+			}
+			res.setIsSucces(true);
+			res.setMessage(ControllerConstants.INSERT_SUCCESS);
+			res.setPayload(viewLibraries);
+		} catch (ServiceException serviceException) {
+			res.setIsSucces(false);
+			res.setMessage(serviceException.getMessage());
+		} catch (Exception e) {
+			res.setIsSucces(false);
+			res.setMessage("Err");
+		}
+		return res;
+	}
+
+	@PutMapping(value = "/library/add", consumes = { MediaType.APPLICATION_JSON_VALUE })
+	public Resultat addLibrary(@RequestBody LibraryDTO libraryDTO) {
+		Resultat res = new Resultat();
+		try {
+			libraryService.insertLibrary(mapper.mapIntoLibrary(libraryDTO));
 
 			res.setIsSucces(true);
 			res.setMessage(ControllerConstants.INSERT_SUCCESS);
-			res.setPayload(memberDTO);
+			res.setPayload(libraryDTO);
 		} catch (ServiceException serviceException) {
 			res.setIsSucces(false);
 			res.setMessage(serviceException.getMessage());
@@ -62,16 +73,16 @@ public class MemberController2 {
 		return res;
 	}
 
-	@PostMapping(value = "/member/update", consumes = { MediaType.APPLICATION_JSON_VALUE })
-	public Resultat updateMember(@RequestBody MemberDTO memberDTO) throws Exception {
+	@PostMapping(value = "/library/update", consumes = { MediaType.APPLICATION_JSON_VALUE })
+	public Resultat updateLibrary(@RequestBody LibraryDTO libraryDTO) throws Exception {
 		Resultat res = new Resultat();
 
 		try {
-			memberService.updateMember(mapper.mapIntoMember(memberDTO));
+			libraryService.updateLibrary(mapper.mapIntoLibrary(libraryDTO));
 
 			res.setIsSucces(true);
 			res.setMessage(ControllerConstants.UPDATE_SUCCESS);
-			res.setPayload(memberDTO);
+			res.setPayload(libraryDTO);
 
 		} catch (ServiceException serviceException) {
 			res.setIsSucces(false);
@@ -83,16 +94,16 @@ public class MemberController2 {
 		return res;
 	}
 
-	@DeleteMapping(value = "/member/delete", consumes = { MediaType.APPLICATION_JSON_VALUE })
-	public Resultat deleteMember(@RequestBody MemberDTO memberDTO) throws Exception {
+	@DeleteMapping(value = "/library/delete", consumes = { MediaType.APPLICATION_JSON_VALUE })
+	public Resultat deleteLibrary(@RequestBody LibraryDTO libraryDTO) throws Exception {
 		Resultat res = new Resultat();
 
 		try {
-			memberService.deleteMember(memberService.getMemberById(memberDTO.getMember_id()));
+			libraryService.deleteLibrary(libraryService.getLibraryById(libraryDTO.getLibrary_code()));
 
 			res.setIsSucces(true);
 			res.setMessage(ControllerConstants.UPDATE_SUCCESS);
-			res.setPayload(memberDTO);
+			res.setPayload(libraryDTO);
 
 		} catch (ServiceException serviceException) {
 			res.setIsSucces(false);
@@ -103,5 +114,4 @@ public class MemberController2 {
 		}
 		return res;
 	}
-
 }
