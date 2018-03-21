@@ -7,7 +7,7 @@ import com.infotel.formation.entity.Book;
 
 public interface BookService {
 	
-	public Set<Book> getBooksByKeyword(String keyword);
+	public Set<Book> getBooksByKeyword(String keyword) throws Exception;
 
 	public void insertBook(Book book) throws Exception;
 

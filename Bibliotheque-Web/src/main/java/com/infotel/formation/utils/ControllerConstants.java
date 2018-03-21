@@ -14,8 +14,7 @@ public class ControllerConstants {
 	public static final String DELETE_SUCCESS = "Delete OK";
 	public static final String DELETE_ERROR = "Delete NOK";
 	
+	public static final String RESEARCH_SUCCES = "Research OK";
 	
 	
-	
-
 }

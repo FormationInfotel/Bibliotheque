@@ -67,8 +67,6 @@ public class BookController {
 	public Resultat updateBook(@RequestBody BookDTO bookDTO) throws Exception {
 		Resultat res = new Resultat();
 
-		
-
 		try {
 			//bookService.updateBook(mapper.mapIntoBook(bookDTO));
 			//bookService.deleteBook(mapper.mapIntoBook(bookDTO));
