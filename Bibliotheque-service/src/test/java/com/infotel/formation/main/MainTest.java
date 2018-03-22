@@ -130,11 +130,11 @@ public class MainTest {
 		Book b5 = new Book(00001140L, "Freud pour les Nuls", "La philosophie pour les débutants", new Float(18),
 				"01/01/18", "5.jpg", false);
 
-		b1.setImage_path("1");
-		b2.setImage_path("2");
-		b3.setImage_path("3");
-		b4.setImage_path("4");
-		b5.setImage_path("5");
+		b1.setImage_path("1.jpg");
+		b2.setImage_path("2.jpg");
+		b3.setImage_path("3.jpg");
+		b4.setImage_path("4.jpg");
+		b5.setImage_path("5.jpg");
 
 		b1.setBook_author(auteur3);
 		b1.setBook_category(c3);
@@ -263,19 +263,27 @@ public class MainTest {
 		userManagerMember.insertMember(m5);
 		userManagerMember.insertMember(m6);
 
-		System.out.println("Membre insérés");
+		System.out.println("Membres insérés");
 
 		//////////////////////////////////////////////////////////////////////
 		///////////////////// CREATION D'UN PANIER ///////////////////////////
 		//////////////////////////////////////////////////////////////////////
-		BookBasketDAO userManagerBookBasket = (BookBasketDAO) context.getBean("bookbasketDAOImpl");
+		BookBasketDAO userManagerBookBasket = (BookBasketDAO) context.getBean("bookBasketDAOImpl");
 		List<BookCopy> bc = new ArrayList<BookCopy>();
 		bc.add(bc1);
 		bc.add(bc2);
 
 		BookBasket bookbasket = new BookBasket(new Date(), new Date(), bc);
+		
+		bookbasket.setCreation_date(new Date());
+		bookbasket.setDelivery_date(new Date());
+		bookbasket.setBookbasket_Listbook(bc);
+		
 		userManagerBookBasket.insertBookBasket(bookbasket);
+		
 
+		
+		System.out.println("Panier inséré");
 		// bookbasket.
 
 	}

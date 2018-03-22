@@ -1,5 +1,7 @@
 package com.infotel.formation.controller;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
@@ -65,10 +67,19 @@ public class LoginController {
 
 		return res;
 	}
-	
-//	private void login(HttpServletRequest req) {
-//		HttpSession sess = new Http
-//		
-//	}
+
+	private void login(HttpServletRequest req) {
+		HttpSession session = req.getSession();
+
+		session.setAttribute("user", "");
+
+	}
+
+	private void logout(HttpServletRequest req) {
+		HttpSession session = req.getSession();
+
+		session.invalidate();
+
+	}
 
 }
