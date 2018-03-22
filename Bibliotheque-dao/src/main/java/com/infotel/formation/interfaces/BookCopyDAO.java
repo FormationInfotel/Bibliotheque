@@ -5,9 +5,13 @@ import java.util.List;
 import com.infotel.formation.entity.BookCopy;
 
 public interface BookCopyDAO {
-	void insertBookCopy(BookCopy bookCopy);
+	public void insertBookCopy(BookCopy bookCopy);
 
-	public BookCopy getBookCopyById(int bookCopyId);
+	public void updateBookCopy(BookCopy bookCopy);
+
+	public void deleteBookCopy(BookCopy bookCopy);
+
+	public BookCopy getBookCopyById(long bookCopyId);
 
 	BookCopy getBookCopy(String bookCopyName);
 

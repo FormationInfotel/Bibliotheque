@@ -11,36 +11,40 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.infotel.formation.DTO.BookDTO;
-import com.infotel.formation.Mapper.BookMapper;
-import com.infotel.formation.entity.Book;
+import com.infotel.formation.DTO.BookCopyDTO;
+import com.infotel.formation.Mapper.BookCopyMapper;
+import com.infotel.formation.entity.BookCopy;
 import com.infotel.formation.exception.ServiceException;
+import com.infotel.formation.interfaces.BookCopyService;
 import com.infotel.formation.interfaces.BookService;
 import com.infotel.formation.utils.ControllerConstants;
 import com.infotel.formation.utils.Resultat;
 
 @RestController
-public class BookController {
+public class BookCopyController {
 	@Autowired
 	BookService bookService;
 
 	@Autowired
-	BookMapper mapper;
+	BookCopyService bookcopyService;
 
-	@GetMapping(value = "/book/get")
-	public Resultat getBooks() {
+	@Autowired
+	BookCopyMapper mapper;
+
+	@GetMapping(value = "/bookcopy/get")
+	public Resultat getBookCopies() {
 		Resultat res = new Resultat();
 		try {
-			List<BookDTO> viewBooks = new ArrayList<BookDTO>();
+			List<BookCopyDTO> viewBookCopies = new ArrayList<BookCopyDTO>();
 
-			List<Book> books = bookService.getBooks();
+			List<BookCopy> bookcopies = bookcopyService.getBookCopys();
 
-			for (Book book : books) {
-				viewBooks.add(mapper.mapIntoBookDTO(book));
+			for (BookCopy bookcopy : bookcopies) {
+				viewBookCopies.add(mapper.mapIntoBookCopyDTO(bookcopy));
 			}
 			res.setIsSucces(true);
 			res.setMessage(ControllerConstants.INSERT_SUCCESS);
-			res.setPayload(viewBooks);
+			res.setPayload(viewBookCopies);
 
 		} catch (ServiceException serviceException) {
 			res.setIsSucces(false);
@@ -53,16 +57,16 @@ public class BookController {
 		return res;
 	}
 
-	@PutMapping(value = "/book/add") // ,consumes = { MediaType.APPLICATION_JSON_VALUE })
-	public Resultat addBook(@RequestBody BookDTO bookDTO) throws Exception {
+	@PutMapping(value = "/bookcopy/add") // ,consumes = { MediaType.APPLICATION_JSON_VALUE })
+	public Resultat addBookcopy(@RequestBody BookCopyDTO bookCopyDTO) throws Exception {
 		Resultat res = new Resultat();
 
 		try {
-			bookService.insertBook(mapper.mapIntoBook(bookDTO));
+			bookcopyService.insertBookCopy(mapper.mapIntoBookCopy(bookCopyDTO));
 
 			res.setIsSucces(true);
 			res.setMessage(ControllerConstants.INSERT_SUCCESS);
-			res.setPayload(bookDTO);
+			res.setPayload(bookCopyDTO);
 
 		} catch (ServiceException serviceException) {
 			res.setIsSucces(false);
@@ -75,16 +79,16 @@ public class BookController {
 		return res;
 	}
 
-	@PostMapping(value = "/book/update") // ,consumes = { MediaType.APPLICATION_JSON_VALUE })
-	public Resultat updateBook(@RequestBody BookDTO bookDTO) throws Exception {
+	@PostMapping(value = "/bookcopy/update") // ,consumes = { MediaType.APPLICATION_JSON_VALUE })
+	public Resultat updateBookcopy(@RequestBody BookCopyDTO bookCopyDTO) throws Exception {
 		Resultat res = new Resultat();
 
 		try {
-			bookService.updateBook(mapper.mapIntoBook(bookDTO));
+			bookcopyService.updateBookCopy(mapper.mapIntoBookCopy(bookCopyDTO));
 
 			res.setIsSucces(true);
 			res.setMessage(ControllerConstants.UPDATE_SUCCESS);
-			res.setPayload(bookDTO);
+			res.setPayload(bookCopyDTO);
 
 		} catch (ServiceException serviceException) {
 			res.setIsSucces(false);
@@ -96,15 +100,15 @@ public class BookController {
 		return res;
 	}
 
-	@DeleteMapping(value = "/book/delete") // ,consumes = { MediaType.APPLICATION_JSON_VALUE })
-	public Resultat deleteBook(@RequestBody BookDTO bookDTO) {
+	@DeleteMapping(value = "/bookcopy/delete") // ,consumes = { MediaType.APPLICATION_JSON_VALUE })
+	public Resultat deleteBookcopy(@RequestBody BookCopyDTO bookCopyDTO) {
 		Resultat res = new Resultat();
 		try {
-			bookService.deleteBook(bookService.getBookById(bookDTO.getISBN()));
+			bookcopyService.deleteBookCopy(bookcopyService.getBookCopyById(bookCopyDTO.getCopy_id()));
 
 			res.setIsSucces(true);
 			res.setMessage(ControllerConstants.DELETE_SUCCESS);
-			res.setPayload(bookDTO);
+			res.setPayload(bookCopyDTO);
 
 		} catch (ServiceException serviceException) {
 			res.setIsSucces(false);

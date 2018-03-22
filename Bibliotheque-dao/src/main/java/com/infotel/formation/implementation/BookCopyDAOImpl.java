@@ -23,7 +23,17 @@ public class BookCopyDAOImpl implements BookCopyDAO {
 	}
 
 	@Override
-	public BookCopy getBookCopyById(int bookCopyId) {
+	public void updateBookCopy(BookCopy bookCopy) {
+		sessionFactory.getCurrentSession().update(bookCopy);
+	}
+
+	@Override
+	public void deleteBookCopy(BookCopy bookCopy) {
+		sessionFactory.getCurrentSession().delete(bookCopy);
+	}
+
+	@Override
+	public BookCopy getBookCopyById(long bookCopyId) {
 		BookCopy bookCopyById = null;
 
 		for (BookCopy bookCopy : getBookCopys()) {
@@ -31,9 +41,6 @@ public class BookCopyDAOImpl implements BookCopyDAO {
 				bookCopyById = bookCopy;
 				break;
 			}
-		}
-		if (bookCopyById == null) {
-			throw new IllegalArgumentException("No book copy found with the book copy id : " + bookCopyId);
 		}
 		return bookCopyById;
 	}
@@ -53,5 +60,6 @@ public class BookCopyDAOImpl implements BookCopyDAO {
 		List<BookCopy> result = (List<BookCopy>) sessionFactory.getCurrentSession().createQuery("from BookCopy").list();
 		return result;
 	}
+
 
 }

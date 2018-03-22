@@ -204,17 +204,6 @@ public class MainTest {
 		userManagerBookShelf.insertBookShelf(bk4);
 		userManagerBookShelf.insertBookShelf(bk5);
 
-		// mise en rayon des copies
-		bc1.setBookcopy_bookshelf(bk2);
-		bc2.setBookcopy_bookshelf(bk2);
-		bc3.setBookcopy_bookshelf(bk2);
-		bc4.setBookcopy_bookshelf(bk5);
-		bc5.setBookcopy_bookshelf(bk5);
-		bc6.setBookcopy_bookshelf(bk5);
-		bc7.setBookcopy_bookshelf(bk1);
-		bc8.setBookcopy_bookshelf(bk1);
-		bc9.setBookcopy_bookshelf(bk1);
-
 		userManagerBookCopy.insertBookCopy(bc1);
 		userManagerBookCopy.insertBookCopy(bc2);
 		userManagerBookCopy.insertBookCopy(bc3);
