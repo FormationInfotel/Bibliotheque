@@ -19,7 +19,7 @@ import com.infotel.formation.utils.Resultat;
 public class AccueilController {
 	
 	@Autowired
-	private BookService bookService;
+	BookService bookService;
 	
 	@Autowired
 	BookMapper mapper;

@@ -19,7 +19,7 @@ public class BookBasket implements Serializable{
 	private Date creation_date;
 	private Date delivery_date;
 	
-	@OneToMany(mappedBy = "bookbasket_bookshelf")
+	@OneToMany(mappedBy = "bookcopy_bookbasket")
 	private List<BookCopy> bookbasket_Listbook;
 
 	public BookBasket() {

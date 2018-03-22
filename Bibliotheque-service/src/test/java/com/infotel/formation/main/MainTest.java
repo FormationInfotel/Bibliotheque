@@ -12,7 +12,6 @@ import com.infotel.formation.entity.Author;
 import com.infotel.formation.entity.Book;
 import com.infotel.formation.entity.BookBasket;
 import com.infotel.formation.entity.BookCopy;
-import com.infotel.formation.entity.Bookshelf;
 import com.infotel.formation.entity.Catalog;
 import com.infotel.formation.entity.Category;
 import com.infotel.formation.entity.Editor;
@@ -22,7 +21,6 @@ import com.infotel.formation.interfaces.AuthorDAO;
 import com.infotel.formation.interfaces.BookBasketDAO;
 import com.infotel.formation.interfaces.BookCopyDAO;
 import com.infotel.formation.interfaces.BookDAO;
-import com.infotel.formation.interfaces.BookshelfDAO;
 import com.infotel.formation.interfaces.CatalogDAO;
 import com.infotel.formation.interfaces.CategoryDAO;
 import com.infotel.formation.interfaces.EditorDAO;
@@ -193,33 +191,6 @@ public class MainTest {
 		b4.getBook_ListCopy().add(bc8);
 		b4.getBook_ListCopy().add(bc9);
 		System.out.println("Copy de Book insérés");
-
-		///////////////////////////////////////////////////////////////////////
-		///////////////////// CREATION DES BOOKSHELF //////////////////////////
-		///////////////////////////////////////////////////////////////////////
-		BookshelfDAO userManagerBookShelf = (BookshelfDAO) context.getBean("bookshelfDAOImpl");
-		Bookshelf bk1 = new Bookshelf("Rayon 1 - Fantasy", "Les livres de Fantasy", 10);
-		Bookshelf bk2 = new Bookshelf("Rayon 2 - Cuisine", "Les livres de Cuisine", 10);
-		Bookshelf bk3 = new Bookshelf("Rayon 3 - Histoire", "Les livres de Histoire", 10);
-		Bookshelf bk4 = new Bookshelf("Rayon 4 - Philosophie", "Les livres de Philosophie", 10);
-		Bookshelf bk5 = new Bookshelf("Rayon 5 - Fantastique", "Les livres de Fantastique", 10);
-		userManagerBookShelf.insertBookShelf(bk1);
-		userManagerBookShelf.insertBookShelf(bk2);
-		userManagerBookShelf.insertBookShelf(bk3);
-		userManagerBookShelf.insertBookShelf(bk4);
-		userManagerBookShelf.insertBookShelf(bk5);
-
-		userManagerBookCopy.insertBookCopy(bc1);
-		userManagerBookCopy.insertBookCopy(bc2);
-		userManagerBookCopy.insertBookCopy(bc3);
-		userManagerBookCopy.insertBookCopy(bc4);
-		userManagerBookCopy.insertBookCopy(bc5);
-		userManagerBookCopy.insertBookCopy(bc6);
-		userManagerBookCopy.insertBookCopy(bc7);
-		userManagerBookCopy.insertBookCopy(bc8);
-		userManagerBookCopy.insertBookCopy(bc9);
-
-		System.out.println("Bookshelf insérés");
 
 		//////////////////////////////////////////////////////////////////////
 		///////////////////// CREATION DES MEMBRES ///////////////////////////
