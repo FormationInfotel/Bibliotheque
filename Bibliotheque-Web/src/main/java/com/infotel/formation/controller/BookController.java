@@ -39,15 +39,29 @@ public class BookController {
 	BookMapper mapper;
 
 	@GetMapping(value = "/book/get")
-	public List<BookDTO> getBooks() {
-		List<BookDTO> viewBooks = new ArrayList<BookDTO>();
+	public Resultat getBooks() {
+		Resultat res = new Resultat();
+		try {
+			List<BookDTO> viewBooks = new ArrayList<BookDTO>();
 
-		List<Book> books = bookService.getBooks();
+			List<Book> books = bookService.getBooks();
 
-		for (Book book : books) {
-			viewBooks.add(mapper.mapIntoBookDTO(book));
+			for (Book book : books) {
+				viewBooks.add(mapper.mapIntoBookDTO(book));
+			}
+			res.setIsSucces(true);
+			res.setMessage(ControllerConstants.INSERT_SUCCESS);
+			res.setPayload(viewBooks);
+
+		} catch (ServiceException serviceException) {
+			res.setIsSucces(false);
+			res.setMessage(serviceException.getMessage());
+		} catch (Exception e) {
+			res.setIsSucces(false);
+			res.setMessage("Err");
 		}
-		return viewBooks;
+
+		return res;
 	}
 
 	@PutMapping(value = "/book/add") // ,consumes = { MediaType.APPLICATION_JSON_VALUE })

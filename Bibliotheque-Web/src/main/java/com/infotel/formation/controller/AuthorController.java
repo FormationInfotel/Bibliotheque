@@ -23,28 +23,41 @@ import com.infotel.formation.utils.Resultat;
 @RestController
 public class AuthorController {
 	@Autowired
-	AuthorService authorService; 
+	AuthorService authorService;
 
 	@Autowired
 	AuthorMapper mapper;
 
 	@GetMapping(value = "/author/get")
-	public List<AuthorDTO> getBooks() {
-		List<AuthorDTO> viewAuthor = new ArrayList<AuthorDTO>();
+	public Resultat getBooks() {
+		Resultat res = new Resultat();
+		try {
+			List<AuthorDTO> viewAuthor = new ArrayList<AuthorDTO>();
 
-		List<Author> authors = authorService.getAuthors();
+			List<Author> authors = authorService.getAuthors();
 
-		for (Author author : authors) {
-			viewAuthor.add(mapper.mapIntoAuthorDTO(author));
+			for (Author author : authors) {
+				viewAuthor.add(mapper.mapIntoAuthorDTO(author));
+			}
+			res.setIsSucces(true);
+			res.setMessage(ControllerConstants.INSERT_SUCCESS);
+			res.setPayload(viewAuthor);
+		} catch (ServiceException serviceException) {
+			res.setIsSucces(false);
+			res.setMessage(serviceException.getMessage());
+		} catch (Exception e) {
+			res.setIsSucces(false);
+			res.setMessage("Err");
 		}
-		return viewAuthor;
+
+		return res;
 	}
 
 	@PutMapping(value = "/author/add", consumes = { MediaType.APPLICATION_JSON_VALUE })
 	public Resultat addAuthor(@RequestBody AuthorDTO authorDTO) {
 		Resultat res = new Resultat();
 		try {
-		authorService.insertAuthor(mapper.mapIntoAuthor(authorDTO));
+			authorService.insertAuthor(mapper.mapIntoAuthor(authorDTO));
 			res.setIsSucces(true);
 			res.setMessage(ControllerConstants.INSERT_SUCCESS);
 			res.setPayload(authorDTO);

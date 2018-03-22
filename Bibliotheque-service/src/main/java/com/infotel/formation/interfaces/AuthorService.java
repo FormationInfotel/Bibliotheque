@@ -14,5 +14,5 @@ public interface AuthorService {
 
 	public void deleteAuthor(Author author) throws Exception;
 
-	public List<Author> getAuthors();
+	public List<Author> getAuthors() throws Exception;
 }
