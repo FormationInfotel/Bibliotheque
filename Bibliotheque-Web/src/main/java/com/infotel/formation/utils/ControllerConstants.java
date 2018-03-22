@@ -16,5 +16,8 @@ public class ControllerConstants {
 	
 	public static final String RESEARCH_SUCCES = "Research OK";
 	
+	public static final String RECOMMENDED_BOOKS_FOUND = "Recommended books found";
+	
+	
 	
 }

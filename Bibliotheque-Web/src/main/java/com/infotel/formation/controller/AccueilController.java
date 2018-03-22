@@ -39,7 +39,7 @@ public class AccueilController {
 		}
 		
 		res.setIsSucces(true);
-		res.setMessage(ControllerConstants.RESEARCH_SUCCES);
+		res.setMessage(ControllerConstants.RECOMMENDED_BOOKS_FOUND);
 		res.setPayload(viewBook);
 	
 		System.out.println(res);
