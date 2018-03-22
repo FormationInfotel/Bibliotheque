@@ -25,12 +25,33 @@ public class BookBasket implements Serializable{
 	public BookBasket() {
 		super();
 	}
-
+	
 	public BookBasket(Date creation_date, Date delivery_date) {
 		this.creation_date = creation_date;
 		this.delivery_date = delivery_date;
 	}
 
+	
+
+	public BookBasket(Date creation_date, Date delivery_date, List<BookCopy> bookbasket_Listbook) {
+		this.creation_date = creation_date;
+		this.delivery_date = delivery_date;
+		this.bookbasket_Listbook = bookbasket_Listbook;
+	}
+
+	public List<BookCopy> getBookbasket_Listbook() {
+		return bookbasket_Listbook;
+	}
+
+
+
+	public void setBookbasket_Listbook(List<BookCopy> bookbasket_Listbook) {
+		this.bookbasket_Listbook = bookbasket_Listbook;
+	}
+
+
+
+	
 	public Date getCreation_date() {
 		return creation_date;
 	}

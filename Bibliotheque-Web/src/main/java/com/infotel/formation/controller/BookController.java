@@ -1,14 +1,25 @@
 package com.infotel.formation.controller;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.infotel.formation.DTO.BookDTO;
@@ -27,8 +38,6 @@ public class BookController {
 	@Autowired
 	BookMapper mapper;
 
-	
-	
 	@GetMapping(value = "/book/get")
 	public List<BookDTO> getBooks() {
 		List<BookDTO> viewBooks = new ArrayList<BookDTO>();
@@ -41,7 +50,7 @@ public class BookController {
 		return viewBooks;
 	}
 
-	@PutMapping(value = "/book/add") //,consumes = { MediaType.APPLICATION_JSON_VALUE })
+	@PutMapping(value = "/book/add") // ,consumes = { MediaType.APPLICATION_JSON_VALUE })
 	public Resultat addBook(@RequestBody BookDTO bookDTO) throws Exception {
 		Resultat res = new Resultat();
 
@@ -63,13 +72,13 @@ public class BookController {
 		return res;
 	}
 
-	@PostMapping(value = "/book/update")//,consumes = { MediaType.APPLICATION_JSON_VALUE })
+	@PostMapping(value = "/book/update") // ,consumes = { MediaType.APPLICATION_JSON_VALUE })
 	public Resultat updateBook(@RequestBody BookDTO bookDTO) throws Exception {
 		Resultat res = new Resultat();
 
 		try {
-			//bookService.updateBook(mapper.mapIntoBook(bookDTO));
-			//bookService.deleteBook(mapper.mapIntoBook(bookDTO));
+			// bookService.updateBook(mapper.mapIntoBook(bookDTO));
+			// bookService.deleteBook(mapper.mapIntoBook(bookDTO));
 			bookService.deleteBook(bookService.getBookById(bookDTO.getISBN()));
 
 			res.setIsSucces(true);
@@ -86,16 +95,16 @@ public class BookController {
 		return res;
 	}
 
-	@DeleteMapping(value = "/book/delete")//,consumes = { MediaType.APPLICATION_JSON_VALUE })
+	@DeleteMapping(value = "/book/delete") // ,consumes = { MediaType.APPLICATION_JSON_VALUE })
 	public Resultat deleteBook(@RequestBody BookDTO bookDTO) {
 		Resultat res = new Resultat();
 		try {
 			bookService.deleteBook(bookService.getBookById(bookDTO.getISBN()));
-			
+
 			res.setIsSucces(true);
 			res.setMessage(ControllerConstants.DELETE_SUCCESS);
 			res.setPayload(bookDTO);
-		
+
 		} catch (ServiceException serviceException) {
 			res.setIsSucces(false);
 			res.setMessage(serviceException.getMessage());
@@ -105,4 +114,16 @@ public class BookController {
 		}
 		return res;
 	}
+
+	@RequestMapping(value = "/image", method = RequestMethod.GET)
+	public void getImageAsByteArray(@RequestParam String imagePath, HttpServletResponse response, HttpServletRequest request) throws IOException {
+		
+		InputStream in = request.getServletContext().getResourceAsStream("/resources/img/" + imagePath);
+		
+		response.setContentType(MediaType.IMAGE_JPEG_VALUE);
+		IOUtils.copy(in, response.getOutputStream());
+	}
+	
+	
+
 }

@@ -22,6 +22,16 @@ public class BookBasketDAOImpl implements BookBasketDAO {
 	@Override
 	public void insertBookBasket(BookBasket bookBasket) {
 		sessionFactory.getCurrentSession().save(bookBasket);
+	}
+	
+	@Override
+	public void updateBookBasket(BookBasket bookBasket) {
+		sessionFactory.getCurrentSession().update(bookBasket);
+	}
+
+	@Override
+	public void deleteBookBasket(BookBasket bookBasket) {
+		sessionFactory.getCurrentSession().delete(bookBasket);
 		
 	}
 
@@ -50,4 +60,5 @@ public class BookBasketDAOImpl implements BookBasketDAO {
 		return result;
 	}
 
+		
 }

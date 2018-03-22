@@ -1,11 +1,16 @@
 package com.infotel.formation.main;
 
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import com.infotel.formation.conteneur.ConteneurSpringFullJava;
 import com.infotel.formation.entity.Author;
 import com.infotel.formation.entity.Book;
+import com.infotel.formation.entity.BookBasket;
 import com.infotel.formation.entity.BookCopy;
 import com.infotel.formation.entity.Bookshelf;
 import com.infotel.formation.entity.Catalog;
@@ -14,6 +19,7 @@ import com.infotel.formation.entity.Editor;
 import com.infotel.formation.entity.Library;
 import com.infotel.formation.entity.Member;
 import com.infotel.formation.interfaces.AuthorDAO;
+import com.infotel.formation.interfaces.BookBasketDAO;
 import com.infotel.formation.interfaces.BookCopyDAO;
 import com.infotel.formation.interfaces.BookDAO;
 import com.infotel.formation.interfaces.BookshelfDAO;
@@ -116,15 +122,14 @@ public class MainTest {
 		////////////////////////////////////////////////////////////////////////////////
 		BookDAO userManagerBook = (BookDAO) context.getBean("bookDAOImpl");
 		Book b1 = new Book(00001110L, "Les recettes les plus simples du monde",
-				"Des recettes pour les débutants, peu d'ingrédients et pas cher", new Float(22.50), "01/01/18", true);
-		Book b2 = new Book(00001120L, "Harry Potter 1", "synopsis", new Float(25), "01/01/18", false);
+				"Des recettes pour les débutants, peu d'ingrédients et pas cher", new Float(22.50), "01/01/18", "1.jpg", true);
+		Book b2 = new Book(00001120L, "Harry Potter 1", "synopsis", new Float(25), "01/01/18","2.jpg", false);
 		Book b3 = new Book(00001130L, "Les seigneur des Anneaux", "Un anneau pour les gouverner tous !", new Float(12),
-				"01/01/18", false);
+				"01/01/18", "3.jpg", false);
 		Book b4 = new Book(00001140L, "Game of Thrones - Intégrale 1", "Longue histoire, adaptée en Série",
-				new Float(30), "01/01/18", true);
+				new Float(30), "01/01/18", "4.jpg", true);
 		Book b5 = new Book(00001140L, "Freud pour les Nuls", "La philosophie pour les débutants", new Float(18),
-				"01/01/18",
-				false);
+				"01/01/18", "5.jpg", false);
 
 		b1.setImage_path("1");
 		b2.setImage_path("2");
@@ -232,12 +237,13 @@ public class MainTest {
 		///////////////////// CREATION DES MEMBRES ///////////////////////////
 		//////////////////////////////////////////////////////////////////////
 		MemberDAO userManagerMember = (MemberDAO) context.getBean("memberDAOImpl");
-		Member m1 = new Member("LEVEL", "LAURENE", "laurene.level@infotel.com", "35 rue Pasteur Retiers", "azerty123",false);
-		Member m2 = new Member("COCHENNEC", "YOANN", "yoann.cochennec@infotel.com", "Brestmeme", "azerty123",false);
-		Member m3 = new Member("RONCO", "ROMAIN", "roamin.ronco@infotel.com", "Rennes", "azerty123",false);
-		Member m4 = new Member("GUENOT", "MICKAEL", "mickael.guenot@infotel.com", "Lyon", "azerty123",false);
-		Member m5 = new Member("LE TEXIER", "LENA", "lena.letexier@infotel.com", "BrestpasMeme", "azerty123",false);
-		Member m6 = new Member("az", "az", "az@az", "az", "az",true);
+		Member m1 = new Member("LEVEL", "LAURENE", "laurene.level@infotel.com", "35 rue Pasteur Retiers", "azerty123",
+				false);
+		Member m2 = new Member("COCHENNEC", "YOANN", "yoann.cochennec@infotel.com", "Brestmeme", "azerty123", false);
+		Member m3 = new Member("RONCO", "ROMAIN", "roamin.ronco@infotel.com", "Rennes", "azerty123", false);
+		Member m4 = new Member("GUENOT", "MICKAEL", "mickael.guenot@infotel.com", "Lyon", "azerty123", false);
+		Member m5 = new Member("LE TEXIER", "LENA", "lena.letexier@infotel.com", "BrestpasMeme", "azerty123", false);
+		Member m6 = new Member("az", "az", "az@az", "az", "az", true);
 		m1.setMember_Library(l1);
 		m2.setMember_Library(l1);
 		m3.setMember_Library(l1);
@@ -259,6 +265,19 @@ public class MainTest {
 		userManagerMember.insertMember(m6);
 
 		System.out.println("Membre insérés");
+
+		//////////////////////////////////////////////////////////////////////
+		///////////////////// CREATION D'UN PANIER ///////////////////////////
+		//////////////////////////////////////////////////////////////////////
+		BookBasketDAO userManagerBookBasket = (BookBasketDAO) context.getBean("bookbasketDAOImpl");
+		List<BookCopy> bc = new ArrayList<BookCopy>();
+		bc.add(bc1);
+		bc.add(bc2);
+
+		BookBasket bookbasket = new BookBasket(new Date(), new Date(), bc);
+		userManagerBookBasket.insertBookBasket(bookbasket);
+
+		// bookbasket.
 
 	}
 

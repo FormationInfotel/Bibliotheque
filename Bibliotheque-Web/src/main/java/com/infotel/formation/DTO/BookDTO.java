@@ -38,7 +38,7 @@ public class BookDTO implements Serializable {
 	
 
 
-	public BookDTO(long iSBN, String book_title, String book_description, float book_price, Date publication_date,
+	public BookDTO(long iSBN, String book_title, String book_description, float book_price, String publication_date,
 			String image_path, boolean popular_book, long book_authorId, String author_lastname,
 			String author_firstname, long book_editorId, long book_categoryId) {
 		super();
