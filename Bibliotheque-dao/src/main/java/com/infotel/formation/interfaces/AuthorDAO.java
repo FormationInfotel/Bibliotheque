@@ -10,7 +10,7 @@ public interface AuthorDAO extends _GenericDAO<Author>{
 	void updateAuthor(Author author);
 
 	void deleteAuthor(Author author);
-
+	
 	public Author getAuthorById(long authorId);
 
 	Author getAuthor(String authorName);

@@ -15,6 +15,9 @@ public class BookDTO implements Serializable {
 	private boolean popular_book;
 
 	private long book_authorId;
+	
+	private String author_lastname;
+	private String author_firstname;
 
 	private long book_editorId;
 	private long book_categoryId;
@@ -31,6 +34,27 @@ public class BookDTO implements Serializable {
 		this.publication_date = publication_date;
 		this.image_path = image_path;
 		this.popular_book = popular_book;
+	}
+	
+	
+
+
+	public BookDTO(long iSBN, String book_title, String book_description, float book_price, Date publication_date,
+			String image_path, boolean popular_book, long book_authorId, String author_lastname,
+			String author_firstname, long book_editorId, long book_categoryId) {
+		super();
+		ISBN = iSBN;
+		this.book_title = book_title;
+		this.book_description = book_description;
+		this.book_price = book_price;
+		this.publication_date = publication_date;
+		this.image_path = image_path;
+		this.popular_book = popular_book;
+		this.book_authorId = book_authorId;
+		this.author_lastname = author_lastname;
+		this.author_firstname = author_firstname;
+		this.book_editorId = book_editorId;
+		this.book_categoryId = book_categoryId;
 	}
 
 	public long getISBN() {
@@ -113,4 +137,20 @@ public class BookDTO implements Serializable {
 		this.book_authorId = book_authorId;
 	}
 
+
+	public String getAuthor_lastname() {
+		return author_lastname;
+	}
+
+	public void setAuthor_lastname(String author_lastname) {
+		this.author_lastname = author_lastname;
+	}
+
+	public String getAuthor_firstname() {
+		return author_firstname;
+	}
+
+	public void setAuthor_firstname(String author_firstname) {
+		this.author_firstname = author_firstname;
+	}
 }

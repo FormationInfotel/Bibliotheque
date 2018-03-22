@@ -34,6 +34,11 @@ public class BookMapper {
 		bookDTO.setBook_authorId(book.getBook_author().getAuthor_id());
 		bookDTO.setBook_editorId(book.getBook_editor().getEditor_id());
 		bookDTO.setBook_categoryId(book.getBook_category().getCategory_id());
+		bookDTO.setAuthor_firstname(book.getBook_author().getAuthor_firstname());
+		bookDTO.setAuthor_lastname(book.getBook_author().getAuthor_lastname());
+		// bookDTO.setAuthor_firstname(authorService.getAuthorFirstnameById(book.getBook_author().getAuthor_id()).getAuthor_firstname());
+		// bookDTO.setAuthor_lastname(authorService.getAuthorFirstnameById(book.getBook_author().getAuthor_id()).getAuthor_lastname());
+
 		return bookDTO;
 	}
 }
