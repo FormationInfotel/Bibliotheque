@@ -45,7 +45,7 @@ public class Book implements Serializable {
 	public Book() {
 	}
 
-	public Book(long iSBN, String book_title, String book_description, float book_price, String publication_date,
+	public Book(long iSBN, String book_title, String book_description, float book_price, String publication_date,String image_path,
 			boolean popular_book) {
 		super();
 		ISBN = iSBN;
@@ -54,6 +54,7 @@ public class Book implements Serializable {
 		this.book_price = book_price;
 		this.publication_date = publication_date;
 		this.popular_book = popular_book;
+		this.image_path = image_path;
 		book_ListCopy = new ArrayList<BookCopy>();
 	}
 

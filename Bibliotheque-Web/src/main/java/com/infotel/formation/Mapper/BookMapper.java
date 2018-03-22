@@ -21,7 +21,7 @@ public class BookMapper {
 
 	public Book mapIntoBook(BookDTO bookDTO) {
 		Book book = new Book(bookDTO.getISBN(), bookDTO.getBook_title(), bookDTO.getBook_description(),
-				bookDTO.getBook_price(), bookDTO.getPublication_date(), bookDTO.isPopular_book());
+				bookDTO.getBook_price(), bookDTO.getPublication_date(), bookDTO.getImage_path(), bookDTO.isPopular_book());
 		book.setBook_author(authorService.getAuthorById(bookDTO.getBook_authorId()));
 		book.setBook_editor(editorService.getEditorById(bookDTO.getBook_editorId()));
 		book.setBook_category(categoryService.getCategoryById(bookDTO.getBook_categoryId()));
@@ -37,9 +37,7 @@ public class BookMapper {
 		bookDTO.setBook_categoryId(book.getBook_category().getCategory_id());
 		bookDTO.setAuthor_firstname(book.getBook_author().getAuthor_firstname());
 		bookDTO.setAuthor_lastname(book.getBook_author().getAuthor_lastname());
-		// bookDTO.setAuthor_firstname(authorService.getAuthorFirstnameById(book.getBook_author().getAuthor_id()).getAuthor_firstname());
-		// bookDTO.setAuthor_lastname(authorService.getAuthorFirstnameById(book.getBook_author().getAuthor_id()).getAuthor_lastname());
-
+		
 		return bookDTO;
 	}
 }
