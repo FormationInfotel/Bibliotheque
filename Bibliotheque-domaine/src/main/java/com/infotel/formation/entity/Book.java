@@ -2,7 +2,6 @@ package com.infotel.formation.entity;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -24,7 +23,7 @@ public class Book implements Serializable {
 	private String book_title;
 	private String book_description;
 	private float book_price;
-	private Date publication_date;
+	private String publication_date;
 	private String image_path;
 	private boolean popular_book;
 
@@ -43,11 +42,10 @@ public class Book implements Serializable {
 	@OneToMany(mappedBy = "bookcopy_parent")
 	private List<BookCopy> book_ListCopy;
 
-
 	public Book() {
 	}
 
-	public Book(long iSBN, String book_title, String book_description, float book_price, Date publication_date,
+	public Book(long iSBN, String book_title, String book_description, float book_price, String publication_date,
 			boolean popular_book) {
 		super();
 		ISBN = iSBN;
@@ -127,11 +125,11 @@ public class Book implements Serializable {
 		this.book_price = book_price;
 	}
 
-	public Date getPublication_date() {
+	public String getPublication_date() {
 		return publication_date;
 	}
 
-	public void setPublication_date(Date publication_date) {
+	public void setPublication_date(String publication_date) {
 		this.publication_date = publication_date;
 	}
 
