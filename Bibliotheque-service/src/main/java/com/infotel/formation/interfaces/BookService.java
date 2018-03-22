@@ -19,7 +19,7 @@ public interface BookService {
 
 	public List<Book> getRecommendedBooks();
 
-	List<Book> getBooks();
+	List<Book> getBooks() throws Exception;
 
 
 }

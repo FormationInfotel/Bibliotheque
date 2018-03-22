@@ -25,7 +25,6 @@ import com.infotel.formation.interfaces.MemberDAO;
 
 public class MainTest {
 
-	@SuppressWarnings("deprecation")
 	public static void main(String[] args) {
 		ApplicationContext context = (ApplicationContext) new AnnotationConfigApplicationContext(
 				ConteneurSpringFullJava.class);

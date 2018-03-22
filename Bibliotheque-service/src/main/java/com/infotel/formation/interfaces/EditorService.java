@@ -8,11 +8,11 @@ public interface EditorService {
 
 	public Editor getEditorById(long editorId);
 
-	public void insertEditor(Editor editor);
+	public void insertEditor(Editor editor) throws Exception;
 
-	public void updateEditor(Editor editor);
+	public void updateEditor(Editor editor) throws Exception;
 
-	public void deleteEditor(Editor editor);
+	public void deleteEditor(Editor editor) throws Exception;
 
-	public List<Editor> getEditors();
+	public List<Editor> getEditors() throws Exception;
 }

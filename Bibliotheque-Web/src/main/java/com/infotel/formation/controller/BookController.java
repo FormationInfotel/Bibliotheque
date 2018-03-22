@@ -27,21 +27,33 @@ public class BookController {
 	@Autowired
 	BookMapper mapper;
 
-	
-	
 	@GetMapping(value = "/book/get")
-	public List<BookDTO> getBooks() {
-		List<BookDTO> viewBooks = new ArrayList<BookDTO>();
+	public Resultat getBooks() {
+		Resultat res = new Resultat();
+		try {
+			List<BookDTO> viewBooks = new ArrayList<BookDTO>();
 
-		List<Book> books = bookService.getBooks();
+			List<Book> books = bookService.getBooks();
 
-		for (Book book : books) {
-			viewBooks.add(mapper.mapIntoBookDTO(book));
+			for (Book book : books) {
+				viewBooks.add(mapper.mapIntoBookDTO(book));
+			}
+			res.setIsSucces(true);
+			res.setMessage(ControllerConstants.INSERT_SUCCESS);
+			res.setPayload(viewBooks);
+
+		} catch (ServiceException serviceException) {
+			res.setIsSucces(false);
+			res.setMessage(serviceException.getMessage());
+		} catch (Exception e) {
+			res.setIsSucces(false);
+			res.setMessage("Err");
 		}
-		return viewBooks;
+
+		return res;
 	}
 
-	@PutMapping(value = "/book/add") //,consumes = { MediaType.APPLICATION_JSON_VALUE })
+	@PutMapping(value = "/book/add") // ,consumes = { MediaType.APPLICATION_JSON_VALUE })
 	public Resultat addBook(@RequestBody BookDTO bookDTO) throws Exception {
 		Resultat res = new Resultat();
 
@@ -63,13 +75,13 @@ public class BookController {
 		return res;
 	}
 
-	@PostMapping(value = "/book/update")//,consumes = { MediaType.APPLICATION_JSON_VALUE })
+	@PostMapping(value = "/book/update") // ,consumes = { MediaType.APPLICATION_JSON_VALUE })
 	public Resultat updateBook(@RequestBody BookDTO bookDTO) throws Exception {
 		Resultat res = new Resultat();
 
 		try {
-			//bookService.updateBook(mapper.mapIntoBook(bookDTO));
-			//bookService.deleteBook(mapper.mapIntoBook(bookDTO));
+			// bookService.updateBook(mapper.mapIntoBook(bookDTO));
+			// bookService.deleteBook(mapper.mapIntoBook(bookDTO));
 			bookService.deleteBook(bookService.getBookById(bookDTO.getISBN()));
 
 			res.setIsSucces(true);
@@ -86,16 +98,16 @@ public class BookController {
 		return res;
 	}
 
-	@DeleteMapping(value = "/book/delete")//,consumes = { MediaType.APPLICATION_JSON_VALUE })
+	@DeleteMapping(value = "/book/delete") // ,consumes = { MediaType.APPLICATION_JSON_VALUE })
 	public Resultat deleteBook(@RequestBody BookDTO bookDTO) {
 		Resultat res = new Resultat();
 		try {
 			bookService.deleteBook(bookService.getBookById(bookDTO.getISBN()));
-			
+
 			res.setIsSucces(true);
 			res.setMessage(ControllerConstants.DELETE_SUCCESS);
 			res.setPayload(bookDTO);
-		
+
 		} catch (ServiceException serviceException) {
 			res.setIsSucces(false);
 			res.setMessage(serviceException.getMessage());

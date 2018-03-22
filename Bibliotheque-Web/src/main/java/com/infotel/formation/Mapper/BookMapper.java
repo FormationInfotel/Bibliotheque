@@ -31,6 +31,7 @@ public class BookMapper {
 	public BookDTO mapIntoBookDTO(Book book) {
 		BookDTO bookDTO = new BookDTO(book.getISBN(), book.getBook_title(), book.getBook_description(),
 				book.getBook_price(), book.getPublication_date(), book.getImage_path(), book.isPopular_book());
+		bookDTO.setISBN(book.getISBN());
 		bookDTO.setBook_authorId(book.getBook_author().getAuthor_id());
 		bookDTO.setBook_editorId(book.getBook_editor().getEditor_id());
 		bookDTO.setBook_categoryId(book.getBook_category().getCategory_id());

@@ -29,15 +29,28 @@ public class CategoryController {
 	CategoryMapper mapper;
 
 	@GetMapping(value = "/category/get")
-	public List<CategoryDTO> getCategories() {
-		List<CategoryDTO> viewCategories = new ArrayList<CategoryDTO>();
+	public Resultat getCategories() {
+		Resultat res = new Resultat();
+		try {
+			List<CategoryDTO> viewCategories = new ArrayList<CategoryDTO>();
 
-		List<Category> categories = categoryService.getCategories();
+			List<Category> categories = categoryService.getCategories();
 
-		for (Category category : categories) {
-			viewCategories.add(mapper.mapIntoEditorDTO(category));
+			for (Category category : categories) {
+				viewCategories.add(mapper.mapIntoEditorDTO(category));
+			}
+			res.setIsSucces(true);
+			res.setMessage(ControllerConstants.INSERT_SUCCESS);
+			res.setPayload(viewCategories);
+		} catch (ServiceException serviceException) {
+			res.setIsSucces(false);
+			res.setMessage(serviceException.getMessage());
+		} catch (Exception e) {
+			res.setIsSucces(false);
+			res.setMessage("Err");
 		}
-		return viewCategories;
+
+		return res;
 	}
 
 	@PutMapping(value = "/category/add", consumes = { MediaType.APPLICATION_JSON_VALUE })
