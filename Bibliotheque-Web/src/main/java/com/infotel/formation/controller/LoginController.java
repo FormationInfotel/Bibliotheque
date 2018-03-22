@@ -68,18 +68,19 @@ public class LoginController {
 		return res;
 	}
 
-	private void login(HttpServletRequest req) {
-		HttpSession session = req.getSession();
-
-		session.setAttribute("user", "");
-
-	}
-
-	private void logout(HttpServletRequest req) {
-		HttpSession session = req.getSession();
-
-		session.invalidate();
-
-	}
+//	private void login(HttpServletRequest req) {
+//		HttpSession session = req.getSession();
+//		
+//		if req.
+//		session.setAttribute("user", "");
+//
+//	}
+//
+//	private void logout(HttpServletRequest req) {
+//		HttpSession session = req.getSession();
+//
+//		session.invalidate();
+//
+//	}
 
 }
