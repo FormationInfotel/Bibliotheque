@@ -88,7 +88,7 @@ public class BookController {
 		return res;
 	}
 
-	@PutMapping(value = "/book/add") // ,consumes = { MediaType.APPLICATION_JSON_VALUE })
+	@PutMapping(value = "/book/add")
 	public Resultat addBook(@RequestBody BookDTO bookDTO) throws Exception {
 		Resultat res = new Resultat();
 
@@ -110,7 +110,7 @@ public class BookController {
 		return res;
 	}
 
-	@PostMapping(value = "/book/update") // ,consumes = { MediaType.APPLICATION_JSON_VALUE })
+	@PostMapping(value = "/book/update")
 	public Resultat updateBook(@RequestBody BookDTO bookDTO) throws Exception {
 		Resultat res = new Resultat();
 
@@ -131,7 +131,7 @@ public class BookController {
 		return res;
 	}
 
-	@DeleteMapping(value = "/book/delete") // ,consumes = { MediaType.APPLICATION_JSON_VALUE })
+	@DeleteMapping(value = "/book/delete")
 	public Resultat deleteBook(@RequestBody BookDTO bookDTO) {
 		Resultat res = new Resultat();
 		try {
@@ -152,14 +152,13 @@ public class BookController {
 	}
 
 	@RequestMapping(value = "/image", method = RequestMethod.GET)
-	public void getImageAsByteArray(@RequestParam String imagePath, HttpServletResponse response, HttpServletRequest request) throws IOException {
-		
+	public void getImageAsByteArray(@RequestParam String imagePath, HttpServletResponse response,
+			HttpServletRequest request) throws IOException {
+
 		InputStream in = request.getServletContext().getResourceAsStream("/resources/img/" + imagePath);
-		
+
 		response.setContentType(MediaType.IMAGE_JPEG_VALUE);
 		IOUtils.copy(in, response.getOutputStream());
 	}
-	
-	
 
 }
