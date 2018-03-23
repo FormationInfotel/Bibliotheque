@@ -12,8 +12,10 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.infotel.formation.DTO.BookDTO;
 import com.infotel.formation.DTO.MemberDTO;
 import com.infotel.formation.Mapper.MemberMapper;
+import com.infotel.formation.entity.Book;
 import com.infotel.formation.entity.Member;
 import com.infotel.formation.exception.ServiceException;
 import com.infotel.formation.interfaces.MemberService;
@@ -43,12 +45,34 @@ public class MemberController2 {
 			}
 
 			res.setIsSucces(true);
-			res.setMessage(ControllerConstants.INSERT_SUCCESS);
+			res.setMessage(ControllerConstants.GET_SUCCES);
 			res.setPayload(viewMembers);
 
 		} catch (ServiceException serviceException) {
 			res.setIsSucces(false);
 			res.setMessage(serviceException.getMessage());
+		} catch (Exception e) {
+			res.setIsSucces(false);
+			res.setMessage("Err");
+		}
+
+		return res;
+	}
+	
+	@PostMapping(value = "/member/getOne")
+	public Resultat getMemberById(@RequestBody long Id) throws ServiceException {
+		Resultat res = new Resultat();
+		try {
+			List<MemberDTO> viewMembers = new ArrayList<MemberDTO>();
+
+			Member member = memberService.getMemberById(Id);
+
+			viewMembers.add(mapper.mapIntoMemberDTO(member));
+
+			res.setIsSucces(true);
+			res.setMessage(ControllerConstants.GET_SUCCES);
+			res.setPayload(viewMembers);
+
 		} catch (Exception e) {
 			res.setIsSucces(false);
 			res.setMessage("Err");

@@ -2,7 +2,7 @@ package com.infotel.formation.utils;
 
 public class ControllerConstants {
 	
-	
+	public static final String GET_SUCCES = "Get OK";
 	
 	public static final String LOGIN_SUCCESS = "Login OK";
 	public static final String LOGIN_ERROR = "Login NOK";

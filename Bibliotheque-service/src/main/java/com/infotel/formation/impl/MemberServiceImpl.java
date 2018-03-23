@@ -79,6 +79,8 @@ public class MemberServiceImpl implements MemberService {
 		return memberDAO.getMemberById(idMember);
 	}
 	
+	
+	
 	@Override
 	public Member login(String email, String pw) throws Exception {
 		
