@@ -10,36 +10,47 @@ import org.springframework.web.bind.annotation.RestController;
 import com.infotel.formation.DTO.BorrowDTO;
 import com.infotel.formation.Mapper.BorrowMapper;
 import com.infotel.formation.entity.Borrow;
+import com.infotel.formation.exception.ServiceException;
 import com.infotel.formation.interfaces.BorrowService;
 import com.infotel.formation.utils.ControllerConstants;
 import com.infotel.formation.utils.Resultat;
 
 @RestController
 public class ValidationEmpruntController {
-	
+
 	@Autowired
 	BorrowService borrowService;
-	
+
 	@Autowired
 	BorrowMapper mapper;
-	
+
 	@GetMapping(value = "/borrow")
-	public Resultat recommendedBooks() throws Exception {
-		List<BorrowDTO> viewBorrow = new ArrayList<BorrowDTO>();
-		List<Borrow> borrows = borrowService.getBorrows();
+	public Resultat recommendedBooks() {
+		List<BorrowDTO> viewBorrows = new ArrayList<BorrowDTO>();
+		List<Borrow> borrows;
 		Resultat res = new Resultat();
-		
-		for (Borrow borrow : borrows) {
+
+		try {
+
+			borrows = borrowService.getBorrows();
+
+			for (Borrow borrow : borrows) {
+
+				viewBorrows.add(mapper.mapIntoBorrowDTO(borrow));
+			}
 			
-			viewBorrow.add(mapper.mapIntoBorrowDTO(borrow));
+			res.setIsSucces(true);
+			res.setMessage(ControllerConstants.INSERT_SUCCESS);
+			res.setPayload(viewBorrows);
+
+		} catch (ServiceException serviceException) {
+			res.setIsSucces(false);
+			res.setMessage(serviceException.getMessage());
+		} catch (Exception e) {
+			res.setIsSucces(false);
+			res.setMessage("Err");
 		}
-		
-		res.setIsSucces(true);
-		res.setMessage(ControllerConstants.BORROW_SHOW_SUCCES);
-		res.setPayload(viewBorrow);
-	
-		System.out.println(res);
-		
+
 		return res;
 	}
 

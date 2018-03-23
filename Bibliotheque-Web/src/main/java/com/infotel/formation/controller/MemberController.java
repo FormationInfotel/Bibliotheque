@@ -76,7 +76,7 @@ public class MemberController {
 
 	// list page
 	@RequestMapping(value = "/users", method = RequestMethod.GET)
-	public String showAllUsers(Model model) {
+	public String showAllUsers(Model model) throws Exception {
 
 		model.addAttribute("users", memberService.getMembers());
 

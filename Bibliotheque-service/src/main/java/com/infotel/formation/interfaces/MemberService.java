@@ -26,6 +26,6 @@ public interface MemberService {
 
 	public String encryptPw(String pw);	
 	
-	public List<Member> getMembers();
+	public List<Member> getMembers() throws Exception;
 
 }

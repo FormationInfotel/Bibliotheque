@@ -22,7 +22,7 @@ import com.infotel.formation.utils.Resultat;
 
 @RestController
 public class MemberController2 {
-	
+
 	@Autowired
 	MemberService memberService;
 
@@ -30,15 +30,31 @@ public class MemberController2 {
 	MemberMapper mapper;
 
 	@GetMapping(value = "/member/get")
-	public List<MemberDTO> getMembers() {
+	public Resultat getMembers() {
 		List<MemberDTO> viewMembers = new ArrayList<MemberDTO>();
+		List<Member> members = new ArrayList<Member>();
+		Resultat res = new Resultat();
 
-		List<Member> members = memberService.getMembers();
+		try {
+			members = memberService.getMembers();
 
-		for (Member member : members) {
-			viewMembers.add(mapper.mapIntoMemberDTO(member));
+			for (Member member : members) {
+				viewMembers.add(mapper.mapIntoMemberDTO(member));
+			}
+
+			res.setIsSucces(true);
+			res.setMessage(ControllerConstants.INSERT_SUCCESS);
+			res.setPayload(viewMembers);
+
+		} catch (ServiceException serviceException) {
+			res.setIsSucces(false);
+			res.setMessage(serviceException.getMessage());
+		} catch (Exception e) {
+			res.setIsSucces(false);
+			res.setMessage("Err");
 		}
-		return viewMembers;
+
+		return res;
 	}
 
 	@PutMapping(value = "/member/add", consumes = { MediaType.APPLICATION_JSON_VALUE })
