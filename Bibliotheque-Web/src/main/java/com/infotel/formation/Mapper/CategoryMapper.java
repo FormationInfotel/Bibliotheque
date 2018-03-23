@@ -14,7 +14,7 @@ public class CategoryMapper {
 	@Autowired
 	BookService bookService;
 
-	public Category mapIntoCategory(CategoryDTO categoryDTO) {
+	public Category mapIntoCategory(CategoryDTO categoryDTO) throws Exception {
 		Category category = new Category(categoryDTO.getCategory_name(), categoryDTO.getCategory_description());
 		category.setCategory_id(categoryDTO.getCategory_id());
 		for (Long id : categoryDTO.getCategory_listeBook()) {

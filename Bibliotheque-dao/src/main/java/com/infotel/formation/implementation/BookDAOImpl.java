@@ -3,6 +3,7 @@ package com.infotel.formation.implementation;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.hibernate.Hibernate;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -63,6 +64,9 @@ public class BookDAOImpl implements BookDAO {
 	@Override
 	public List<Book> getBooks() {
 		List<Book> result = (List<Book>) sessionFactory.getCurrentSession().createQuery("from Book").list();
+		for (Book book : result) {
+			Hibernate.initialize(book.getBook_ListCopy());
+		}
 		return result;
 	}
 

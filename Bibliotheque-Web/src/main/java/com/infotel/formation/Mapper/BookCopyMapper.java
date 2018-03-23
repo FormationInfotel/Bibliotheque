@@ -13,7 +13,7 @@ public class BookCopyMapper {
 	@Autowired
 	BookService bookService;
 
-	public BookCopy mapIntoBookCopy(BookCopyDTO bookCopyDTO) {
+	public BookCopy mapIntoBookCopy(BookCopyDTO bookCopyDTO) throws Exception {
 		BookCopy bookcopy = new BookCopy(bookCopyDTO.getISBN(), bookCopyDTO.getCopy_title(),
 				bookService.getBookById(bookCopyDTO.getBookcopy_parentId()));
 		return bookcopy;

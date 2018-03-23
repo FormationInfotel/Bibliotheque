@@ -14,7 +14,7 @@ public class EditorMapper {
 	@Autowired
 	BookService bookService;
 
-	public Editor mapIntoEditor(EditorDTO editorDTO) {
+	public Editor mapIntoEditor(EditorDTO editorDTO) throws Exception {
 		Editor editor = new Editor(editorDTO.getEditor_name(), editorDTO.getEditor_address());
 		editor.setEditor_id(editorDTO.getEditor_id());
 		for (Long id : editorDTO.getEditor_listeBookId()) {

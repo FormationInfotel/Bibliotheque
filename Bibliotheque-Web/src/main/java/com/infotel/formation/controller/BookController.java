@@ -13,7 +13,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -49,6 +48,31 @@ public class BookController {
 			for (Book book : books) {
 				viewBooks.add(mapper.mapIntoBookDTO(book));
 			}
+			res.setIsSucces(true);
+			res.setMessage(ControllerConstants.INSERT_SUCCESS);
+			res.setPayload(viewBooks);
+
+		} catch (ServiceException serviceException) {
+			res.setIsSucces(false);
+			res.setMessage(serviceException.getMessage());
+		} catch (Exception e) {
+			res.setIsSucces(false);
+			res.setMessage("Err");
+		}
+
+		return res;
+	}
+
+	@PostMapping(value = "/book/getOne")
+	public Resultat getBookById(@RequestBody long Id) {
+		Resultat res = new Resultat();
+		try {
+			List<BookDTO> viewBooks = new ArrayList<BookDTO>();
+
+			Book book = bookService.getBookById(Id);
+
+			viewBooks.add(mapper.mapIntoBookDTO(book));
+
 			res.setIsSucces(true);
 			res.setMessage(ControllerConstants.INSERT_SUCCESS);
 			res.setPayload(viewBooks);

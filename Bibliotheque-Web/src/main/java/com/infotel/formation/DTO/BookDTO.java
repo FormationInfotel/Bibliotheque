@@ -1,6 +1,8 @@
 package com.infotel.formation.DTO;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 public class BookDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -19,7 +21,14 @@ public class BookDTO implements Serializable {
 	private String author_firstname;
 
 	private long book_editorId;
+
+	private String editor_name;
+
 	private long book_categoryId;
+
+	private String category_name;
+
+	private List<Long> listCopy;
 
 	public BookDTO() {
 	}
@@ -33,10 +42,25 @@ public class BookDTO implements Serializable {
 		this.publication_date = publication_date;
 		this.image_path = image_path;
 		this.popular_book = popular_book;
+		listCopy = new ArrayList<Long>();
 	}
-	
-	
 
+
+	public String getEditor_name() {
+		return editor_name;
+	}
+
+	public void setEditor_name(String editor_name) {
+		this.editor_name = editor_name;
+	}
+
+	public String getCategory_name() {
+		return category_name;
+	}
+
+	public void setCategory_name(String category_name) {
+		this.category_name = category_name;
+	}
 
 	public BookDTO(long iSBN, String book_title, String book_description, float book_price, String publication_date,
 			String image_path, boolean popular_book, long book_authorId, String author_lastname,
@@ -54,6 +78,14 @@ public class BookDTO implements Serializable {
 		this.author_firstname = author_firstname;
 		this.book_editorId = book_editorId;
 		this.book_categoryId = book_categoryId;
+	}
+
+	public List<Long> getListCopy() {
+		return listCopy;
+	}
+
+	public void setListCopy(List<Long> listCopy) {
+		this.listCopy = listCopy;
 	}
 
 	public long getISBN() {

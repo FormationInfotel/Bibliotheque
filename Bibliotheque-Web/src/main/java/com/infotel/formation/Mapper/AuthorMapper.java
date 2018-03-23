@@ -14,7 +14,7 @@ public class AuthorMapper {
 	@Autowired
 	BookService bookService;
 
-	public Author mapIntoAuthor(AuthorDTO authorDTO) {
+	public Author mapIntoAuthor(AuthorDTO authorDTO) throws Exception {
 		Author author = new Author(authorDTO.getAuthor_lastname(), authorDTO.getAuthor_firstname());
 		author.setAuthor_id(authorDTO.getAuthor_id());
 		for (Long id : authorDTO.getAuthor_listeBookId()) {

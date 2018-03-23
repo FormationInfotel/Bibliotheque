@@ -1,7 +1,6 @@
 package com.infotel.formation.main;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import org.springframework.context.ApplicationContext;
@@ -190,6 +189,17 @@ public class MainTest {
 		b4.getBook_ListCopy().add(bc7);
 		b4.getBook_ListCopy().add(bc8);
 		b4.getBook_ListCopy().add(bc9);
+
+		userManagerBookCopy.insertBookCopy(bc1);
+		userManagerBookCopy.insertBookCopy(bc2);
+		userManagerBookCopy.insertBookCopy(bc3);
+		userManagerBookCopy.insertBookCopy(bc4);
+		userManagerBookCopy.insertBookCopy(bc5);
+		userManagerBookCopy.insertBookCopy(bc6);
+		userManagerBookCopy.insertBookCopy(bc7);
+		userManagerBookCopy.insertBookCopy(bc8);
+		userManagerBookCopy.insertBookCopy(bc9);
+
 		System.out.println("Copy de Book insérés");
 
 		//////////////////////////////////////////////////////////////////////
@@ -233,10 +243,10 @@ public class MainTest {
 		bc.add(bc1);
 		bc.add(bc2);
 
-		BookBasket bookbasket = new BookBasket(new Date(), new Date(), bc);
+		BookBasket bookbasket = new BookBasket("01/01/2018", "01/01/2018", bc);
 		
-		bookbasket.setCreation_date(new Date());
-		bookbasket.setDelivery_date(new Date());
+		bookbasket.setCreation_date("01/01/2018");
+		bookbasket.setDelivery_date("01/01/2018");
 		bookbasket.setBookbasket_Listbook(bc);
 		
 		userManagerBookBasket.insertBookBasket(bookbasket);

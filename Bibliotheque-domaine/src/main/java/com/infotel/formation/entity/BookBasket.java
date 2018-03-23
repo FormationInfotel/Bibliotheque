@@ -1,7 +1,6 @@
 package com.infotel.formation.entity;
 
 import java.io.Serializable;
-import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -16,8 +15,8 @@ public class BookBasket implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long book_basket_id;
-	private Date creation_date;
-	private Date delivery_date;
+	private String creation_date;
+	private String delivery_date;
 	
 	@OneToMany(mappedBy = "bookcopy_bookbasket")
 	private List<BookCopy> bookbasket_Listbook;
@@ -26,14 +25,14 @@ public class BookBasket implements Serializable{
 		super();
 	}
 	
-	public BookBasket(Date creation_date, Date delivery_date) {
+	public BookBasket(String creation_date, String delivery_date) {
 		this.creation_date = creation_date;
 		this.delivery_date = delivery_date;
 	}
 
 	
 
-	public BookBasket(Date creation_date, Date delivery_date, List<BookCopy> bookbasket_Listbook) {
+	public BookBasket(String creation_date, String delivery_date, List<BookCopy> bookbasket_Listbook) {
 		this.creation_date = creation_date;
 		this.delivery_date = delivery_date;
 		this.bookbasket_Listbook = bookbasket_Listbook;
@@ -52,19 +51,19 @@ public class BookBasket implements Serializable{
 
 
 	
-	public Date getCreation_date() {
+	public String getCreation_date() {
 		return creation_date;
 	}
 
-	public void setCreation_date(Date creation_date) {
+	public void setCreation_date(String creation_date) {
 		this.creation_date = creation_date;
 	}
 
-	public Date getDelivery_date() {
+	public String getDelivery_date() {
 		return delivery_date;
 	}
 
-	public void setDelivery_date(Date delivery_date) {
+	public void setDelivery_date(String delivery_date) {
 		this.delivery_date = delivery_date;
 	}
 
