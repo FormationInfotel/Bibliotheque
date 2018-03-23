@@ -2,6 +2,8 @@ package com.infotel.formation.utils;
 
 public class ControllerConstants {
 	
+	
+	
 	public static final String LOGIN_SUCCESS = "Login OK";
 	public static final String LOGIN_ERROR = "Login NOK";
 	
@@ -17,6 +19,11 @@ public class ControllerConstants {
 	public static final String RESEARCH_SUCCES = "Research OK";
 	
 	public static final String RECOMMENDED_BOOKS_FOUND = "Recommended books found";
+	
+	public static final String BORROW_SHOW_SUCCES = "Borrowed books ";
+	
+	public static final String MEMBRE_SESSION = "Session's Member";
+	
 	
 	
 	

@@ -11,14 +11,15 @@ import com.infotel.formation.entity.Author;
 import com.infotel.formation.entity.Book;
 import com.infotel.formation.interfaces.AuthorDAO;
 import com.infotel.formation.interfaces.BookDAO;
-
+@SuppressWarnings("unused")
 public class MainTest2 {
 
 	public static void main(String[] args) {
 		ApplicationContext context = (ApplicationContext) new AnnotationConfigApplicationContext(
 				ConteneurSpringFullJava.class);
 
-		 AuthorDAO userManager = (AuthorDAO) context.getBean("authorDAOImpl");
+		
+		AuthorDAO userManager = (AuthorDAO) context.getBean("authorDAOImpl");
 		 Author auteur = new Author("LEVEL", "LAURENE");
 		// userManager.insertAuthor(auteur);
 

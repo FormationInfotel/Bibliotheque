@@ -1,9 +1,11 @@
 package com.infotel.formation.entity;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
@@ -18,18 +20,17 @@ public class Borrow implements Serializable {
 	private String borrow_date;
 	private String return_date;
 	private boolean isValidated;
-	
+
 	@ManyToOne
 	private Member borrow_member;
-	
-	@OneToMany(mappedBy = "bookcopy_borrow")
-	private List<BookCopy> borrow_listCopy;
-	
-	public Borrow(String borrow_date, String return_date, Member borrow_member, List<BookCopy> borrow_listCopy) {
+
+	@OneToMany(mappedBy = "bookcopy_borrow", fetch = FetchType.EAGER)
+	private List<BookCopy> borrow_listCopy = new ArrayList<BookCopy>();
+
+	public Borrow(String borrow_date, String return_date, Member borrow_member) {
 		this.borrow_date = borrow_date;
 		this.return_date = return_date;
-		this.borrow_member = borrow_member;
-		this.borrow_listCopy = borrow_listCopy;
+		this.borrow_member = borrow_member;	
 	}
 
 	public Borrow() {
@@ -83,5 +84,4 @@ public class Borrow implements Serializable {
 		this.borrow_listCopy = borrow_listCopy;
 	}
 
-	
 }

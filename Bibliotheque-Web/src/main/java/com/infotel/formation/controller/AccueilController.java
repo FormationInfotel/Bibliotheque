@@ -17,39 +17,29 @@ import com.infotel.formation.utils.Resultat;
 
 @RestController
 public class AccueilController {
-	
+
 	@Autowired
 	BookService bookService;
-	
+
 	@Autowired
 	BookMapper mapper;
 
-	
-	
 	@GetMapping(value = "/recommendedbooks")
 	public Resultat recommendedBooks() {
 		List<BookDTO> viewBook = new ArrayList<BookDTO>();
 		List<Book> Books = bookService.getRecommendedBooks();
 		Resultat res = new Resultat();
-		
-		
+
 		for (Book book : Books) {
 			viewBook.add(mapper.mapIntoBookDTO(book));
 			System.out.println(book);
 		}
-		
+
 		res.setIsSucces(true);
 		res.setMessage(ControllerConstants.RECOMMENDED_BOOKS_FOUND);
 		res.setPayload(viewBook);
-	
-		System.out.println(res);
-		
+
 		return res;
 
-//		model.addAttribute("recommendedBooks", bookService.getRecommendedBooks());
-//		return "Accueil";
-		
-		
-		
 	}
 }
