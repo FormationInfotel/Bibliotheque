@@ -4,11 +4,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+
 import org.springframework.web.bind.annotation.RestController;
 
 import com.infotel.formation.DTO.MemberDTO;
@@ -28,14 +26,6 @@ public class LoginController {
 
 	@Autowired
 	MemberMapper mapper;
-
-	@RequestMapping(value = "/login", method = RequestMethod.GET)
-	private String connexionMembre(Model model) {
-
-		Member membre = new Member();
-		model.addAttribute("membre", membre);
-		return "login";
-	}
 
 	@PostMapping(value = "/login")
 	private Resultat connexionMembre(MemberDTO memberDTO, @RequestBody IdentifiantsVM identifiants,

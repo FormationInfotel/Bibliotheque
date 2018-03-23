@@ -39,7 +39,7 @@ public class Book implements Serializable {
 	@ManyToOne(fetch = FetchType.EAGER)
 	private Catalog book_catalog;
 
-	@OneToMany(mappedBy = "bookcopy_parent", fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "bookcopy_parent", fetch=FetchType.EAGER)
 	private List<BookCopy> book_ListCopy;
 
 	public Book() {

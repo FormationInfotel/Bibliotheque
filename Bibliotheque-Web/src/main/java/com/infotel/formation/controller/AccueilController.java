@@ -32,7 +32,6 @@ public class AccueilController {
 
 		for (Book book : Books) {
 			viewBook.add(mapper.mapIntoBookDTO(book));
-			System.out.println(book);
 		}
 
 		res.setIsSucces(true);
