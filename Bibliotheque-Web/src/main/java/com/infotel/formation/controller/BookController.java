@@ -67,15 +67,13 @@ public class BookController {
 	public Resultat getBookById(@RequestBody long Id) {
 		Resultat res = new Resultat();
 		try {
-			List<BookDTO> viewBooks = new ArrayList<BookDTO>();
-
 			Book book = bookService.getBookById(Id);
 
-			viewBooks.add(mapper.mapIntoBookDTO(book));
+			BookDTO bookDTO = mapper.mapIntoBookDTO(book);
 
 			res.setIsSucces(true);
 			res.setMessage(ControllerConstants.INSERT_SUCCESS);
-			res.setPayload(viewBooks);
+			res.setPayload(bookDTO);
 
 		} catch (ServiceException serviceException) {
 			res.setIsSucces(false);
