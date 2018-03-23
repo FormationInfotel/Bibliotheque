@@ -22,22 +22,34 @@ public class BorrowMapper {
 	BookCopyService bookcopyService;
 
 	public Borrow mapIntoBorrow(BorrowDTO borrowDTO) {
-		List<BookCopy> bookCopy = new ArrayList<BookCopy>();
-		for (Long id : borrowDTO.getBorrow_listCopyId()) {
-			bookCopy.add(bookcopyService.getBookCopyById(id));
-		}
+		//List<BookCopy> bookCopy = new ArrayList<BookCopy>();
+		
 		Borrow borrow = new Borrow(borrowDTO.getBorrow_date(), borrowDTO.getBorrow_date(),
-				memberService.getMemberById(borrowDTO.getBorrow_memberId()), bookCopy);
+				memberService.getMemberById(borrowDTO.getBorrow_memberId()));
+		
+		for (Long id : borrowDTO.getBorrow_listCopyId()) {
+			borrow.getBorrow_listCopy().add(bookcopyService.getBookCopyById(id));
+		}
+		
 		return borrow;
 	}
 
 	public BorrowDTO mapIntoBorrowDTO(Borrow borrow) {
 		List<Long> listCopy = new ArrayList<Long>();
+		
+		
+		System.out.println(listCopy);
+		
+		BorrowDTO borrowDTO = new BorrowDTO(borrow.getBorrow_member().getMember_id(), borrow.getBorrow_date(),
+				borrow.getReturn_date(), borrow.isValidated(),
+				memberService.getMemberById(borrow.getBorrow_member().getMember_id()).getMember_firstname(),
+				memberService.getMemberById(borrow.getBorrow_member().getMember_id()).getMember_lastname(),
+				borrow.getBorrow_member().getMember_id());
+		System.out.println(borrow.getBorrow_listCopy());
+		
 		for (BookCopy bc : borrow.getBorrow_listCopy()) {
-			listCopy.add(bc.getCopy_id());
+			borrowDTO.getBorrow_listCopyId().add(bc.getCopy_id());
 		}
-		BorrowDTO borrowDTO = new BorrowDTO(borrow.getBorrow_date(), borrow.getReturn_date(),
-				borrow.getBorrow_member().getMember_id(), listCopy);
 		return borrowDTO;
 
 	}

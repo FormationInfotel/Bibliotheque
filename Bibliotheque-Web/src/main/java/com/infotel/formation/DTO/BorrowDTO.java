@@ -1,6 +1,7 @@
 package com.infotel.formation.DTO;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 public class BorrowDTO implements Serializable {
@@ -11,6 +12,9 @@ public class BorrowDTO implements Serializable {
 	private String return_date;
 	private boolean isValidated;
 
+	private String member_firstname;
+	private String member_lastname;
+
 	private long borrow_memberId;
 
 	private List<Long> borrow_listCopyId;
@@ -18,11 +22,33 @@ public class BorrowDTO implements Serializable {
 	public BorrowDTO() {
 	}
 
-	public BorrowDTO(String borrow_date, String return_date, long borrow_memberId, List<Long> borrow_listCopyId) {
+	public BorrowDTO(long borrow_id, String borrow_date, String return_date, boolean isValidated,
+			String member_firstname, String member_lastname, long borrow_memberId) {
+		super();
+		this.borrow_id = borrow_id;
 		this.borrow_date = borrow_date;
 		this.return_date = return_date;
+		this.isValidated = isValidated;
+		this.member_firstname = member_firstname;
+		this.member_lastname = member_lastname;
 		this.borrow_memberId = borrow_memberId;
-		this.borrow_listCopyId = borrow_listCopyId;
+		borrow_listCopyId = new ArrayList<Long>();
+	}
+
+	public String getMember_firstname() {
+		return member_firstname;
+	}
+
+	public void setMember_firstname(String member_firstname) {
+		this.member_firstname = member_firstname;
+	}
+
+	public String getMember_lastname() {
+		return member_lastname;
+	}
+
+	public void setMember_lastname(String member_lastname) {
+		this.member_lastname = member_lastname;
 	}
 
 	public long getBorrow_id() {

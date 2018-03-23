@@ -38,20 +38,17 @@ public class LoginController {
 	}
 
 	@PostMapping(value = "/login")
-	private Resultat connexionMembre(MemberDTO memberDTO, @RequestBody IdentifiantsVM identifiants) {
+	private Resultat connexionMembre(MemberDTO memberDTO, @RequestBody IdentifiantsVM identifiants,
+			HttpServletRequest request) {
 		Resultat res = new Resultat();
 		try {
+			HttpSession session = request.getSession();
 
 			Member membre = memberService.login(identifiants.getEmail(), identifiants.getPassword());
 
 			memberDTO = mapper.mapIntoMemberDTO(membre);
 
-			// memberDTO.setMember_firstname(membre.getMember_firstname());
-			// memberDTO.setMember_lastname(membre.getMember_lastname());
-			// memberDTO.setMember_address(membre.getMember_address());
-			//
-			// memberDTO.setMember_email(membre.getMember_email());
-			// memberDTO.setMember_password(membre.getMember_password());
+			session.setAttribute(ControllerConstants.MEMBRE_SESSION, memberDTO);
 
 			res.setIsSucces(true);
 			res.setMessage(ControllerConstants.LOGIN_SUCCESS);
@@ -67,20 +64,5 @@ public class LoginController {
 
 		return res;
 	}
-
-//	private void login(HttpServletRequest req) {
-//		HttpSession session = req.getSession();
-//		
-//		if req.
-//		session.setAttribute("user", "");
-//
-//	}
-//
-//	private void logout(HttpServletRequest req) {
-//		HttpSession session = req.getSession();
-//
-//		session.invalidate();
-//
-//	}
 
 }

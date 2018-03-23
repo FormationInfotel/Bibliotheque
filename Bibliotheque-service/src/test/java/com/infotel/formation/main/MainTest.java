@@ -12,6 +12,7 @@ import com.infotel.formation.entity.Author;
 import com.infotel.formation.entity.Book;
 import com.infotel.formation.entity.BookBasket;
 import com.infotel.formation.entity.BookCopy;
+import com.infotel.formation.entity.Borrow;
 import com.infotel.formation.entity.Catalog;
 import com.infotel.formation.entity.Category;
 import com.infotel.formation.entity.Editor;
@@ -21,6 +22,7 @@ import com.infotel.formation.interfaces.AuthorDAO;
 import com.infotel.formation.interfaces.BookBasketDAO;
 import com.infotel.formation.interfaces.BookCopyDAO;
 import com.infotel.formation.interfaces.BookDAO;
+import com.infotel.formation.interfaces.BorrowDAO;
 import com.infotel.formation.interfaces.CatalogDAO;
 import com.infotel.formation.interfaces.CategoryDAO;
 import com.infotel.formation.interfaces.EditorDAO;
@@ -119,8 +121,9 @@ public class MainTest {
 		////////////////////////////////////////////////////////////////////////////////
 		BookDAO userManagerBook = (BookDAO) context.getBean("bookDAOImpl");
 		Book b1 = new Book(00001110L, "Les recettes les plus simples du monde",
-				"Des recettes pour les débutants, peu d'ingrédients et pas cher", new Float(22.50), "01/01/18", "1.jpg", true);
-		Book b2 = new Book(00001120L, "Harry Potter 1", "synopsis", new Float(25), "01/01/18","2.jpg", false);
+				"Des recettes pour les débutants, peu d'ingrédients et pas cher", new Float(22.50), "01/01/18", "1.jpg",
+				true);
+		Book b2 = new Book(00001120L, "Harry Potter 1", "synopsis", new Float(25), "01/01/18", "2.jpg", false);
 		Book b3 = new Book(00001130L, "Les seigneur des Anneaux", "Un anneau pour les gouverner tous !", new Float(12),
 				"01/01/18", "3.jpg", false);
 		Book b4 = new Book(00001140L, "Game of Thrones - Intégrale 1", "Longue histoire, adaptée en Série",
@@ -190,7 +193,18 @@ public class MainTest {
 		b4.getBook_ListCopy().add(bc7);
 		b4.getBook_ListCopy().add(bc8);
 		b4.getBook_ListCopy().add(bc9);
-		System.out.println("Copy de Book insérés");
+
+		userManagerBookCopy.insertBookCopy(bc1);
+		userManagerBookCopy.insertBookCopy(bc2);
+		userManagerBookCopy.insertBookCopy(bc3);
+		userManagerBookCopy.insertBookCopy(bc4);
+		userManagerBookCopy.insertBookCopy(bc5);
+		userManagerBookCopy.insertBookCopy(bc6);
+		userManagerBookCopy.insertBookCopy(bc7);
+		userManagerBookCopy.insertBookCopy(bc8);
+		userManagerBookCopy.insertBookCopy(bc9);
+
+		System.out.println("Copies de Book insérés");
 
 		//////////////////////////////////////////////////////////////////////
 		///////////////////// CREATION DES MEMBRES ///////////////////////////
@@ -234,18 +248,67 @@ public class MainTest {
 		bc.add(bc2);
 
 		BookBasket bookbasket = new BookBasket(new Date(), new Date(), bc);
-		
+
 		bookbasket.setCreation_date(new Date());
 		bookbasket.setDelivery_date(new Date());
 		bookbasket.setBookbasket_Listbook(bc);
-		
-		userManagerBookBasket.insertBookBasket(bookbasket);
-		
 
-		
+		userManagerBookBasket.insertBookBasket(bookbasket);
+
 		System.out.println("Panier inséré");
 		// bookbasket.
 
+		//////////////////////////////////////////////////////////////////////
+		///////////////////// CREATION D'UN EMPRUNT //////////////////////////
+		//////////////////////////////////////////////////////////////////////
+
+		BorrowDAO userBorrow = (BorrowDAO) context.getBean("borrowDAOImpl");
+		Borrow bor1 = new Borrow("22/03/2018", "30/03/2018", m1);
+		Borrow bor2 = new Borrow("22/03/2018", "30/03/2018", m2);
+		Borrow bor3 = new Borrow("22/03/2018", "30/03/2018", m1);
+		Borrow bor4 = new Borrow("22/03/2018", "30/03/2018", m3);
+		Borrow bor5 = new Borrow("22/03/2018", "30/03/2018", m6);
+
+		bor1.setBorrow_member(m1);
+
+		bor1.getBorrow_listCopy().add(bc1);
+		bc1.setBookcopy_borrow(bor1);
+		bor1.getBorrow_listCopy().add(bc2);
+		bc2.setBookcopy_borrow(bor1);
+		System.out.println(bor1.getBorrow_listCopy());
+		bor2.setBorrow_member(m2);
+
+		bor2.getBorrow_listCopy().add(bc3);
+		bc3.setBookcopy_borrow(bor2);
+		bor2.getBorrow_listCopy().add(bc4);
+		bc4.setBookcopy_borrow(bor2);
+
+		bor3.setBorrow_member(m1);
+
+		bor3.getBorrow_listCopy().add(bc5);
+		bor3.getBorrow_listCopy().add(bc6);
+
+		bor4.setBorrow_member(m3);
+
+		bor5.setBorrow_member(m6);
+
+		userBorrow.insertBorrow(bor1);
+		userBorrow.insertBorrow(bor2);
+		userBorrow.insertBorrow(bor3);
+		userBorrow.insertBorrow(bor4);
+		userBorrow.insertBorrow(bor5);
+		
+		userManagerBookCopy.insertBookCopy(bc1);
+		userManagerBookCopy.insertBookCopy(bc2);
+		userManagerBookCopy.insertBookCopy(bc3);
+		userManagerBookCopy.insertBookCopy(bc4);
+		userManagerBookCopy.insertBookCopy(bc5);
+		userManagerBookCopy.insertBookCopy(bc6);
+		userManagerBookCopy.insertBookCopy(bc7);
+		userManagerBookCopy.insertBookCopy(bc8);
+		userManagerBookCopy.insertBookCopy(bc9);
+
+		System.out.println("Emprunts insérés");
 	}
 
 }

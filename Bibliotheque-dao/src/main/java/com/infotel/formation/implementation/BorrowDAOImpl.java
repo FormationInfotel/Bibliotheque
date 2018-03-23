@@ -2,6 +2,7 @@ package com.infotel.formation.implementation;
 
 import java.util.List;
 
+import org.hibernate.Hibernate;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -49,6 +50,10 @@ public class BorrowDAOImpl implements BorrowDAO {
 	@SuppressWarnings("unchecked")
 	public List<Borrow> getBorrows() {
 		List<Borrow> result = (List<Borrow>) sessionFactory.getCurrentSession().createQuery("from Borrow").list();
+
+		for (Borrow borrow : result) {
+			Hibernate.initialize(borrow.getBorrow_listCopy());
+		}
 		return result;
 	}
 
