@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -129,15 +130,15 @@ public class BookController {
 		return res;
 	}
 
-	@DeleteMapping(value = "/book/delete")
-	public Resultat deleteBook(@RequestBody BookDTO bookDTO) {
+	@DeleteMapping(value = "/book/delete/{id}")
+	public Resultat deleteBook(@PathVariable("id") long id) {
 		Resultat res = new Resultat();
 		try {
-			bookService.deleteBook(bookService.getBookById(bookDTO.getISBN()));
+			bookService.deleteBook(bookService.getBookById(id));
 
 			res.setIsSucces(true);
 			res.setMessage(ControllerConstants.DELETE_SUCCESS);
-			res.setPayload(bookDTO);
+			res.setPayload(id);
 
 		} catch (ServiceException serviceException) {
 			res.setIsSucces(false);
