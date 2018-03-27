@@ -156,7 +156,7 @@ public class BookController {
 
 		InputStream in = request.getServletContext().getResourceAsStream("/resources/img/" + imagePath);
 
-		response.setContentType(MediaType.IMAGE_JPEG_VALUE);
+		response.setContentType(MediaType.IMAGE_PNG_VALUE);
 		IOUtils.copy(in, response.getOutputStream());
 	}
 
